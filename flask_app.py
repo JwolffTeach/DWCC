@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, flash, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_material import Material
 from flask_wtf import Form, RecaptchaField
@@ -6,6 +6,8 @@ from flask_wtf.file import FileField
 from wtforms import TextField, HiddenField, ValidationError, RadioField,\
     BooleanField, SubmitField, IntegerField, FormField, validators
 from wtforms.validators import Required
+from flask_bootstrap import Bootstrap
+from forms import LoginForm
 
 app = Flask(__name__)
 Material(app)
@@ -24,6 +26,7 @@ app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+bootstrap = Bootstrap(app)
 
 class Comment(db.Model):
 
@@ -74,12 +77,25 @@ class ExampleForm(Form):
 
     submit_button = SubmitField('Submit Form')
 
-@app.route("/test", methods=["GET", "POST"])
+@app.route('/test', methods=["GET", "POST"])
 def test():
     form = ExampleForm()
     return render_template('test.html', form = form)
 
-@app.route("/cardplay", methods=["GET", "POST"])
-def cardplay():
-    return render_template("cardplay.html", comments=Comment.query.all())
+@app.route('/newmain', methods=["GET", "POST"])
+def newmain():
+    return render_template("new_main.html", comments=Comment.query.all())
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect(url_for('index'))
+    return render_template('login.html',  title='Sign In', form=form)
+
+
+
+
 
