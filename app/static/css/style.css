@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+}
+
+.top-content-intro {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)),
+        url('http://www.portablecity.net/wp-content/uploads/2018/02/15003065221092986074.jpg');
+    background-size: cover;
+    padding: 80px 16px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px; 
+	background-attachment: fixed; 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-size: cover; 
+}
+
+.top-content-intro>.top-content-intro-title,
+.top-content-intro-description {
+    text-align: center;
+    color: white;
+}
+
+.top-content-intro>.top-content-intro-title {
+    font-family: aria-text-g2 !important;
+    font-size: 62px !important;
+    font-style: italic !important;
+    letter-spacing: normal !important;
+    line-height: 62px !important;
+
+}
+
+.top-content-intro>.top-content-intro-description {
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: normal;
+    line-height: 28.8px;
+    text-transform: none;
+    color: rgb(255, 255, 255);
+}
+
+.content-section {
+    padding: 80px 0;
+    max-width: 1044px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+}
+
+.content-section>.content-section-title,
+.content-section-main {
+    margin-left: 12px;
+}
+
+  .characters-card-container{
+      margin-left: -16px;
+  }
+
+body,
+h1,
+h2,
+a,
+.mdl-layout__title {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.smaller-title {
+    font-size: 16px;
+}
+
+.nav-row {
+    display: -webkit-flex;
+    /* Safari */
+    max-width: 900px;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-center {
+    float: left;
+    min-width: 500px;
+}
+
+.nav-right {
+    float: right;
+    min-width: 250px;
+}
+
+.nav-solo {
+    position: static;
+    width: 100%;
+    text-align: center;
+}
+
+.header-container {
+
+}
+
+.top-content__title {
+    text-align: center;
+}
+
+.mdl-textfield__label {
+    margin-bottom: 0px;
+}
+
+.DWCC-mobile-title {
+    display: none !important;
+}
+
+.DWCC-logo-image {
+    width: 280px;
+    height: 56px
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: DodgerBlue;
+    max-height: 200px;
+}
+
+.flex-container > div {
+    width: 100%;
+    text-align: center;
+    padding-top:50px;
+}
+
+.newcharacter-button {
+    color: white;
+    font-size: 26px;
+    overflow: visible; 
+    height: 100vh;
+    padding: 0;
+}
+
+@media (max-width: 1024px) {
+    .mdl-layout__title {
+      font-size:18px;
+      font-family: 'Raleway', sans-serif !important;
+    }
+    .top-content-intro>.top-content-intro-title {  
+        font-family: aria-text-g2 !important;
+        font-size: 48px !important;
+        font-style: italic !important;
+        letter-spacing: normal !important;
+        line-height: 48px !important;
+    }
+    .mdl-layout__header-row {
+        padding: 0 16px 0 16px;
+    }
+    .DWCC-title {
+        display: none !important;
+    }
+    .DWCC-mobile-title {
+        display: block !important;
+        position: absolute;
+        left: calc(50% - 140px);
+        top: 0px;
+        transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .newcharacter-button {
+        color: white;
+        font-size: 20px;
+        overflow: visible; 
+        height: 100vh;
+        padding: 0;
+    }
+  }

@@ -1,100 +1,76 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    {% if title %}{{ title }}{% else %} - Dungeon World Character Creator{% endif %}
+{% if title %}{{ title }}{% else %} - Dungeon World Character Creator{% endif %}
 {% endblock %}
 
 {% block styles -%}
-    {{super()}}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-deep_purple.min.css">
-    <style>
-        .content-max-width {
-          max-width: 900px;
-          margin: auto;
-        }
-        body, h1, h2, a, .mdl-layout__title {
-            font-family: 'Raleway', sans-serif !important;
-        }
-      .nav-row{
-        display: -webkit-flex; /* Safari */
-        display: flex;
-        max-width: 900px;
-        margin: auto;
-      }
-      .nav-left{
-        float: left;
-        width: 25.00%;
-      }
-      .nav-center{
-        float: left;
-        width: 50.00%;
-        min-width: 500px;
-      }
-      .nav-right{
-        float: left;
-        width: 25%;
-        min-width: 250px;
-      }
-      .nav-solo{
-        position: static;
-        width: 100%;
-        text-align: center;
-      }
-      .content__title {
-        text-align: center;
-      }
-    </style>
+{{super()}}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-deep_purple.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block navbar %}
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header ">
-            <div class="mdl-layout-icon"></div>
-            <div class="mdl-layout__header-row nav-row">
-                <div class="mdl-layout-spacer mdl-layout--large-screen-only nav-left"></div>
-                <div class="mdl-layout--large-screen-only nav-center">
-                  <span class="mdl-layout__title">Dungeon World Character Creator</span>
-                </div>
-                <div class="mdl-layout--small-screen-only nav-solo">
-                  <span class="mdl-layout__title">Dungeon World Character Creator</span>
-                </div>
-                <nav class="mdl-navigation mdl-layout--large-screen-only nav-right">
-                    <form>
-                        <button formaction="/login" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Log In</button>
-                        <button formaction="#" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Sign Up</button>
-                    </form>
-                </nav>
-                <nav class="mdl-navigation mdl-layout--small-screen-only nav-right">
-              </nav>
-            </div>
-        </header>
-        <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="/login">Log In / Sign Up</a>
-                <a class="mdl-navigation__link" href="#">Nav link 3</a>
-            </nav>
-        </div>
-{% endblock %}
-
-{% block content %}
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-    {% block app_content %}{% endblock %}
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer">
+  <header class="mdl-layout__header">
+    <div class="header-container">
+      <div class="mdl-layout-icon"></div>
+      <div class="mdl-layout__header-row">
+        <span class="DWCC-title mdl-layout__title">
+          <img class="DWCC-logo-image" src="{{ url_for('static', filename='images/DWCC-logo.png') }}">
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only nav-right">
+          <form>
+            {% if current_user.is_anonymous %}
+            <button formaction="{{ url_for('logout') }}"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Log In</button>
+            <button formaction="{{ url_for('register') }}"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Sign Up</button>
+            {% else %}
+            Hi, {{ current_user.username }}
+            <button formaction="{{ url_for('logout') }}"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Logout</button>
+            {% endif %}
+          </form>
+        </nav>
+        <span class="DWCC-mobile-title mdl-layout__title">
+          <img class="DWCC-logo-image" src="{{ url_for('static', filename='images/DWCC-logo.png') }}">
+        </span>
+        <nav class="mdl-navigation mdl-layout--small-screen-only nav-right">
+        </nav>
+      </div>
     </div>
-{% endblock %}
+  </header>
+  <div class="mdl-layout__drawer">
+    <nav class="mdl-navigation">
+      {% if current_user.is_anonymous %}
+      <a class="mdl-navigation__link" href="{{ url_for('login') }}">Log In / Sign Up</a>
+      {% else %}
+      <a class="mdl-navigation__link" href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+      <a class="mdl-navigation__link" href="#">Nav link 3</a>
+    </nav>
+  </div>
+  {% endblock %}
 
+  {% block content %}
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-info" role="alert">{{ message }}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <main class="mdl-layout__top-content">
+    {% block app_content %}{% endblock %}
+  </main>
 </div>
+{% endblock %}
 
 {% block scripts -%}
-    {{super()}}
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+{{super()}}
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 {% endblock %}

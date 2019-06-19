@@ -28,15 +28,22 @@
     <div class="wrap">
         <div class="mdl-card mdl-shadow--6dp">
             <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text flex-self--start">Sign In</h2>
+                <h2 class="mdl-card__title-text flex-self--start">Register</h2>
             </div>
-            <form action="" method="post" novalidate>
+            <form action="" method="post">
                 {{ form.hidden_tag() }}
                 <div class="mdl-card__supporting-text">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         {{ form.username(class_="mdl-textfield__input") }}
                         {{ form.username.label(class_="mdl-textfield__label") }}
                         {% for error in form.username.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        {{ form.email(class_="mdl-textfield__input") }}
+                        {{ form.email.label(class_="mdl-textfield__label") }}
+                        {% for error in form.email.errors %}
                         <span class="mdl-textfield__error">[{{ error }}]</span>
                         {% endfor %}
                     </div>
@@ -47,18 +54,16 @@
                         <span class="mdl-textfield__error">[{{ error }}]</span>
                         {% endfor %}
                     </div>
-                    <div class="">
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="remember_me">
-                            {{ form.remember_me(class_="mdl-checkbox__input") }}
-                            <span class="mdl-checkbox__label">Remember Me</span><br>
-                        </label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        {{ form.password2(class_="mdl-textfield__input") }}
+                        {{ form.password2.label(class_="mdl-textfield__label") }}
+                        {% for error in form.password2.errors %}
+                        <span class="mdl-textfield__error">[{{ error }}]</span>
+                        {% endfor %}
                     </div>
                     <br>{{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
                 </div>
             </form>
-            <div class="mdl-card__actions mdl-card--border">
-                New User? <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ url_for('register') }}">Click to Register!</a>
-            </div>
         </div>
     </div>
 {% endblock %}

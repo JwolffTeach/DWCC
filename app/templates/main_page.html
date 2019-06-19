@@ -1,46 +1,37 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <main class="mdl-layout__content mdl-typography--text-center">
-        <h1>1. Choose a class</h1>
-        <div class="mdl-grid content-max-width">
-            {% for comment in comments %}
-                <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-card mdl-card mdl-shadow--4dp">
-                    <div class="mdl-card__title mdl-card--border">
-                        <h1 class="mdl-card__title-text content">
-                        {{ comment.title }}
-                        </h1>
-                    </div>
-                    <div class="mdl-card__supporting-text content">
-                        {{ comment.content }}
-                    </div>
+<div class="top-content-intro">
+    <h1 class="top-content-intro-title">Dungeon World</h1>
+    <p class="top-content-intro-description">
+        This is a brief description of Dungeon world, ideally this is just one sentence.
+    </p>
+</div>
+<div class="content-section">
+    <h2 class="content-section-title">Characters</h2>
+    <div class="content-section-main">
+        <div class="mdl-grid characters-card-container">
+            {% for hero in heroes %}
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-card mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__title mdl-card--border">
+                    <h1 class="mdl-card__title-text content">
+                    {{ hero.hero_name }}
+                    </h1>
                 </div>
+                <div class="mdl-card__supporting-text content">
+                    {{ hero.hero_class }}
+                </div>
+            </div>
             {% endfor %}
         </div>
-        <div class="mdl-grid">
-            <form action="." method="POST">
-                <div class="mdl-card mdl-shadow--4dp">
-                    <div class="mdl-card__title">
-                      <h2 class="mdl-card__title-text mdl-card--border">Create New Card</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text mdl-card--border">
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" name="title" id="cardtitle">
-                            <label class="mdl-textfield__label" for="cardtitle">Enter a title...</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <textarea class="mdl-textfield__input" name="contents" type="text" rows= "3"></textarea>
-                            <label class="mdl-textfield__label" for="sample5">Add card...</label>
-                        </div>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Post comment</button>
-                    </div>
-                </div>
-            </form>
+        <div class="mdl-grid characters-card-container">
+            <div class="flex-container mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-card mdl-card mdl-shadow--4dp">
+                <button class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Create a New Character</button>
+            </div>
         </div>
-    </main>
+    </div>
+</div>
 {% endblock %}
 
 
