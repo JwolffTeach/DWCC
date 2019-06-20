@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<style>
+    .wrap{
+    max-width: 500px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    .mdl-card{
+    width: calc( 100% - 16px );
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 0;
+    }
+    .mdl-card__subtitle-text{}
+    .flex--col{
+    flex-direction: column;
+    }
+    .flex-items--start{
+    align-items: flex-start;
+    }
+    .flex-self--start{
+    align-self: flex-start;
+    }
+</style>
+<div class="wrap">
+    <div class="mdl-card mdl-shadow--6dp">
+        <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
+                <h2 class="mdl-card__title-text flex-self--start">Build a Character</h2>
+        </div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="mdl-card__supporting-text">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroname(class_="mdl-textfield__input") }}
+                    {{ form.heroname.label(class_="mdl-textfield__label") }}
+                    {% for error in form.heroname.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroclass(class_="mdl-textfield__input") }}
+                    {{ form.heroclass.label(class_="mdl-textfield__label") }}
+                    {% for error in form.heroclass.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.herorace(class_="mdl-textfield__input") }}
+                    {{ form.herorace.label(class_="mdl-textfield__label") }}
+                    {% for error in form.herorace.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroalignment(class_="mdl-textfield__input") }}
+                    {{ form.heroalignment.label(class_="mdl-textfield__label") }}
+                    {% for error in form.heroalignment.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <br>{{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -174,3 +174,19 @@ a,
         padding: 0;
     }
   }
+
+  .builder-form {
+    position: relative;
+    text-align: center;
+  }
+
+  .builder-form > div {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .form-actions {
+      padding-right: 0px;
+      padding-left: 0px;
+  }

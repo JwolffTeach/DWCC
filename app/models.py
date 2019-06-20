@@ -48,12 +48,12 @@ class Hero(db.Model):
 class Hero_Looks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     hero_id = db.Column(db.Integer, db.ForeignKey('hero.id'))
-    eyes = db.Column(db.String(4096))
-    hair = db.Column(db.String(4096))
-    clothing = db.Column(db.String(4096))
-    body = db.Column(db.String(4096))
-    skin = db.Column(db.String(4096))
-    symbol = db.Column(db.String(4096))
+    eyes = db.Column(db.String(100))
+    hair = db.Column(db.String(100))
+    clothing = db.Column(db.String(100))
+    body = db.Column(db.String(100))
+    skin = db.Column(db.String(100))
+    symbol = db.Column(db.String(100))
 
     def __repr__(self):
         return '<id {}, hero_id {}, eyes {}, hair {}, clothing {}, body {}, skin {}, symbol {}.'.format(self.id, self.hero_id, self.eyes, self.hair, self.clothing, self.body, self.skin, self.symbol)

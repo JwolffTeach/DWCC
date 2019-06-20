@@ -1,7 +1,80 @@
 {% extends 'bootstrap/base.html' %}
 
+
 {% block title %}
 {% if title %}{{ title }}{% else %} - Dungeon World Character Creator{% endif %}
+{% endblock %}
+
+
+{% block scripts -%}
+{{super()}}
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="{{ url_for('static', filename='scripts/jquery-ui-1.12.1/external/jquery/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+
+        var builderform = $(".builder-form");
+        var currentPart = 0;
+        var formParts = $(".form_part").toArray();
+        var next = $("#nextbtn");
+        var nexthidden = false;
+        var back = $("#backbtn");
+        var backhidden = true;
+        var submitbtn = $("#submit");
+        var submitbtnhidden = true;
+
+        // Hide and adjust height of stuff
+        $(submitbtn).hide();
+        $(back).hide();
+        $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+
+        next.click(function () {
+            $(formParts[currentPart]).hide("slide", { direction: "left" }, 500);
+            $(formParts[currentPart + 1]).show("slide", { direction: "right" }, 500);
+            currentPart++;
+            if (currentPart == formParts.length - 1) {
+                // First hide the next button.
+                $(next).hide("slide", { direction: "right" }, 500);
+                nexthidden = true;
+                // Then show the submit button
+                $(submitbtn).delay(600).show("slide", { direction: "right" }, 500);
+                submitbtnhidden = false;
+            }
+            if (backhidden) {
+                $(back).delay(500).show("slide", { direction: "left" }, 500);
+                backhidden = false;
+            }
+
+            // Adjust the height of the builder-form when loading a new form.
+            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+        })
+
+        back.click(function () {
+            $(formParts[currentPart]).hide("slide", { direction: "right" }, 500);
+            $(formParts[currentPart - 1]).show("slide", { direction: "left" }, 500);
+            currentPart--;
+            if (currentPart == 0) {
+                $(back).hide("slide", { direction: "left" }, 500);
+                backhidden = true;
+            }
+            let delayTimer = 0;
+            if (!submitbtnhidden) {
+                $(submitbtn).hide("slide", { direction: "right" }, 500);
+                delayTimer = 500;
+            }
+            if (nexthidden) {
+                $(next).delay(delayTimer).show("slide", { direction: "right" }, 500);
+                nexthidden = false;
+            }
+
+            // Adjust the height of the builder-form when loading a new form.
+            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+        })
+    });
+
+</script>
+
 {% endblock %}
 
 {% block styles -%}
@@ -10,6 +83,7 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-deep_purple.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='scripts/jquery-ui-1.12.1/jquery-ui.min.css') }}">
 {% endblock %}
 
 {% block navbar %}
@@ -68,9 +142,4 @@
     {% block app_content %}{% endblock %}
   </main>
 </div>
-{% endblock %}
-
-{% block scripts -%}
-{{super()}}
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 {% endblock %}

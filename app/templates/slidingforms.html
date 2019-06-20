@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+Build a Character
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-deep_purple.min.css">
+<link rel="stylesheet" href="/static/css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+    
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer">
+  <header class="mdl-layout__header">
+    <div class="header-container">
+      <div class="mdl-layout-icon"></div>
+      <div class="mdl-layout__header-row">
+        <span class="DWCC-title mdl-layout__title">
+          <img class="DWCC-logo-image" src="/static/images/DWCC-logo.png">
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only nav-right">
+          <form>
+            
+            Hi, bountiful
+            <button formaction="/logout"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Logout</button>
+            
+          </form>
+        </nav>
+        <span class="DWCC-mobile-title mdl-layout__title">
+          <img class="DWCC-logo-image" src="/static/images/DWCC-logo.png">
+        </span>
+        <nav class="mdl-navigation mdl-layout--small-screen-only nav-right">
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <nav class="mdl-navigation">
+      
+      <a class="mdl-navigation__link" href="/logout">Logout</a>
+      
+      <a class="mdl-navigation__link" href="#">Nav link 3</a>
+    </nav>
+  </div>
+  
+    
+  
+  
+  
+  <main class="mdl-layout__top-content">
+    
+<style>
+    .wrap{
+    max-width: 500px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    .mdl-card{
+    width: calc( 100% - 16px );
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 0;
+    }
+    .mdl-card__subtitle-text{}
+    .flex--col{
+    flex-direction: column;
+    }
+    .flex-items--start{
+    align-items: flex-start;
+    }
+    .flex-self--start{
+    align-self: flex-start;
+    }
+</style>
+<div class="wrap">
+    <div class="mdl-card mdl-shadow--6dp" style="min-height:430px">
+        <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
+                <h2 class="mdl-card__title-text flex-self--start">Build a Character</h2>
+        </div>
+        <form action="" method="post" novalidate>
+            <input id="csrf_token" name="csrf_token" type="hidden" value="ImE5NTZjM2I0OGMxY2U2ODdkY2ZlZWJiY2I2ZjFlZTQ1MzcyOTk5ZTEi.D-v9Mw.bsOwB8gZHfsblsgU8k8c5MwrUjk">
+            <div class="mdl-card__supporting-text">              
+              <div class="builder-form">
+                  <div id="form_part1">
+    
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroname" name="heroname" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroname">Hero Name</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroclass" name="heroclass" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroclass">Hero Class</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="herorace" name="herorace" required type="text" value="">
+                        <label class="mdl-textfield__label" for="herorace">Hero Race</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroalignment" name="heroalignment" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroalignment">Hero Alignment</label>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button style="float:right" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" id="next_1">Next</button>
+                    </div>
+                  </div>
+                  <div style="display:none" id="form_part2">
+    
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroname" name="heroname" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroname">Hero Name 2</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroclass" name="heroclass" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroclass">Hero Class 2</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="herorace" name="herorace" required type="text" value="">
+                        <label class="mdl-textfield__label" for="herorace">Hero Race 2</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroalignment" name="heroalignment" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroalignment">Hero Alignment 2</label>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" id="back_2">Back</button>
+                        <button style="float:right" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" id="next_2">Next</button>
+                    </div>
+                  </div>
+                  
+                  <div style="display:none" id="form_part3">
+    
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroname" name="heroname" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroname">Hero Name 3</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroclass" name="heroclass" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroclass">Hero Class 3</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="herorace" name="herorace" required type="text" value="">
+                        <label class="mdl-textfield__label" for="herorace">Hero Race 3</label>
+                        
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" id="heroalignment" name="heroalignment" required type="text" value="">
+                        <label class="mdl-textfield__label" for="heroalignment">Hero Alignment 3</label>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" id="back_3">back</button>
+                        <input style="float:right" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" id="submit" name="submit" type="submit" value="Create Character">
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+  </main>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="static/scripts/jquery-ui-1.12.1/jquery-ui.min.css">
+<script src="static/scripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+<script> 
+$(document).ready(function () {
+      var form1 = $("#form_part1");
+      var form2 = $("#form_part2");
+      var form3 = $("#form_part3");
+      var form1next = $("#next_1");
+      var form2next = $("#next_2");
+      var form2back = $("#back_2");
+      var form3back = $("#back_3");
+      form2.hide();
+      form3.hide();
+
+      form1next.click(function() {
+            form1.hide("slide", {direction: "left"}, 500);
+            form2.show("slide", {direction: "right"}, 500);
+            form3.hide("slide", {direction: "left"}, 500);
+      });
+      form2next.click(function() {
+            form1.hide("slide", {direction: "left"}, 500);
+            form2.hide("slide", {direction: "left"}, 500);
+            form3.show("slide", {direction: "right"}, 500);
+
+      });
+      form2back.click(function() {
+            form1.show("slide", {direction: "left"}, 500);
+            form2.hide("slide", {direction: "right"}, 500);
+            form3.hide("slide", {direction: "right"}, 500);
+
+      });
+      form3back.click(function() {
+            form3.hide("slide", {direction: "right"}, 500);
+            form2.show("slide", {direction: "left"}, 500);
+
+      });
+});
+
+</script> 
+
+  </body>
+</html>

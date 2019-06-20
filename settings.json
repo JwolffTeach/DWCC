@@ -1,0 +1,42 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--ignore=E501,E402,W292"],
+
+    "deploy": {
+        "packages": [
+            {
+                "name": "DWCC Project",
+
+                "deployOnChange": {
+                    "files": [
+                        "/**/*.py",
+                        "/**/*.html"
+                    ],
+                    "useTargetList": true
+                },
+
+                "files": [
+                    "wwwroot/**/*.html",
+                    "wwwroot/**/*.py"
+                ],
+
+                "targets": [ "DWCC" ]
+            }
+        ],
+
+        "targets": [
+            {
+                "type": "sftp",
+                "name": "DWCC",
+                "description": "Dungeon World Character Creator Folder",
+
+                "dir": "/home/nammflow/newsite",
+                "host": "ssh.pythonanywhere.com", "port": 22,
+                "user": "nammflow", "password": "zrzGQGXZ4A4gSGE"
+            }
+        ]
+    },
+    "window.zoomLevel": 0
+}
