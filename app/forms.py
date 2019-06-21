@@ -31,18 +31,18 @@ class RegistrationForm(FlaskForm):
 
 
 class BuilderForm(FlaskForm):
-    """ Form 1 """
+    """ hero """
     heroname = StringField('Name', validators=[DataRequired()])
     heroclass = StringField('Class', validators=[DataRequired()])
     herorace = StringField('Race', validators=[DataRequired()])
     heroalignment = StringField('Alignment', validators=[DataRequired()])
 
-    """ Form 2 """
+    """ looks """
     heroeyes = StringField('Eyes', validators=[DataRequired()])
     herohair = StringField('Hair', validators=[DataRequired()])
     heroclothing = StringField('Clothing', validators=[DataRequired()])
     herobody = StringField('Body', validators=[DataRequired()])
     heroskin = StringField('Skin', validators=[DataRequired()])
     herosymbol = StringField('Symbol', validators=[DataRequired()])
-    
+
     submit = SubmitField('Create Character')

@@ -40,6 +40,7 @@ class Hero(db.Model):
     hero_race = db.Column(db.String(4096))
     hero_alignment = db.Column(db.String(4096))
     hero_looks = db.relationship('Hero_Looks', backref='hero', lazy='dynamic')
+    # Something with hero_looks is causing a problem- not iterable?
 
     def __repr__(self):
         return '<id {}, owner_id {}, name {}, hero_class {}, race {}, alignment {}.'.format(self.id, self.owner_id, self.hero_name, self.hero_class, self.hero_race, self.hero_alignment)

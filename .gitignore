@@ -1,2 +1,4 @@
 *.pyc
 __pycache__
+app/material-design-lite
+app/package-lock.json

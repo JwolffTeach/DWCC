@@ -16,8 +16,6 @@
         min-height: 0;
     }
 
-    .mdl-card__subtitle-text {}
-
     .flex--col {
         flex-direction: column;
     }
@@ -71,84 +69,52 @@
                     </div>
                     <div style="display: none" class="form_part">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroname" name="heroname" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="heroname">Hero Name 2</label>
-
+                            {{ form.heroeyes(class_="mdl-textfield__input") }}
+                            {{ form.heroeyes.label(class_="mdl-textfield__label") }}
+                            {% for error in form.heroeyes.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroclass" name="heroclass" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="heroclass">Hero Class 2</label>
-
+                            {{ form.herohair(class_="mdl-textfield__input") }}
+                            {{ form.herohair.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herohair.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="herorace" name="herorace" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="herorace">Hero Race 2</label>
-
+                            {{ form.heroclothing(class_="mdl-textfield__input") }}
+                            {{ form.heroclothing.label(class_="mdl-textfield__label") }}
+                            {% for error in form.heroclothing.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroalignment" name="heroalignment" required
-                                type="text" value="">
-                            <label class="mdl-textfield__label" for="heroalignment">Hero Alignment 2</label>
+                            {{ form.herobody(class_="mdl-textfield__input") }}
+                            {{ form.herobody.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herobody.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.heroskin(class_="mdl-textfield__input") }}
+                            {{ form.heroskin.label(class_="mdl-textfield__label") }}
+                            {% for error in form.heroskin.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.herosymbol(class_="mdl-textfield__input") }}
+                            {{ form.herosymbol.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herosymbol.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div style="display: none" class="form_part">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroname" name="heroname" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="heroname">Hero Name 3</label>
+                    
+                    
 
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroclass" name="heroclass" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="heroclass">Hero Class 3</label>
 
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="herorace" name="herorace" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="herorace">Hero Race 3</label>
-
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroalignment" name="heroalignment" required
-                                type="text" value="">
-                            <label class="mdl-textfield__label" for="heroalignment">Hero Alignment 3</label>
-                        </div>
-                    </div>
-                    <div style="display: none" class="form_part">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroname" name="heroname" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="heroname">Hero Name 4</label>
-
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroclass" name="heroclass" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="heroclass">Hero Class 4</label>
-
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="herorace" name="herorace" required type="text"
-                                value="">
-                            <label class="mdl-textfield__label" for="herorace">Hero Race 4</label>
-
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroalignment" name="heroalignment" required
-                                type="text" value="">
-                            <label class="mdl-textfield__label" for="heroalignment">Hero Alignment 4</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" id="heroalignment" name="heroalignment" required
-                                type="text" value="">
-                            <label class="mdl-textfield__label" for="heroalignment">Input Here</label>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div style="min-height: 64px" class="form-actions mdl-card__actions mdl-card--border">
@@ -167,4 +133,70 @@
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block jquerystuff %}
+<script>
+    $(document).ready(function () {
+
+        var builderform = $(".builder-form");
+        var currentPart = 0;
+        var formParts = $(".form_part").toArray();
+        var next = $("#nextbtn");
+        var nexthidden = false;
+        var back = $("#backbtn");
+        var backhidden = true;
+        var submitbtn = $("#submit");
+        var submitbtnhidden = true;
+
+        // Hide and adjust height of stuff
+        $(submitbtn).hide();
+        $(back).hide();
+        $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+
+        next.click(function () {
+            $(formParts[currentPart]).hide("slide", { direction: "left" }, 500);
+            $(formParts[currentPart + 1]).show("slide", { direction: "right" }, 500);
+            currentPart++;
+            if (currentPart == formParts.length - 1) {
+                // First hide the next button.
+                $(next).hide("slide", { direction: "right" }, 500);
+                nexthidden = true;
+                // Then show the submit button
+                $(submitbtn).delay(600).show("slide", { direction: "right" }, 500);
+                submitbtnhidden = false;
+            }
+            if (backhidden) {
+                $(back).delay(500).show("slide", { direction: "left" }, 500);
+                backhidden = false;
+            }
+
+            // Adjust the height of the builder-form when loading a new form.
+            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+        })
+
+        back.click(function () {
+            $(formParts[currentPart]).hide("slide", { direction: "right" }, 500);
+            $(formParts[currentPart - 1]).show("slide", { direction: "left" }, 500);
+            currentPart--;
+            if (currentPart == 0) {
+                $(back).hide("slide", { direction: "left" }, 500);
+                backhidden = true;
+            }
+            let delayTimer = 0;
+            if (!submitbtnhidden) {
+                $(submitbtn).hide("slide", { direction: "right" }, 500);
+                delayTimer = 500;
+            }
+            if (nexthidden) {
+                $(next).delay(delayTimer).show("slide", { direction: "right" }, 500);
+                nexthidden = false;
+            }
+
+            // Adjust the height of the builder-form when loading a new form.
+            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+        })
+    });
+
+</script>
 {% endblock %}

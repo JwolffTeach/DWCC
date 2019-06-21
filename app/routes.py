@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, BuilderForm
-from app.models import Comment, User, Hero
+from app.models import Comment, User, Hero, Hero_Looks
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
@@ -74,23 +74,22 @@ def builder():
             hero_class=request.form["heroclass"],
             hero_race=request.form["herorace"],
             hero_alignment=request.form["heroalignment"]
-            #,hero_eyes=request.form["heroeyes"],
-            #hero_hair=request.form["herohair"],
-            #hero_clothing=request.form["heroclothing"],
-            #hero_body=request.form["herobody"],
-            #hero_skin=request.form["heroskin"],
-            #hero_symbol=request.form["herosymbol"]
-        )        
-"""         heroLooks = Hero_Looks(
-            hero_id = hero.id,
-            hero_eyes=request.form["heroeyes"],
-            hero_hair=request.form["herohair"],
-            hero_clothing=request.form["heroclothing"],
-            hero_body=request.form["herobody"],
-            hero_skin=request.form["heroskin"],
-            hero_symbol=request.form["herosymbol"]
-        ) """
+        )
+
+        heroLooks = Hero_Looks(
+            hero_id=hero.id,
+            eyes=request.form["heroeyes"],
+            hair=request.form["herohair"],
+            clothing=request.form["heroclothing"],
+            body=request.form["herobody"],
+            skin=request.form["heroskin"],
+            symbol=request.form["herosymbol"]
+        )
+
+        hero.hero_looks = heroLooks
+        
         db.session.add(hero)
+        db.session.add(heroLooks)
         db.session.commit()
         flash('Greetings ' + hero.hero_name + ', welcome to Dungeon World!')
         return redirect(url_for('index'))
