@@ -2,69 +2,259 @@
 
 {% block app_content %}
 <style>
-    .wrap{
-    max-width: 500px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    .wrap {
+        max-width: 500px;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .mdl-card{
-    width: calc( 100% - 16px );
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 0;
+
+    .mdl-card {
+        width: calc(100% - 16px);
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 0;
     }
-    .mdl-card__subtitle-text{}
-    .flex--col{
-    flex-direction: column;
+
+    .flex--col {
+        flex-direction: column;
     }
-    .flex-items--start{
-    align-items: flex-start;
+
+    .flex-items--start {
+        align-items: flex-start;
     }
-    .flex-self--start{
-    align-self: flex-start;
+
+    .flex-self--start {
+        align-self: flex-start;
+    }
+
+    .looks_form_css:last-child{
     }
 </style>
 <div class="wrap">
-    <div class="mdl-card mdl-shadow--6dp">
+    <div class="mdl-card mdl-shadow--6dp"  style="overflow: visible;">
         <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
-                <h2 class="mdl-card__title-text flex-self--start">Build a Character</h2>
+            <h2 class="mdl-card__title-text flex-self--start">Build a Character</h2>
         </div>
         <form action="" method="post" novalidate>
             {{ form.hidden_tag() }}
-            <div class="mdl-card__supporting-text">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.heroname(class_="mdl-textfield__input") }}
-                    {{ form.heroname.label(class_="mdl-textfield__label") }}
-                    {% for error in form.heroname.errors %}
-                    <span class="mdl-textfield__error">[{{ error }}]</span>
-                    {% endfor %}
+            <div class="mdl-card__supporting-text" style="overflow: visible;">
+                <div style="height: 300px" class="builder-form">
+                    <div class="form_part">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.heroname(class_="mdl-textfield__input") }}
+                            {{ form.heroname.label(class_="mdl-textfield__label") }}
+                            {% for error in form.heroname.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.heroclass }}
+                            <!-- 
+                            {{ form.heroclass(class_="mdl-textfield__input") }}
+                            {{ form.heroclass.label(class_="mdl-textfield__label") }}
+                            {% for error in form.heroclass.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}-->
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.herorace(class_="mdl-textfield__input") }}
+                            {{ form.herorace.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herorace.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.heroalignment(class_="mdl-textfield__input") }}
+                            {{ form.heroalignment.label(class_="mdl-textfield__label") }}
+                            {% for error in form.heroalignment.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div style="display: none" class="form_part looks_form_css">
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.eyes(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.eyes.label(class_="mdl-selectfield__label") }}
+                        </div>
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.hair(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.hair.label(class_="mdl-selectfield__label") }}
+                        </div>
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.clothing(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.clothing.label(class_="mdl-selectfield__label") }}
+                        </div>
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.body(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.body.label(class_="mdl-selectfield__label") }}
+                        </div>
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.skin(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.skin.label(class_="mdl-selectfield__label") }}
+                        </div>
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.symbol(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.symbol.label(class_="mdl-selectfield__label") }}
+                        </div>
+                    </div>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.heroclass(class_="mdl-textfield__input") }}
-                    {{ form.heroclass.label(class_="mdl-textfield__label") }}
-                    {% for error in form.heroclass.errors %}
-                    <span class="mdl-textfield__error">[{{ error }}]</span>
-                    {% endfor %}
+            </div>
+            <div style="min-height: 64px" class="form-actions mdl-card__actions mdl-card--border">
+                <div style="float:left;">
+                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button"
+                        id="backbtn">Back</button>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.herorace(class_="mdl-textfield__input") }}
-                    {{ form.herorace.label(class_="mdl-textfield__label") }}
-                    {% for error in form.herorace.errors %}
-                    <span class="mdl-textfield__error">[{{ error }}]</span>
-                    {% endfor %}
+                <div style="float:right;">
+                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button"
+                        id="nextbtn">Next</button>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.heroalignment(class_="mdl-textfield__input") }}
-                    {{ form.heroalignment.label(class_="mdl-textfield__label") }}
-                    {% for error in form.heroalignment.errors %}
-                    <span class="mdl-textfield__error">[{{ error }}]</span>
-                    {% endfor %}
+                <div style="float: right;">
+                    {{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
                 </div>
-                <br>{{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
             </div>
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block jquerystuff %}
+<script>
+    $(document).ready(function () {
+
+        var builderform = $(".builder-form");
+        var currentPart = 0;
+        var formParts = $(".form_part").toArray();
+        var next = $("#nextbtn");
+        var nexthidden = false;
+        var back = $("#backbtn");
+        var backhidden = true;
+        var submitbtn = $("#submit");
+        var submitbtnhidden = true;
+
+        // Hide and adjust height of stuff
+        $(submitbtn).hide();
+        $(back).hide();
+        $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+
+        next.click(function () {
+            $(formParts[currentPart]).hide("slide", { direction: "left" }, 500);
+            $(formParts[currentPart + 1]).show("slide", { direction: "right" }, 500);
+            currentPart++;
+            if (currentPart == formParts.length - 1) {
+                // First hide the next button.
+                $(next).hide("slide", { direction: "right" }, 500);
+                nexthidden = true;
+                // Then show the submit button
+                $(submitbtn).delay(600).show("slide", { direction: "right" }, 500);
+                submitbtnhidden = false;
+            }
+            if (backhidden) {
+                $(back).delay(500).show("slide", { direction: "left" }, 500);
+                backhidden = false;
+            }
+
+            // Adjust the height of the builder-form when loading a new form.
+            console.log("Height of part " + currentPart + " is " + $(formParts[currentPart]).css("height"));
+            $(builderform).animate({ height: $(formParts[currentPart]).css("height")});
+        })
+
+        back.click(function () {
+            $(formParts[currentPart]).hide("slide", { direction: "right" }, 500);
+            $(formParts[currentPart - 1]).show("slide", { direction: "left" }, 500);
+            currentPart--;
+            if (currentPart == 0) {
+                $(back).hide("slide", { direction: "left" }, 500);
+                backhidden = true;
+            }
+            let delayTimer = 0;
+            if (!submitbtnhidden) {
+                $(submitbtn).hide("slide", { direction: "right" }, 500);
+                delayTimer = 500;
+            }
+            if (nexthidden) {
+                $(next).delay(delayTimer).show("slide", { direction: "right" }, 500);
+                nexthidden = false;
+            }
+
+            // Adjust the height of the builder-form when loading a new form.
+            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+        })
+    });
+
+</script>
+
+<script>
+    let class_select = document.getElementById('heroclass');
+    let eyes_select = document.getElementById('eyes');
+    let hair_select = document.getElementById('hair');
+    let clothing_select = document.getElementById('clothing');
+    let body_select = document.getElementById('body');
+    let skin_select = document.getElementById('skin');
+    let symbol_select = document.getElementById('symbol');
+
+    class_select.onchange = function () {
+        class_name = class_select.value;
+        
+        getData(class_name, "eyes");
+        getData(class_name, "hair");
+        getData(class_name, "clothing");
+        getData(class_name, "body");
+        getData(class_name, "skin");
+        getData(class_name, "symbol");
+    }
+
+    function getData(class_name, look_property){
+        fetch('/looks/' + class_name + '/' + look_property).then(function (response) {
+            response.json().then(function (data) {
+                let optionHTML = '<option value></option>';
+                var look_data;
+                var select_box;
+                switch (look_property) {
+                    case "eyes":
+                        look_data = data.eyes;
+                        select_box = eyes_select;
+                        break;
+                    case "hair":
+                        look_data = data.hair;
+                        select_box = hair_select;
+                        break;
+                    case "clothing":
+                        look_data = data.clothing;
+                        select_box = clothing_select;
+                        break;
+                    case "body":
+                        look_data = data.body;
+                        select_box = body_select;
+                        break;
+                    case "skin":
+                        look_data = data.skin;
+                        select_box = skin_select;
+                        break;
+                    case "symbol":
+                        look_data = data.symbol;
+                        select_box = symbol_select;
+                        break;
+                }
+                console.log(look_property + " " + typeof look_data);
+                console.log(look_data);
+                
+                if(look_data.length > 0){
+                    for (var description of look_data) {
+                        optionHTML += '<option value="' + description.id + '">' + description.look_details + '</option>';
+                    }
+                    select_box.innerHTML = optionHTML;
+                    select_box.parentElement.style.display = "inline-block";
+                }
+                else {
+                    select_box.innerHTML = optionHTML;
+                    select_box.parentElement.style.display = "none";
+                }
+
+            })
+        });
+    }
+
+</script>
 
 {% endblock %}

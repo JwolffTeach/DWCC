@@ -177,7 +177,6 @@ a,
 
   .builder-form {
     position: relative;
-    text-align: center;
   }
 
   .builder-form > div {
@@ -189,4 +188,8 @@ a,
   .form-actions {
       padding-right: 0px;
       padding-left: 0px;
+  }
+
+  .class-text {
+      text-align: left;
   }

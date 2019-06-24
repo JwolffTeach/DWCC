@@ -3,7 +3,7 @@
 {% block app_content %}
 <style>
     .wrap {
-        max-width: 500px;
+        max-width: 800px;
         margin-top: 40px;
         margin-left: auto;
         margin-right: auto;
@@ -36,14 +36,64 @@
         <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
             <h2 class="mdl-card__title-text flex-self--start">Build a Character</h2>
         </div>
-        <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
-            <div class="mdl-card__title-text flex-self--start"><img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}"></div>
-        </div>
         <form action="" method="post" novalidate>
             {{ form.hidden_tag() }}
-            <div class="mdl-card__supporting-text" style="overflow: visible;">
+            <div class="mdl-card__supporting-text" style="overflow: visible; width: 100%">
                 <div style="height: 300px" class="builder-form">
-                    <div class="form_part">
+                    <div class="form_part" style="right: 0; width: -webkit-fill-available;">
+                        <h4>Selecting a Class</h4>
+                        There are a lot of important things to consider when selecting a class.
+                            <ol>
+                                <li>How you fight</li>
+                                <li>Where you get your source of power</li>
+                                <li>Do you like talking your way out of problems? Or bashing your hammer through them?</li>
+                            </ol>
+                            Click on a class below to find out more details.
+                            <div class="mdl-card mdl-color--indigo-100 mdl-shadow--4dp" style="width: auto">
+                                <div class="mdl-card__supporting-text scrollable mdl-color--primary flex--col flex-items--start" style="width: auto; text-align: center">
+                                    <div id="bardbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                    <div id="clericbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                    <div id="druidbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                    <div id="fighterbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                    <div id="paladinbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                    <div id="rangerbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                    <div id="thiefbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                    <div id="wizardbtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                                    </div>
+                                </div>
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text class-title bard">The Bard</h2>
+                                    <h2 class="mdl-card__title-text class-title cleric" style="display: none">The Cleric</h2>
+                                    <h2 class="mdl-card__title-text class-title druid" style="display: none">The Druid</h2>
+                                    <h2 class="mdl-card__title-text class-title fighter" style="display: none">The Fighter</h2>
+                                    <h2 class="mdl-card__title-text class-title paladin" style="display: none">The Paladin</h2>
+                                    <h2 class="mdl-card__title-text class-title ranger" style="display: none">The Ranger</h2>
+                                    <h2 class="mdl-card__title-text class-title thief" style="display: none">The Thief</h2>
+                                    <h2 class="mdl-card__title-text class-title wizard" style="display: none">The Wizard</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text scrollable flex--col flex-items--start  mdl-card--border" style="width: auto">
+                                    <p class="class-text">
+                                        The bard sings such wonderful songs!
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+                    <div style="display: none" class="form_part" >
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             {{ form.heroname(class_="mdl-textfield__input") }}
                             {{ form.heroname.label(class_="mdl-textfield__label") }}
@@ -134,6 +184,23 @@
         var backhidden = true;
         var submitbtn = $("#submit");
         var submitbtnhidden = true;
+        var bardbtn = $("#bardbtn");
+        var clericbtn = $("#clericbtn");
+        var druidbtn = $("#druidbtn");
+        var fighterbtn = $("#fighterbtn");
+        var paladinbtn = $("#paladinbtn");
+        var rangerbtn = $("#rangerbtn");
+        var thiefbtn = $("#thiefbtn");
+        var wizardbtn = $("#wizardbtn");
+        var bardtitle = $(".bard");
+        var clerictitle = $(".cleric");
+        var druidtitle = $(".druid");
+        var fightertitle = $(".fighter");
+        var paladintitle = $(".paladin");
+        var rangertitle = $(".ranger");
+        var thieftitle = $(".thief");
+        var wizardtitle = $(".wizard");
+        var alltitles = $(".class-title");
 
         // Hide and adjust height of stuff
         $(submitbtn).hide();
@@ -183,6 +250,40 @@
             // Adjust the height of the builder-form when loading a new form.
             $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
         })
+
+        // What follows is the logic for clicking on the different class buttons.
+        bardbtn.click(function () {
+            $(alltitles).hide();
+            $(bardtitle).show();
+        });
+        clericbtn.click(function () {
+            $(alltitles).hide();
+            $(clerictitle).show();
+        });
+        druidbtn.click(function () {
+            $(alltitles).hide();
+            $(druidtitle).show();
+        });
+        fighterbtn.click(function () {
+            $(alltitles).hide();
+            $(fightertitle).show();
+        });
+        paladinbtn.click(function () {
+            $(alltitles).hide();
+            $(paladintitle).show();
+        });
+        rangerbtn.click(function () {
+            $(alltitles).hide();
+            $(rangertitle).show();
+        });
+        thiefbtn.click(function () {
+            $(alltitles).hide();
+            $(thieftitle).show();
+        });
+        wizardbtn.click(function () {
+            $(alltitles).hide();
+            $(wizardtitle).show();
+        });
     });
 
 </script>
