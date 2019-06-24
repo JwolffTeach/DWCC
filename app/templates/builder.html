@@ -27,15 +27,21 @@
     .flex-self--start {
         align-self: flex-start;
     }
+
+    .looks_form_css:last-child{
+    }
 </style>
 <div class="wrap">
-    <div class="mdl-card mdl-shadow--6dp">
+    <div class="mdl-card mdl-shadow--6dp"  style="overflow: visible;">
         <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
             <h2 class="mdl-card__title-text flex-self--start">Build a Character</h2>
         </div>
+        <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
+            <div class="mdl-card__title-text flex-self--start"><img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}"></div>
+        </div>
         <form action="" method="post" novalidate>
             {{ form.hidden_tag() }}
-            <div class="mdl-card__supporting-text">
+            <div class="mdl-card__supporting-text" style="overflow: visible;">
                 <div style="height: 300px" class="builder-form">
                     <div class="form_part">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -46,11 +52,13 @@
                             {% endfor %}
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.heroclass }}
+                            <!-- 
                             {{ form.heroclass(class_="mdl-textfield__input") }}
                             {{ form.heroclass.label(class_="mdl-textfield__label") }}
                             {% for error in form.heroclass.errors %}
                             <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
+                            {% endfor %}-->
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             {{ form.herorace(class_="mdl-textfield__input") }}
@@ -67,54 +75,32 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div style="display: none" class="form_part">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.heroeyes(class_="mdl-textfield__input") }}
-                            {{ form.heroeyes.label(class_="mdl-textfield__label") }}
-                            {% for error in form.heroeyes.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
+                    <div style="display: none" class="form_part looks_form_css">
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.eyes(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.eyes.label(class_="mdl-selectfield__label") }}
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.herohair(class_="mdl-textfield__input") }}
-                            {{ form.herohair.label(class_="mdl-textfield__label") }}
-                            {% for error in form.herohair.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.hair(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.hair.label(class_="mdl-selectfield__label") }}
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.heroclothing(class_="mdl-textfield__input") }}
-                            {{ form.heroclothing.label(class_="mdl-textfield__label") }}
-                            {% for error in form.heroclothing.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.clothing(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.clothing.label(class_="mdl-selectfield__label") }}
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.herobody(class_="mdl-textfield__input") }}
-                            {{ form.herobody.label(class_="mdl-textfield__label") }}
-                            {% for error in form.herobody.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.body(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.body.label(class_="mdl-selectfield__label") }}
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.heroskin(class_="mdl-textfield__input") }}
-                            {{ form.heroskin.label(class_="mdl-textfield__label") }}
-                            {% for error in form.heroskin.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.skin(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.skin.label(class_="mdl-selectfield__label") }}
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.herosymbol(class_="mdl-textfield__input") }}
-                            {{ form.herosymbol.label(class_="mdl-textfield__label") }}
-                            {% for error in form.herosymbol.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
+                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            {{ looks_form.symbol(class_="mdl-selectfield__select", value='') }}
+                            {{ looks_form.symbol.label(class_="mdl-selectfield__label") }}
                         </div>
                     </div>
-                    
-                    
-
-
                 </div>
             </div>
             <div style="min-height: 64px" class="form-actions mdl-card__actions mdl-card--border">
@@ -172,7 +158,8 @@
             }
 
             // Adjust the height of the builder-form when loading a new form.
-            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
+            console.log("Height of part " + currentPart + " is " + $(formParts[currentPart]).css("height"));
+            $(builderform).animate({ height: $(formParts[currentPart]).css("height")});
         })
 
         back.click(function () {
@@ -199,4 +186,78 @@
     });
 
 </script>
+
+<script>
+    let class_select = document.getElementById('heroclass');
+    let eyes_select = document.getElementById('eyes');
+    let hair_select = document.getElementById('hair');
+    let clothing_select = document.getElementById('clothing');
+    let body_select = document.getElementById('body');
+    let skin_select = document.getElementById('skin');
+    let symbol_select = document.getElementById('symbol');
+
+    class_select.onchange = function () {
+        class_name = class_select.value;
+        
+        getData(class_name, "eyes");
+        getData(class_name, "hair");
+        getData(class_name, "clothing");
+        getData(class_name, "body");
+        getData(class_name, "skin");
+        getData(class_name, "symbol");
+    }
+
+    function getData(class_name, look_property){
+        fetch('/looks/' + class_name + '/' + look_property).then(function (response) {
+            response.json().then(function (data) {
+                let optionHTML = '<option value></option>';
+                var look_data;
+                var select_box;
+                switch (look_property) {
+                    case "eyes":
+                        look_data = data.eyes;
+                        select_box = eyes_select;
+                        break;
+                    case "hair":
+                        look_data = data.hair;
+                        select_box = hair_select;
+                        break;
+                    case "clothing":
+                        look_data = data.clothing;
+                        select_box = clothing_select;
+                        break;
+                    case "body":
+                        look_data = data.body;
+                        select_box = body_select;
+                        break;
+                    case "skin":
+                        look_data = data.skin;
+                        select_box = skin_select;
+                        break;
+                    case "symbol":
+                        look_data = data.symbol;
+                        select_box = symbol_select;
+                        break;
+                }
+                console.log(look_property + " " + typeof look_data);
+                console.log(look_data);
+                
+                if(look_data.length > 0){
+                    for (var description of look_data) {
+                        optionHTML += '<option value="' + description.id + '">' + description.look_details + '</option>';
+                    }
+                    select_box.innerHTML = optionHTML;
+                    select_box.parentElement.style.display = "inline-block";
+                }
+                else {
+                    select_box.innerHTML = optionHTML;
+                    select_box.parentElement.style.display = "none";
+                }
+
+            })
+        });
+    }
+
+</script>
+
 {% endblock %}

@@ -43,7 +43,7 @@ class Hero(db.Model):
     # Something with hero_looks is causing a problem- not iterable?
 
     def __repr__(self):
-        return '<id {}, owner_id {}, name {}, hero_class {}, race {}, alignment {}.'.format(self.id, self.owner_id, self.hero_name, self.hero_class, self.hero_race, self.hero_alignment)
+        return '<id {}, owner_id {}, name {}, hero_class {}, race {}, alignment {}.>'.format(self.id, self.owner_id, self.hero_name, self.hero_class, self.hero_race, self.hero_alignment)
 
 
 class Hero_Looks(db.Model):
@@ -55,9 +55,12 @@ class Hero_Looks(db.Model):
     body = db.Column(db.String(100))
     skin = db.Column(db.String(100))
     symbol = db.Column(db.String(100))
+    # Code to use in Query:
+    # my_hero_eyes = Hero_Looks.query.join(Hero, Hero_Looks.hero_id == Hero.id).group_by(Hero_Looks.id).first().<PROPERTY>
+    # That query will actually JOIN the two tables together and pull all the hero_looks for each hero.
 
     def __repr__(self):
-        return '<id {}, hero_id {}, eyes {}, hair {}, clothing {}, body {}, skin {}, symbol {}.'.format(self.id, self.hero_id, self.eyes, self.hair, self.clothing, self.body, self.skin, self.symbol)
+        return '<id {}, hero_id {}, eyes {}, hair {}, clothing {}, body {}, skin {}, symbol {}.>'.format(self.id, self.hero_id, self.eyes, self.hair, self.clothing, self.body, self.skin, self.symbol)
 
 
 class LKUPLooks(db.Model):
@@ -67,7 +70,7 @@ class LKUPLooks(db.Model):
     look_details = db.Column(db.String(4096))
 
     def __repr__(self):
-        return '<id {}, class_name {}, look_type {}, look_details {}'.form(self.id, self.class_name, self.look_type, self.look_details)
+        return '<id {}, class_name {}, look_type {}, look_details {}.>'.format(self.id, self.class_name, self.look_type, self.look_details)
 
 
 class LKUPAlignment(db.Model):
@@ -76,4 +79,4 @@ class LKUPAlignment(db.Model):
     alignment_name = db.Column(db.String(4096))
     
     def __repr__(self):
-        return '<id {}, class_name {}, alignment_name {}'.form(self.id, self.class_name, self.alignment_name)
+        return '<id {}, class_name {}, alignment_name {}.>'.form(self.id, self.class_name, self.alignment_name)

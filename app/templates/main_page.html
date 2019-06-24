@@ -25,24 +25,28 @@
                         RACE<br>
                         CLASS<br>
                         ALIGNMENT<br>
-                        LOOKS - Eyes<br>
-                        LOOKS - Hair<br>
-                        LOOKS - Clothing<br>
-                        LOOKS - Body<br>
-                        LOOKS - Skin Symbol<br>
-                        LOOKS - Symbol
+                        Eyes<br>
+                        Hair<br>
+                        Clothing<br>
+                        Body<br>
+                        Skin Symbol<br>
+                        Symbol
                     </div>
                     <div style='float:left; width:30%; margin-left:30px'>
                         1<br>
                         {{ hero.hero_race }}<br>
                         {{ hero.hero_class }}<br>
                         {{ hero.hero_alignment }}<br>
-                        {{ hero.hero_looks.eyes }}<br>
-                        {{ hero.hero_looks.hair }}<br>
-                        {{ hero.hero_looks.clothing }}<br>
-                        {{ hero.hero_looks.body }}<br>
-                        {{ hero.hero_looks.skin }}<br>
-                        {{ hero.hero_looks.symbol }}<br>
+                        {% for item in hero_looks %}
+                            {% if item.hero_id == hero.id %}
+                                {{ item.eyes }}<br>
+                                {{ item.hair }}<br>
+                                {{ item.clothing }}<br>
+                                {{ item.body }}<br>
+                                {{ item.skin }}<br>
+                                {{ item.symbol }}<br>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -57,6 +61,11 @@
         </div>
     </div>
 </div>
+
+Hero Looks:
+
+
+
 {% endblock %}
 
 

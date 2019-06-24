@@ -1,7 +1,7 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, BuilderForm
-from app.models import Comment, User, Hero, Hero_Looks
+from app.forms import LoginForm, RegistrationForm, BuilderForm, LooksForm
+from app.models import Comment, User, Hero, Hero_Looks, LKUPLooks
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
@@ -11,7 +11,9 @@ from werkzeug.urls import url_parse
 @login_required
 def index():
     if request.method == "GET":
-        return render_template("main_page.html", heroes=current_user.heroes.all(), title='Dungeon World Character Creator')
+        user_heroes = current_user.heroes.all()
+        user_heroes_looks = Hero_Looks.query.all()
+        return render_template("main_page.html", heroes=user_heroes, hero_looks=user_heroes_looks, title='Dungeon World Character Creator')
 
     hero = Hero(owner_id=current_user.id, hero_name=request.form["hero_name"], hero_class=request.form["hero_class"])
     db.session.add(hero)
@@ -67,6 +69,15 @@ def register():
 @login_required
 def builder():
     form = BuilderForm()
+    looks_form = LooksForm()
+
+    looks_form.eyes.choices = [("", "")] + [(item.id, item.look_details) for item in LKUPLooks.query.filter_by(class_name='Bard', look_type='Eyes').all()]
+    looks_form.hair.choices = [("", "")] + [(item.id, item.look_details) for item in LKUPLooks.query.filter_by(class_name='Bard', look_type='Hair').all()]
+    looks_form.clothing.choices = [("", "")] + [(item.id, item.look_details) for item in LKUPLooks.query.filter_by(class_name='Bard', look_type='Clothing').all()]
+    looks_form.body.choices = [("", "")] + [(item.id, item.look_details) for item in LKUPLooks.query.filter_by(class_name='Bard', look_type='Body').all()]
+    looks_form.skin.choices = [("", "")] + [(item.id, item.look_details) for item in LKUPLooks.query.filter_by(class_name='Bard', look_type='Skin').all()]
+    looks_form.symbol.choices = [("", "")] + [(item.id, item.look_details) for item in LKUPLooks.query.filter_by(class_name='Bard', look_type='Symbol').all()]
+
     if form.validate_on_submit():
         hero = Hero(
             owner_id=current_user.id, 
@@ -76,8 +87,7 @@ def builder():
             hero_alignment=request.form["heroalignment"]
         )
 
-        heroLooks = Hero_Looks(
-            hero_id=hero.id,
+        hero_looks = Hero_Looks(
             eyes=request.form["heroeyes"],
             hair=request.form["herohair"],
             clothing=request.form["heroclothing"],
@@ -85,15 +95,30 @@ def builder():
             skin=request.form["heroskin"],
             symbol=request.form["herosymbol"]
         )
-
-        hero.hero_looks = heroLooks
         
         db.session.add(hero)
-        db.session.add(heroLooks)
+        db.session.flush()
+        hero_looks.hero_id = hero.id
+        db.session.add(hero_looks)
         db.session.commit()
         flash('Greetings ' + hero.hero_name + ', welcome to Dungeon World!')
         return redirect(url_for('index'))
-    return render_template('builder.html', title='Build a Character', form=form)
+    return render_template('builder.html', title='Build a Character', form=form, looks_form=looks_form)
+
+
+@app.route('/looks/<hero_class>/<look_property>')
+def looks(hero_class, look_property):
+    lkup_looks = LKUPLooks.query.filter_by(class_name=hero_class, look_type=look_property).all()
+
+    lookArray = []
+
+    for look in lkup_looks:
+        lookObj = {}
+        lookObj['id'] = look.id
+        lookObj['look_details'] = look.look_details
+        lookArray.append(lookObj)
+
+    return jsonify({look_property: lookArray})
 
 
 @app.route('/slidingforms', methods=['GET', 'POST'])

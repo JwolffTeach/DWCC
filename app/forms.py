@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SelectField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
@@ -33,7 +33,7 @@ class RegistrationForm(FlaskForm):
 class BuilderForm(FlaskForm):
     """ hero """
     heroname = StringField('Name', validators=[DataRequired()])
-    heroclass = StringField('Class', validators=[DataRequired()])
+    heroclass = SelectField('Class', choices=[('', ''), ('Bard', 'Bard'), ('Cleric', 'Cleric'), ('Druid', 'Druid'), ('Fighter', 'Fighter'), ('Paladin', 'Paladin'), ('Ranger', 'Ranger'), ('Thief', 'Thief'), ('Wizard', 'Wizard')])
     herorace = StringField('Race', validators=[DataRequired()])
     heroalignment = StringField('Alignment', validators=[DataRequired()])
 
@@ -46,3 +46,14 @@ class BuilderForm(FlaskForm):
     herosymbol = StringField('Symbol', validators=[DataRequired()])
 
     submit = SubmitField('Create Character')
+
+
+class LooksForm(FlaskForm):
+    eyes = SelectField('eyes', choices=[[]])
+    hair = SelectField('hair', choices=[[]])
+    clothing = SelectField('clothing', choices=[[]])
+    body = SelectField('body', choices=[[]])
+    skin = SelectField('skin', choices=[[]])
+    symbol = SelectField('symbol', choices=[[]])
+
+    submit = SubmitField('Add Looks')
