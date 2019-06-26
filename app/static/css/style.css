@@ -64,6 +64,10 @@ body {
 body,
 h1,
 h2,
+h3,
+h4,
+h5,
+h6,
 a,
 .mdl-layout__title {
     font-family: 'Raleway', sans-serif !important;
@@ -141,7 +145,103 @@ a,
     padding: 0;
 }
 
-@media (max-width: 1024px) {
+  .builder-form {
+    position: relative;
+    width: 100%;
+  }
+
+  .builder-form > div {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .form-actions {
+      padding-right: 0px;
+      padding-left: 0px;
+  }
+
+  .class-buttons-grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto auto;
+      grid-row-gap: 8px;
+  }
+
+  .class-btn {
+      opacity: 0.5;
+  }
+
+  .class-btn > img {
+      width: inherit;
+  }
+
+  .class-text {
+    text-align: left;
+    float: left;
+    position: absolute;
+    min-height: 450px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 12px;
+    overflow: auto;
+  }
+
+  .class-text > img {
+      width: 170px;
+      margin-left: 24px;
+      float: right;
+  }
+
+  .class-form-part {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin-bottom: 10px;
+      height: 500px;
+      width: 100%;
+  }
+
+  .class-card-text {
+      position: absolute;
+      left: 0;
+      height: 100%;
+  }
+
+  .form_part-more {
+      padding: 0px 16px;
+  }
+
+  .wrap {
+      max-width: 800px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .mdl-layout__header {
+      position: fixed;
+  }
+
+  .mdl-layout__top-content {
+      margin-top: 64px;
+  }
+
+  
+
+  .mdl-card.main-card {
+    width: calc(100% - 16px);
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 0;
+}
+@media (max-width: 1024px) {  
+    
+    .mdl-layout__top-content {
+        margin-top: 56px;
+    }
     .mdl-layout__title {
       font-size:18px;
       font-family: 'Raleway', sans-serif !important;
@@ -173,23 +273,40 @@ a,
         height: 100vh;
         padding: 0;
     }
+
+    .class-form-part {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-bottom: 10px;
+        height: 750px;
+        width: 100%;
+    }
+
   }
 
-  .builder-form {
-    position: relative;
+  @media (max-width: 620px) {
+    .class-btn.bottom-btn{
+        display: none;
+    }
+
+    .class-form-part {
+        height: 800px;
+    }
   }
 
-  .builder-form > div {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  
-  .form-actions {
-      padding-right: 0px;
-      padding-left: 0px;
-  }
+  @media (max-width: 496px) {
+    .class-btn.mdl-button--fab{
+        height: 40px;
+        min-width: 40px;
+        width: 40px;
+    }
 
-  .class-text {
-      text-align: left;
+    .wrap {
+        margin: 0;
+    }
+
+    .mdl-card.main-card {
+        width: 100%;
+    }
   }
