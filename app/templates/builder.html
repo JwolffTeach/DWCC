@@ -1,349 +1,477 @@
 {% extends 'base.html' %}
 
 {% block app_content %}
-<div class="wrap">
-    <div class="mdl-card mdl-shadow--6dp main-card mdl-color--indigo-100" style="overflow: visible;">
-        <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white">
-            <h2 class="mdl-card__title-text flex-self--start">Build a Character</h2><br>
-        </div>
-        <div class="mdl-card__title flex--col flex-items--start mdl-color--primary mdl-color-text--white ">
-            <h4 class="mdl-card__title-text flex-self--start" class="step-title">Step 1: Choose a Class</h4>
-        </div>
-        <form action="" method="post" novalidate>
+
+<main class="mdl-layout__content mdl-color--indigo-100">
+    <div class="md-form-content fixed-width">
+        <ul id="progressbar">
+            <li>
+                <div class="progress-text" style="display:block">
+                    Choose a Class
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose a Race
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose a Name
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose a Look
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose Stats
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Figure out Modifiers
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Set Maximum HP
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose Starting Moves
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose an Alignment
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose your Gear
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Introduce your Character
+                </div>
+            </li>
+            <li>
+                <div class="progress-text">
+                    Choose Bonds
+                </div>
+            </li>
+        </ul>
+        <form id="character-builder-form" action="" method="post" novalidate>
             {{ form.hidden_tag() }}
-            <div class="mdl-card__supporting-text" style="overflow: visible; width: 100%; padding: 0">
-                <div class="builder-form">
-                    <div class="form_part class-form-part">
-                        <div class="mdl-card" style="width: 100%; height: 100%;">
-                            <div class="mdl-card__supporting-text scrollable mdl-color--indigo-100 class-buttons-grid-container mdl-color-text--white"
-                                style="width: auto; text-align: center; padding-bottom: 16px;">
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn bardbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn clericbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn druidbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn fighterbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn paladinbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn rangerbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn thiefbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn wizardbtn">
-                                    <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn bardbtn">
-                                    Bard
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn clericbtn">
-                                    Cleric
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn druidbtn">
-                                    Druid
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn fighterbtn">
-                                    Fighter
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn paladinbtn">
-                                    Paladin
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn rangerbtn">
-                                    Ranger
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn thiefbtn">
-                                    Thief
-                                </div>
-                                <div class="mdl-button mdl-js-button class-btn bottom-btn wizardbtn">
-                                    Wizard
-                                </div>
+            <div class="form_part class-form-part">
+                <div class="class-info">
+                    <div class="mdl-card__supporting-text mdl-color--indigo-100 class-buttons-grid-container mdl-color-text--white"
+                        style="width: auto; text-align: center; padding-bottom: 16px;">
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn bardbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn clericbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn druidbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn fighterbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn paladinbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn rangerbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn thiefbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn wizardbtn">
+                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn bardbtn">
+                            Bard
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn clericbtn">
+                            Cleric
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn druidbtn">
+                            Druid
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn fighterbtn">
+                            Fighter
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn paladinbtn">
+                            Paladin
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn rangerbtn">
+                            Ranger
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn thiefbtn">
+                            Thief
+                        </div>
+                        <div class="mdl-button mdl-js-button class-btn bottom-btn wizardbtn">
+                            Wizard
+                        </div>
+                    </div>
+                    <div
+                        class="mdl-card__supporting-text flex--col flex-items--start class-card-text mdl-color--indigo-100">
+                        <div class="swipe-content">
+                            <div class="class-text info">
+                                <H2 class="mdl-card__title-text">
+                                    Picking a Class
+                                </H2>
+                                <p>
+                                    This is where I would write about picking a class for your character.
+                                </p>
                             </div>
-                            <div class="mdl-card__supporting-text scrollable flex--col flex-items--start class-card-text mdl-color--indigo-100"
-                                style="width: auto; position: relative;">
-                                <div class="class-text info">
-                                    <H2 class="mdl-card__title-text">
-                                        Picking a Class
-                                    </H2>
-                                    <p>
-                                        This is where I would write about picking a class for your character.
-                                    </p>
-                                </div>
-                                <div class="class-text bard" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Bard
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/bard.png') }}">
-                                    <p>
-                                        The poems say an adventurer’s life is all open roads and the glory of coin and
-                                        combat. The tales told in every farmhand-filled inn have to have some ring of
-                                        truth to them, don’t they? The songs to inspire peasantry and royals alike—to
-                                        soothe the savage beast or drive men to a frenzy—have to come from somewhere.
-                                    </p>
-                                    <p>
-                                        Enter the bard. You, with your smooth tongue and quick wit. You teller-of-tales
-                                        and singer-of-songs. It takes a mere minstrel to retell a thing but a true bard
-                                        to live it. Strap on your boots, noble orator. Sharpen that hidden dagger and
-                                        take up the call. Someone’s got to be there, fighting shoulder-to-shoulder with
-                                        the goons and the thugs and the soon-to-be-heroes. Who better than you to write
-                                        the tale of your own heroism?
-                                    </p>
-                                    <p>
-                                        Nobody. Get going.
-                                    </p>
-                                </div>
-                                <div class="class-text cleric" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Cleric
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/cleric.png') }}">
-                                    <p>
-                                        The lands of Dungeon World are a gods-forsaken mess. They’re lousy with the
-                                        walking dead, beasts of all sorts, and the vast unnatural spaces between safe
-                                        and temple-blessed civilizations. It is a godless world out there. That’s why it
-                                        needs you.
-                                    </p>
-                                    <p>
-                                        Bringing the glory of your god to the heathens isn’t just in your nature—it’s
-                                        your calling. It falls to you to proselytize with sword and mace and spell. To
-                                        cleave deep into the witless heart of the wilds and plant the seed of divinity
-                                        there. Some say that it is best to keep god close to your heart. You know that’s
-                                        rubbish. God lives at the edge of a blade.
-                                    </p>
-                                    <p>
-                                        Show the world who is lord.
-                                    </p>
-                                </div>
-                                <div class="class-text druid" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Druid
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/druid.png') }}">
-                                    <p>
-                                        Cast your eyes around the fire. What has brought you to these people, stinking
-                                        of the dust and sweat of the city? Perhaps it is a kindness—do you protect them
-                                        as the mother bear watches over her cubs? Are they your pack, now? Strange
-                                        brothers and sisters you have. Whatever your inspiration, they would certainly
-                                        fail without your sharp senses and sharper claws.
-                                    </p>
-                                    <p>
-                                        You are of the sacred spaces; you are born of soil and wear the marks of her
-                                        spirits on your skin. You may have had a life before, maybe you were a city
-                                        dweller like them, but not now. You’ve given up that static shape. Listen to
-                                        your allies pray to their carved stone gods and polish their silver shells. They
-                                        speak of the glory they’ll find back in that festering town you left behind.
-                                    </p>
-                                    <p>
-                                        Their gods are children, their steel is false protection. You walk the old ways,
-                                        you wear the pelts of the earth itself. You’ll take your share of the treasure,
-                                        but will you ever walk as one of them? Only time will tell.
-                                    </p>
-                                </div>
-                                <div class="class-text fighter" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Fighter
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/fighter.png') }}">
-                                    <p>
-                                        It’s a thankless job—living day to day by your armor and the skill of your arm.
-                                        To dive heedlessly into danger. They won’t be playing golden horns for the time
-                                        you took that knife to the ribs for them in the bar in Bucksberg. No flock of
-                                        angels to sing of the time you dragged them, still screaming, from the edge of
-                                        the Pits of Madness, no.
-                                    </p>
-                                    <p>
-                                        Forget them.
-                                    </p>
-                                    <p>
-                                        You do this for the guts and the glory. The scream of battle and the hot, hot
-                                        blood of it. You are a beast of iron. Your friends may carry blades of forged
-                                        steel but, fighter, you are steel. While your traveling companions might moan
-                                        about their wounds over a campfire in the wilderness, you bear your scars with
-                                        pride.
-                                    </p>
-                                    <p>
-                                        You are the wall—let every danger smash itself to nothing on you. In the end,
-                                        you’ll be the last one standing.
-                                    </p>
-                                </div>
-                                <div class="class-text paladin" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Paladin
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/paladin.jpg') }}">
-                                    <p>
-                                        Hell awaits. An eternity of torment in fire or ice or whatever best suits the
-                                        sins of the damned throngs of Dungeon World. All that stands between the pits of
-                                        that grim torture and salvation is you. Holy man, armored war machine, templar
-                                        of the Good and the Light, right? The cleric may say his prayers at night to the
-                                        gods, dwelling in their heavens. The fighter may wield his sharp sword in the
-                                        name of “good” but you know. Only you.
-                                    </p>
-                                    <p>
-                                        Eyes, hands, and sweet killing blow of the gods, you are. Yours is the gift of
-                                        righteousness and virtue. Of justice. Vision, too. A purity of intent that your
-                                        companions do not have.
-                                    </p>
-                                    <p>
-                                        So guide these fools, paladin. Take up your holy cause and bring salvation to
-                                        the wastrel world.
-                                    </p>
-                                    <p>
-                                        Vae victis, right?
-                                    </p>
-                                </div>
-                                <div class="class-text ranger" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Ranger
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/ranger.jpg') }}">
-                                    <p>
-                                        These city-born folk you travel with. Have they heard the call of the wolf? Felt
-                                        the winds howl in the bleak deserts of the East? Have they hunted their prey
-                                        with the bow and the knife like you? Hell no. That’s why they need you.
-                                    </p>
-                                    <p>
-                                        Guide. Hunter. Creature of the wilds. You are these things and more. Your time
-                                        in the wilderness may have been solitary until now, but the call of some greater
-                                        thing—call it fate if you like—has cast your lot with these folk. Brave, they
-                                        may be. Powerful and strong, too. You know the secrets of the spaces between,
-                                        though.
-                                    </p>
-                                    <p>
-                                        Without you, they’d be lost. Blaze a trail through the blood and dark, strider.
-                                    </p>
-                                </div>
-                                <div class="class-text thief" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Thief
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/thief.png') }}">
-                                    <p>
-                                        You’ve heard them, sitting around the campfire. Bragging about this battle or
-                                        that. About how their gods are smiling on your merry band. You count your coins
-                                        and smile to yourself—this is the thrill above all. You alone know the secret of
-                                        Dungeon World—filthy filthy lucre.
-                                    </p>
-                                    <p>
-                                        Sure, they give you lip for all the times you’ve snuck off alone but without
-                                        you, who among them wouldn’t have been dissected by a flying guillotine or
-                                        poisoned straight to death by some ancient needle trap? So, let them complain.
-                                        When you’re done with all this delving you’ll toast their hero’s graves.
-                                    </p>
-                                    <p>
-                                        From your castle. Full of gold. You rogue.
-                                    </p>
-                                </div>
-                                <div class="class-text wizard" style="display: none">
-                                    <h2 class="mdl-card__title-text">
-                                        The Wizard
-                                    </h2>
-                                    <img src="{{ url_for('static', filename='images/wizard.jpg') }}">
-                                    <p>
-                                        Dungeon World has rules. Not the laws of men or the rule of some petty tyrant.
-                                        Bigger, better rules. You drop something—it falls. You can’t make something out
-                                        of nothing. The dead stay dead, right?
-                                    </p>
-                                    <p>
-                                        Oh, the things we tell ourselves to feel better about the long, dark nights.
-                                    </p>
-                                    <p>
-                                        You’ve spent so very long poring over those tomes of yours. The experiments that
-                                        nearly drove you mad and all the botched summonings that endangered your very
-                                        soul. For what? For power. What else is there? Not just the power of King or
-                                        Country but the power to boil a man’s blood in his veins. To call on the thunder
-                                        of the sky and the churn of the roiling earth. To shrug off the rules the world
-                                        holds so dear.
-                                    </p>
-                                    <p>
-                                        Let them cast their sidelong glances. Let them call you “warlock” or
-                                        “diabolist.” Who among them can hurl fireballs from their eyes?
-                                    </p>
-                                    <p>
-                                        Yeah. We didn’t think so
-                                    </p>
-                                </div>
+                        </div>
+                        <div class="swipe-content">
+                            <div id="class-bard" class="class-text bard" style="display: none">
+                                <h2 id="bard-title" class="mdl-card__title-text">
+                                    The Bard
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/bard.png') }}">
+                                <p>
+                                    The poems say an adventurer’s life is all open roads and the glory of coin
+                                    and
+                                    combat. The tales told in every farmhand-filled inn have to have some ring
+                                    of
+                                    truth to them, don’t they? The songs to inspire peasantry and royals
+                                    alike—to
+                                    soothe the savage beast or drive men to a frenzy—have to come from
+                                    somewhere.
+                                </p>
+                                <p>
+                                    Enter the bard. You, with your smooth tongue and quick wit. You
+                                    teller-of-tales
+                                    and singer-of-songs. It takes a mere minstrel to retell a thing but a true
+                                    bard
+                                    to live it. Strap on your boots, noble orator. Sharpen that hidden dagger
+                                    and
+                                    take up the call. Someone’s got to be there, fighting shoulder-to-shoulder
+                                    with
+                                    the goons and the thugs and the soon-to-be-heroes. Who better than you to
+                                    write
+                                    the tale of your own heroism?
+                                </p>
+                                <p>
+                                    Nobody. Get going.
+                                </p>
                             </div>
 
                         </div>
+                        <div class="swipe-content">
+                            <div class="class-text cleric" style="display: none">
+                                <h2 class="mdl-card__title-text">
+                                    The Cleric
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/cleric.png') }}">
+                                <p>
+                                    The lands of Dungeon World are a gods-forsaken mess. They’re lousy with the
+                                    walking dead, beasts of all sorts, and the vast unnatural spaces between
+                                    safe
+                                    and temple-blessed civilizations. It is a godless world out there. That’s
+                                    why it
+                                    needs you.
+                                </p>
+                                <p>
+                                    Bringing the glory of your god to the heathens isn’t just in your
+                                    nature—it’s
+                                    your calling. It falls to you to proselytize with sword and mace and spell.
+                                    To
+                                    cleave deep into the witless heart of the wilds and plant the seed of
+                                    divinity
+                                    there. Some say that it is best to keep god close to your heart. You know
+                                    that’s
+                                    rubbish. God lives at the edge of a blade.
+                                </p>
+                                <p>
+                                    Show the world who is lord.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swipe-content">
+                            <div class="class-text druid" style="display: none">
+                                <h2 class="mdl-card__title-text">
+                                    The Druid
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/druid.png') }}">
+                                <p>
+                                    Cast your eyes around the fire. What has brought you to these people,
+                                    stinking
+                                    of the dust and sweat of the city? Perhaps it is a kindness—do you protect
+                                    them
+                                    as the mother bear watches over her cubs? Are they your pack, now? Strange
+                                    brothers and sisters you have. Whatever your inspiration, they would
+                                    certainly
+                                    fail without your sharp senses and sharper claws.
+                                </p>
+                                <p>
+                                    You are of the sacred spaces; you are born of soil and wear the marks of her
+                                    spirits on your skin. You may have had a life before, maybe you were a city
+                                    dweller like them, but not now. You’ve given up that static shape. Listen to
+                                    your allies pray to their carved stone gods and polish their silver shells.
+                                    They
+                                    speak of the glory they’ll find back in that festering town you left behind.
+                                </p>
+                                <p>
+                                    Their gods are children, their steel is false protection. You walk the old
+                                    ways,
+                                    you wear the pelts of the earth itself. You’ll take your share of the
+                                    treasure,
+                                    but will you ever walk as one of them? Only time will tell.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swipe-content">
+                            <div class="class-text fighter" style="display: none">
+                                <h2 class="mdl-card__title-text">
+                                    The Fighter
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/fighter.png') }}">
+                                <p>
+                                    It’s a thankless job—living day to day by your armor and the skill of your
+                                    arm.
+                                    To dive heedlessly into danger. They won’t be playing golden horns for the
+                                    time
+                                    you took that knife to the ribs for them in the bar in Bucksberg. No flock
+                                    of
+                                    angels to sing of the time you dragged them, still screaming, from the edge
+                                    of
+                                    the Pits of Madness, no.
+                                </p>
+                                <p>
+                                    Forget them.
+                                </p>
+                                <p>
+                                    You do this for the guts and the glory. The scream of battle and the hot,
+                                    hot
+                                    blood of it. You are a beast of iron. Your friends may carry blades of
+                                    forged
+                                    steel but, fighter, you are steel. While your traveling companions might
+                                    moan
+                                    about their wounds over a campfire in the wilderness, you bear your scars
+                                    with
+                                    pride.
+                                </p>
+                                <p>
+                                    You are the wall—let every danger smash itself to nothing on you. In the
+                                    end,
+                                    you’ll be the last one standing.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swipe-content">
+                            <div class="class-text paladin" style="display: none">
+                                <h2 class="mdl-card__title-text">
+                                    The Paladin
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/paladin.jpg') }}">
+                                <p>
+                                    Hell awaits. An eternity of torment in fire or ice or whatever best suits
+                                    the
+                                    sins of the damned throngs of Dungeon World. All that stands between the
+                                    pits of
+                                    that grim torture and salvation is you. Holy man, armored war machine,
+                                    templar
+                                    of the Good and the Light, right? The cleric may say his prayers at night to
+                                    the
+                                    gods, dwelling in their heavens. The fighter may wield his sharp sword in
+                                    the
+                                    name of “good” but you know. Only you.
+                                </p>
+                                <p>
+                                    Eyes, hands, and sweet killing blow of the gods, you are. Yours is the gift
+                                    of
+                                    righteousness and virtue. Of justice. Vision, too. A purity of intent that
+                                    your
+                                    companions do not have.
+                                </p>
+                                <p>
+                                    So guide these fools, paladin. Take up your holy cause and bring salvation
+                                    to
+                                    the wastrel world.
+                                </p>
+                                <p>
+                                    Vae victis, right?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swipe-content">
+                            <div class="class-text ranger" style="display: none">
+                                <h2 class="mdl-card__title-text">
+                                    The Ranger
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/ranger.jpg') }}">
+                                <p>
+                                    These city-born folk you travel with. Have they heard the call of the wolf?
+                                    Felt
+                                    the winds howl in the bleak deserts of the East? Have they hunted their prey
+                                    with the bow and the knife like you? Hell no. That’s why they need you.
+                                </p>
+                                <p>
+                                    Guide. Hunter. Creature of the wilds. You are these things and more. Your
+                                    time
+                                    in the wilderness may have been solitary until now, but the call of some
+                                    greater
+                                    thing—call it fate if you like—has cast your lot with these folk. Brave,
+                                    they
+                                    may be. Powerful and strong, too. You know the secrets of the spaces
+                                    between,
+                                    though.
+                                </p>
+                                <p>
+                                    Without you, they’d be lost. Blaze a trail through the blood and dark,
+                                    strider.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swipe-content">
+                            <div class="class-text thief" style="display: none">
+                                <h2 class="mdl-card__title-text">
+                                    The Thief
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/thief.png') }}">
+                                <p>
+                                    You’ve heard them, sitting around the campfire. Bragging about this battle
+                                    or
+                                    that. About how their gods are smiling on your merry band. You count your
+                                    coins
+                                    and smile to yourself—this is the thrill above all. You alone know the
+                                    secret of
+                                    Dungeon World—filthy filthy lucre.
+                                </p>
+                                <p>
+                                    Sure, they give you lip for all the times you’ve snuck off alone but without
+                                    you, who among them wouldn’t have been dissected by a flying guillotine or
+                                    poisoned straight to death by some ancient needle trap? So, let them
+                                    complain.
+                                    When you’re done with all this delving you’ll toast their hero’s graves.
+                                </p>
+                                <p>
+                                    From your castle. Full of gold. You rogue.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swipe-content">
+                            <div class="class-text wizard" style="display: none">
+                                <h2 class="mdl-card__title-text">
+                                    The Wizard
+                                </h2>
+                                <img src="{{ url_for('static', filename='images/wizard.jpg') }}">
+                                <p>
+                                    Dungeon World has rules. Not the laws of men or the rule of some petty
+                                    tyrant.
+                                    Bigger, better rules. You drop something—it falls. You can’t make something
+                                    out
+                                    of nothing. The dead stay dead, right?
+                                </p>
+                                <p>
+                                    Oh, the things we tell ourselves to feel better about the long, dark nights.
+                                </p>
+                                <p>
+                                    You’ve spent so very long poring over those tomes of yours. The experiments
+                                    that
+                                    nearly drove you mad and all the botched summonings that endangered your
+                                    very
+                                    soul. For what? For power. What else is there? Not just the power of King or
+                                    Country but the power to boil a man’s blood in his veins. To call on the
+                                    thunder
+                                    of the sky and the churn of the roiling earth. To shrug off the rules the
+                                    world
+                                    holds so dear.
+                                </p>
+                                <p>
+                                    Let them cast their sidelong glances. Let them call you “warlock” or
+                                    “diabolist.” Who among them can hurl fireballs from their eyes?
+                                </p>
+                                <p>
+                                    Yeah. We didn’t think so
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div style="display: none" class="form_part form_part-more">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.heroname(class_="mdl-textfield__input") }}
-                            {{ form.heroname.label(class_="mdl-textfield__label") }}
-                            {% for error in form.heroname.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.heroclass }}
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.herorace(class_="mdl-textfield__input") }}
-                            {{ form.herorace.label(class_="mdl-textfield__label") }}
-                            {% for error in form.herorace.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            {{ form.heroalignment(class_="mdl-textfield__input") }}
-                            {{ form.heroalignment.label(class_="mdl-textfield__label") }}
-                            {% for error in form.heroalignment.errors %}
-                            <span class="mdl-textfield__error">[{{ error }}]</span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div style="display: none" class="form_part form_part-more looks_form_css">
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                            {{ looks_form.eyes(class_="mdl-selectfield__select", value='') }}
-                            {{ looks_form.eyes.label(class_="mdl-selectfield__label") }}
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                            {{ looks_form.hair(class_="mdl-selectfield__select", value='') }}
-                            {{ looks_form.hair.label(class_="mdl-selectfield__label") }}
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                            {{ looks_form.clothing(class_="mdl-selectfield__select", value='') }}
-                            {{ looks_form.clothing.label(class_="mdl-selectfield__label") }}
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                            {{ looks_form.body(class_="mdl-selectfield__select", value='') }}
-                            {{ looks_form.body.label(class_="mdl-selectfield__label") }}
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                            {{ looks_form.skin(class_="mdl-selectfield__select", value='') }}
-                            {{ looks_form.skin.label(class_="mdl-selectfield__label") }}
-                        </div>
-                        <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                            {{ looks_form.symbol(class_="mdl-selectfield__select", value='') }}
-                            {{ looks_form.symbol.label(class_="mdl-selectfield__label") }}
-                        </div>
-                    </div>
+
                 </div>
             </div>
-            <div style="min-height: 64px" class="form-actions mdl-card__actions mdl-card--border">
-                <div style="float:left;">
-                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button"
-                        id="backbtn">Back</button>
+            <div class="form_part form_part-more fixed-width" style="display:none;">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroname(class_="mdl-textfield__input") }}
+                    {{ form.heroname.label(class_="mdl-textfield__label") }}
+                    {% for error in form.heroname.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
                 </div>
-                <div style="float:right;">
-                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button"
-                        id="nextbtn">Next</button>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroclass }}
                 </div>
-                <div style="float: right;">
-                    {{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.herorace(class_="mdl-textfield__input") }}
+                    {{ form.herorace.label(class_="mdl-textfield__label") }}
+                    {% for error in form.herorace.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroalignment(class_="mdl-textfield__input") }}
+                    {{ form.heroalignment.label(class_="mdl-textfield__label") }}
+                    {% for error in form.heroalignment.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form_part form_part-looks fixed-width" style="display:none;">
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ looks_form.eyes(class_="mdl-selectfield__select", value='') }}
+                    {{ looks_form.eyes.label(class_="mdl-selectfield__label") }}
+                </div>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ looks_form.hair(class_="mdl-selectfield__select", value='') }}
+                    {{ looks_form.hair.label(class_="mdl-selectfield__label") }}
+                </div>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ looks_form.clothing(class_="mdl-selectfield__select", value='') }}
+                    {{ looks_form.clothing.label(class_="mdl-selectfield__label") }}
+                </div>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ looks_form.body(class_="mdl-selectfield__select", value='') }}
+                    {{ looks_form.body.label(class_="mdl-selectfield__label") }}
+                </div>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ looks_form.skin(class_="mdl-selectfield__select", value='') }}
+                    {{ looks_form.skin.label(class_="mdl-selectfield__label") }}
+                </div>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ looks_form.symbol(class_="mdl-selectfield__select", value='') }}
+                    {{ looks_form.symbol.label(class_="mdl-selectfield__label") }}
                 </div>
             </div>
         </form>
     </div>
-</div>
+</main>
+<footer class="mdl-mini-footer">
+    <div style="min-height: 64px" class="form-actions mdl-card__actions mdl-card--border">
+        <div style="float:left;">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+                type="button" id="backbtn">Back</button>
+        </div>
+        <div style="float:right;">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+                type="button" id="nextbtn">Next</button>
+        </div>
+        <div style="float: right;">
+            {{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
+        </div>
+    </div>
+</footer>
 {% endblock %}
 
 {% block jquerystuff %}
@@ -436,7 +564,7 @@
         infobtn.click(function () {
             oldclass = currentclasstext;
             newclass = info;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -453,12 +581,14 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         })
 
         bardbtn.click(function () {
             oldclass = currentclasstext;
             newclass = bard;
-            isToRight = newclass.index() > oldclass.index();
+            console.log(newclass.parent().index() + " and " + oldclass.parent().index())
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -470,16 +600,18 @@
                 slidein = "left";
             }
 
+
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(bardbtn).css({ "opacity": "1" });
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
         clericbtn.click(function () {
             oldclass = currentclasstext;
             newclass = cleric;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -496,11 +628,12 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
         druidbtn.click(function () {
             oldclass = currentclasstext;
             newclass = druid;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -517,11 +650,12 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
         fighterbtn.click(function () {
             oldclass = currentclasstext;
             newclass = fighter;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -538,11 +672,12 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
         paladinbtn.click(function () {
             oldclass = currentclasstext;
             newclass = paladin;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -559,11 +694,12 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
         rangerbtn.click(function () {
             oldclass = currentclasstext;
             newclass = ranger;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -580,11 +716,12 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
         thiefbtn.click(function () {
             oldclass = currentclasstext;
             newclass = thief;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -601,11 +738,12 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
         wizardbtn.click(function () {
             oldclass = currentclasstext;
             newclass = wizard;
-            isToRight = newclass.index() > oldclass.index();
+            isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
             if (isToRight) {
@@ -622,7 +760,29 @@
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
             currentclasstext = newclass;
             $(currentclasstext).show("slide", { direction: slidein }, 500);
+            currentclasstext.scrollTop(0);
         });
+
+        $(window).resize(
+            function () {
+                adjustWidth();
+            });
+    });
+
+    function adjustWidth() {
+        var parentwidth = $(".class-card-text").width();
+        $(".swipe-content").width(parentwidth);
+    }
+
+    $(function () {
+        $("#fixer").click(
+            function () {
+                toggleFixed();
+            });
+        $(window).resize(
+            function () {
+                adjustWidth();
+            })
     });
 
 </script>
@@ -635,10 +795,8 @@
     let body_select = document.getElementById('body');
     let skin_select = document.getElementById('skin');
     let symbol_select = document.getElementById('symbol');
-
     class_select.onchange = function () {
         class_name = class_select.value;
-
         getData(class_name, "eyes");
         getData(class_name, "hair");
         getData(class_name, "clothing");
@@ -646,7 +804,6 @@
         getData(class_name, "skin");
         getData(class_name, "symbol");
     }
-
     function getData(class_name, look_property) {
         fetch('/looks/' + class_name + '/' + look_property).then(function (response) {
             response.json().then(function (data) {
@@ -681,7 +838,6 @@
                 }
                 console.log(look_property + " " + typeof look_data);
                 console.log(look_data);
-
                 if (look_data.length > 0) {
                     for (var description of look_data) {
                         optionHTML += '<option value="' + description.id + '">' + description.look_details + '</option>';
@@ -693,11 +849,9 @@
                     select_box.innerHTML = optionHTML;
                     select_box.parentElement.style.display = "none";
                 }
-
             })
         });
     }
-
 </script>
 
 {% endblock %}
