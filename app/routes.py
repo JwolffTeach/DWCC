@@ -133,10 +133,11 @@ def race(hero_class):
     for raceVal in lkup_race:
         raceObj = {}
         raceObj['id'] = raceVal.id
+        raceObj['class_name'] = hero_class
         raceObj['race_name'] = raceVal.race_name
         raceArray.append(raceObj)
 
-    return jsonify({hero_class: raceArray})
+    return jsonify({"race": raceArray})
 
 
 @app.route('/slidingforms', methods=['GET', 'POST'])

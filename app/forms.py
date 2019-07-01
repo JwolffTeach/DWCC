@@ -34,7 +34,7 @@ class BuilderForm(FlaskForm):
     """ hero """
     heroname = StringField('Name', validators=[DataRequired()])
     heroclass = SelectField('Class', choices=[('', ''), ('Bard', 'Bard'), ('Cleric', 'Cleric'), ('Druid', 'Druid'), ('Fighter', 'Fighter'), ('Paladin', 'Paladin'), ('Ranger', 'Ranger'), ('Thief', 'Thief'), ('Wizard', 'Wizard')])
-    herorace = SelectField('Race', choices=[[]], validators=[DataRequired()])
+    herorace = SelectField('Race', choices=[[]])
     heroalignment = StringField('Alignment', validators=[DataRequired()])
 
     """ looks """

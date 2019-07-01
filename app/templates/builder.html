@@ -531,6 +531,7 @@
         var selectclassbtn = $("#select-class-btn");
         var selectclassbtntext = $("#select-class-btn-text");
         var heroclass = $("#heroclass");
+        var herorace = $("#herorace");
         var current_fs, next_fs, previous_fs;
 
         // Hide and adjust height of stuff
@@ -566,7 +567,6 @@
 
 
             // Adjust the height of the builder-form when loading a new form.
-            console.log("Height of part " + currentPart + " is " + $(formParts[currentPart]).css("height"));
             $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
         }
 
@@ -890,21 +890,25 @@
 
         class_select.onchange = function () {
             class_name = class_select.value;
-            getData(class_name, "eyes");
-            getData(class_name, "hair");
-            getData(class_name, "clothing");
-            getData(class_name, "body");
-            getData(class_name, "skin");
-            getData(class_name, "symbol");
+            getData(class_name, "race");
+            
+            getData(class_name, "looks", "eyes");
+            getData(class_name, "looks", "hair");
+            getData(class_name, "looks", "clothing");
+            getData(class_name, "looks", "body");
+            getData(class_name, "looks", "skin");
+            getData(class_name, "looks", "symbol");
         }
 
         function classChange(class_name) {
-            getData(class_name, "eyes");
-            getData(class_name, "hair");
-            getData(class_name, "clothing");
-            getData(class_name, "body");
-            getData(class_name, "skin");
-            getData(class_name, "symbol");
+            getData(class_name, "race");
+
+            getData(class_name, "looks", "eyes");
+            getData(class_name, "looks", "hair");
+            getData(class_name, "looks", "clothing");
+            getData(class_name, "looks", "body");
+            getData(class_name, "looks", "skin");
+            getData(class_name, "looks", "symbol");
         }
 
         function getData(class_name, LKUP_type, arg = null) {
@@ -956,6 +960,7 @@
                     });
                     break;
                 case 'race':
+                    console.log("Race should change. Class: " + class_name);
                     fetch('/race/' + class_name).then(function (response) {
                         response.json().then(function (data) {
                             let optionHTML = '<option value></option>';
@@ -963,12 +968,11 @@
                             var select_box;
                             //race_data = data.race_name;
                             select_box = race_select;
-                            if(data.length > 0) {
-                                for(var raceOption in data){
-                                    optionHTML += '<option value="' + data.id  + '">' + data.race_name + '</option';
-                                }
-                                select_box.innerHTML = optionHTML;
+                            race_data = data.race
+                            for(var i=0; i < race_data.length; i++){
+                                optionHTML += '<option value="' + race_data[i].id  + '">' + race_data[i].race_name + '</option>';
                             }
+                            select_box.innerHTML = optionHTML;
                         })
                     });
                     break;  
