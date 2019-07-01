@@ -5,7 +5,7 @@
 <main class="mdl-layout__content mdl-color--indigo-100">
     <div class="md-form-content fixed-width">
         <ul id="progressbar">
-            <li>
+            <li class="active">
                 <div class="progress-text" style="display:block">
                     Choose a Class
                 </div>
@@ -68,7 +68,7 @@
         </ul>
         <form id="character-builder-form" action="" method="post" novalidate>
             {{ form.hidden_tag() }}
-            <div class="form_part class-form-part">
+            <div id="form-section-class" class="form_part class-form-part">
                 <div class="class-info">
                     <div class="mdl-card__supporting-text mdl-color--indigo-100 class-buttons-grid-container mdl-color-text--white"
                         style="width: auto; text-align: center; padding-bottom: 16px;">
@@ -401,8 +401,22 @@
                     </div>
 
                 </div>
+                <div class="mdl-card__actions mdl-card--border center-child select-class-actions">
+                    <div id="select-class-btn"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                        <h4 id="select-class-btn-text">Select Class</h4>
+                    </div>
+                </div>
             </div>
-            <div class="form_part form_part-more fixed-width" style="display:none;">
+            <div id="form-section-race" class="form_part form_part-more fixed-width" style="display:none;">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroclass }}
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.herorace }}
+                </div>
+            </div>
+            <div id="form-section-name" class="form_part form_part-more fixed-width" style="display:none;">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     {{ form.heroname(class_="mdl-textfield__input") }}
                     {{ form.heroname.label(class_="mdl-textfield__label") }}
@@ -410,25 +424,8 @@
                     <span class="mdl-textfield__error">[{{ error }}]</span>
                     {% endfor %}
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.heroclass }}
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.herorace(class_="mdl-textfield__input") }}
-                    {{ form.herorace.label(class_="mdl-textfield__label") }}
-                    {% for error in form.herorace.errors %}
-                    <span class="mdl-textfield__error">[{{ error }}]</span>
-                    {% endfor %}
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.heroalignment(class_="mdl-textfield__input") }}
-                    {{ form.heroalignment.label(class_="mdl-textfield__label") }}
-                    {% for error in form.heroalignment.errors %}
-                    <span class="mdl-textfield__error">[{{ error }}]</span>
-                    {% endfor %}
-                </div>
             </div>
-            <div class="form_part form_part-looks fixed-width" style="display:none;">
+            <div id="form-section-looks" class="form_part form_part-looks fixed-width" style="display:none;">
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
                     {{ looks_form.eyes(class_="mdl-selectfield__select", value='') }}
                     {{ looks_form.eyes.label(class_="mdl-selectfield__label") }}
@@ -453,6 +450,26 @@
                     {{ looks_form.symbol(class_="mdl-selectfield__select", value='') }}
                     {{ looks_form.symbol.label(class_="mdl-selectfield__label") }}
                 </div>
+            </div>
+            <div id="form-section-stats" class="form_part  form_part-morefixed-width" style="display:none;"></div>
+            <div id="form-section-modifiers" class="form_part  form_part-morefixed-width" style="display:none;"></div>
+            <div id="form-section-hp" class="form_part  form_part-morefixed-width" style="display:none;"></div>
+            <div id="form-section-moves" class="form_part  form_part-morefixed-width" style="display:none;"></div>
+            <div id="form-section-alignment" class="form_part  form_part-morefixed-width" style="display:none;">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    {{ form.heroalignment(class_="mdl-textfield__input") }}
+                    {{ form.heroalignment.label(class_="mdl-textfield__label") }}
+                    {% for error in form.heroalignment.errors %}
+                    <span class="mdl-textfield__error">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="form-section-gear" class="form_part  form_part-morefixed-width" style="display:none;"></div>
+            <div id="form-section-introduction" class="form_part  form_part-morefixed-width" style="display:none;">
+            </div>
+            <div id="form-section-bonds" class="form_part  form_part-morefixed-width" style="display:none;"></div>
+            <div id="form-section-more" class="form_part  form_part-moreform_part-more fixed-width"
+                style="display:none;">
             </div>
         </form>
     </div>
@@ -511,6 +528,10 @@
         var currentclasstext = info;
         var classformpart = $(".class-form-part");
         var classcardtext = $(".class-card-text");
+        var selectclassbtn = $("#select-class-btn");
+        var selectclassbtntext = $("#select-class-btn-text");
+        var heroclass = $("#heroclass");
+        var current_fs, next_fs, previous_fs;
 
         // Hide and adjust height of stuff
         $(submitbtn).hide();
@@ -518,6 +539,10 @@
         $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
 
         next.click(function () {
+            doNext();
+        })
+
+        function doNext() {
             $(formParts[currentPart]).hide("slide", { direction: "left" }, 400);
             $(formParts[currentPart + 1]).show("slide", { direction: "right" }, 500);
             currentPart++;
@@ -534,12 +559,22 @@
                 backhidden = false;
             }
 
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq(currentPart).addClass("active");
+            $("#progressbar li").eq(currentPart - 1).children("div").toggle();
+            $("#progressbar li").eq(currentPart).children("div").toggle();
+
+
             // Adjust the height of the builder-form when loading a new form.
             console.log("Height of part " + currentPart + " is " + $(formParts[currentPart]).css("height"));
             $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
-        })
+        }
 
         back.click(function () {
+            doBack();
+        })
+
+        function doBack() {
             $(formParts[currentPart]).hide("slide", { direction: "right" }, 400);
             $(formParts[currentPart - 1]).show("slide", { direction: "left" }, 500);
             currentPart--;
@@ -557,9 +592,14 @@
                 nexthidden = false;
             }
 
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq(currentPart + 1).removeClass("active");
+            $("#progressbar li").eq(currentPart + 1).children("div").toggle();
+            $("#progressbar li").eq(currentPart).children("div").toggle();
+
             // Adjust the height of the builder-form when loading a new form.
             $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
-        })
+        }
 
         infobtn.click(function () {
             oldclass = currentclasstext;
@@ -576,6 +616,8 @@
                 slidein = "left";
             }
 
+            selectclassbtntext.html("Select Info");
+
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(infobtn).css({ "opacity": "1" });
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
@@ -587,7 +629,6 @@
         bardbtn.click(function () {
             oldclass = currentclasstext;
             newclass = bard;
-            console.log(newclass.parent().index() + " and " + oldclass.parent().index())
             isToRight = newclass.parent().index() > oldclass.parent().index();
             let slideout;
             let slidein;
@@ -600,6 +641,8 @@
                 slidein = "left";
             }
 
+            selectclassbtntext.removeClass().addClass("select-bard");
+            selectclassbtntext.html("Select Bard");
 
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(bardbtn).css({ "opacity": "1" });
@@ -623,6 +666,9 @@
                 slidein = "left";
             }
 
+            selectclassbtntext.removeClass().addClass("select-cleric");
+            selectclassbtntext.html("Select Cleric");
+
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(clericbtn).css({ "opacity": "1" });
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
@@ -644,6 +690,9 @@
                 slideout = "right";
                 slidein = "left";
             }
+
+            selectclassbtntext.removeClass().addClass("select-druid");
+            selectclassbtntext.html("Select Druid");
 
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(druidbtn).css({ "opacity": "1" });
@@ -667,6 +716,9 @@
                 slidein = "left";
             }
 
+            selectclassbtntext.removeClass().addClass("select-fighter");
+            selectclassbtntext.html("Select Fighter");
+
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(fighterbtn).css({ "opacity": "1" });
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
@@ -688,6 +740,9 @@
                 slideout = "right";
                 slidein = "left";
             }
+
+            selectclassbtntext.removeClass().addClass("select-paladin");
+            selectclassbtntext.html("Select Paladin");
 
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(paladinbtn).css({ "opacity": "1" });
@@ -711,6 +766,9 @@
                 slidein = "left";
             }
 
+            selectclassbtntext.removeClass().addClass("select-ranger");
+            selectclassbtntext.html("Select Ranger");
+
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(rangerbtn).css({ "opacity": "1" });
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
@@ -732,6 +790,9 @@
                 slideout = "right";
                 slidein = "left";
             }
+
+            selectclassbtntext.removeClass().addClass("select-thief");
+            selectclassbtntext.html("Select Thief");
 
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(thiefbtn).css({ "opacity": "1" });
@@ -755,6 +816,10 @@
                 slidein = "left";
             }
 
+
+            selectclassbtntext.removeClass().addClass("select-wizard");
+            selectclassbtntext.html("Select Wizard");
+
             $(allclassbuttons).css({ "opacity": "0.5" });
             $(wizardbtn).css({ "opacity": "1" });
             $(currentclasstext).hide("slide", { direction: slideout }, 500);
@@ -763,10 +828,154 @@
             currentclasstext.scrollTop(0);
         });
 
+
+        selectclassbtn.click(function () {
+            var selectedClass;
+            var selectedCSSClass;
+            var classList = selectclassbtntext.attr('class').split(/\s+/);
+            $.each(classList, function (index, item) {
+                selectedCSSClass = item;
+            });
+            switch (selectedCSSClass) {
+                case 'select-bard':
+                    heroclass.val("Bard");
+                    classChange("bard");
+                    break;
+                case 'select-cleric':
+                    heroclass.val("Cleric");
+                    classChange("cleric");
+                    break;
+                case 'select-druid':
+                    heroclass.val("Druid");
+                    classChange("druid");
+                    break;
+                case 'select-fighter':
+                    heroclass.val("Fighter");
+                    classChange("fighter");
+                    break;
+                case 'select-paladin':
+                    heroclass.val("Paladin");
+                    classChange("paladin");
+                    break;
+                case 'select-ranger':
+                    heroclass.val("Ranger");
+                    classChange("ranger");
+                    break;
+                case 'select-thief':
+                    heroclass.val("Thief");
+                    classChange("thief");
+                    break;
+                case 'select-wizard':
+                    heroclass.val("Wizard");
+                    classChange("wizard");
+                    break;
+            }
+            doNext();
+
+        });
+
         $(window).resize(
             function () {
                 adjustWidth();
             });
+        let class_select = document.getElementById('heroclass');
+        let race_select = document.getElementById('herorace')
+        let eyes_select = document.getElementById('eyes');
+        let hair_select = document.getElementById('hair');
+        let clothing_select = document.getElementById('clothing');
+        let body_select = document.getElementById('body');
+        let skin_select = document.getElementById('skin');
+        let symbol_select = document.getElementById('symbol');
+        let class_select_btn = document.getElementById('select-class-btn');
+
+        class_select.onchange = function () {
+            class_name = class_select.value;
+            getData(class_name, "eyes");
+            getData(class_name, "hair");
+            getData(class_name, "clothing");
+            getData(class_name, "body");
+            getData(class_name, "skin");
+            getData(class_name, "symbol");
+        }
+
+        function classChange(class_name) {
+            getData(class_name, "eyes");
+            getData(class_name, "hair");
+            getData(class_name, "clothing");
+            getData(class_name, "body");
+            getData(class_name, "skin");
+            getData(class_name, "symbol");
+        }
+
+        function getData(class_name, LKUP_type, arg = null) {
+            switch (LKUP_type) {
+                case 'looks':
+                    fetch('/looks/' + class_name + '/' + arg).then(function (response) {
+                        response.json().then(function (data) {
+                            let optionHTML = '<option value></option>';
+                            var look_data;
+                            var select_box;
+                            switch (arg) {
+                                case "eyes":
+                                    look_data = data.eyes;
+                                    select_box = eyes_select;
+                                    break;
+                                case "hair":
+                                    look_data = data.hair;
+                                    select_box = hair_select;
+                                    break;
+                                case "clothing":
+                                    look_data = data.clothing;
+                                    select_box = clothing_select;
+                                    break;
+                                case "body":
+                                    look_data = data.body;
+                                    select_box = body_select;
+                                    break;
+                                case "skin":
+                                    look_data = data.skin;
+                                    select_box = skin_select;
+                                    break;
+                                case "symbol":
+                                    look_data = data.symbol;
+                                    select_box = symbol_select;
+                                    break;
+                            }
+                            if (look_data.length > 0) {
+                                for (var description of look_data) {
+                                    optionHTML += '<option value="' + description.id + '">' + description.look_details + '</option>';
+                                }
+                                select_box.innerHTML = optionHTML;
+                                select_box.parentElement.style.display = "inline-block";
+                            }
+                            else {
+                                select_box.innerHTML = optionHTML;
+                                select_box.parentElement.style.display = "none";
+                            }
+                        })
+                    });
+                    break;
+                case 'race':
+                    fetch('/race/' + class_name).then(function (response) {
+                        response.json().then(function (data) {
+                            let optionHTML = '<option value></option>';
+                            var race_data;
+                            var select_box;
+                            //race_data = data.race_name;
+                            select_box = race_select;
+                            if(data.length > 0) {
+                                for(var raceOption in data){
+                                    optionHTML += '<option value="' + data.id  + '">' + data.race_name + '</option';
+                                }
+                                select_box.innerHTML = optionHTML;
+                            }
+                        })
+                    });
+                    break;  
+            }
+
+        }
+
     });
 
     function adjustWidth() {
@@ -784,74 +993,10 @@
                 adjustWidth();
             })
     });
-
 </script>
 
 <script>
-    let class_select = document.getElementById('heroclass');
-    let eyes_select = document.getElementById('eyes');
-    let hair_select = document.getElementById('hair');
-    let clothing_select = document.getElementById('clothing');
-    let body_select = document.getElementById('body');
-    let skin_select = document.getElementById('skin');
-    let symbol_select = document.getElementById('symbol');
-    class_select.onchange = function () {
-        class_name = class_select.value;
-        getData(class_name, "eyes");
-        getData(class_name, "hair");
-        getData(class_name, "clothing");
-        getData(class_name, "body");
-        getData(class_name, "skin");
-        getData(class_name, "symbol");
-    }
-    function getData(class_name, look_property) {
-        fetch('/looks/' + class_name + '/' + look_property).then(function (response) {
-            response.json().then(function (data) {
-                let optionHTML = '<option value></option>';
-                var look_data;
-                var select_box;
-                switch (look_property) {
-                    case "eyes":
-                        look_data = data.eyes;
-                        select_box = eyes_select;
-                        break;
-                    case "hair":
-                        look_data = data.hair;
-                        select_box = hair_select;
-                        break;
-                    case "clothing":
-                        look_data = data.clothing;
-                        select_box = clothing_select;
-                        break;
-                    case "body":
-                        look_data = data.body;
-                        select_box = body_select;
-                        break;
-                    case "skin":
-                        look_data = data.skin;
-                        select_box = skin_select;
-                        break;
-                    case "symbol":
-                        look_data = data.symbol;
-                        select_box = symbol_select;
-                        break;
-                }
-                console.log(look_property + " " + typeof look_data);
-                console.log(look_data);
-                if (look_data.length > 0) {
-                    for (var description of look_data) {
-                        optionHTML += '<option value="' + description.id + '">' + description.look_details + '</option>';
-                    }
-                    select_box.innerHTML = optionHTML;
-                    select_box.parentElement.style.display = "inline-block";
-                }
-                else {
-                    select_box.innerHTML = optionHTML;
-                    select_box.parentElement.style.display = "none";
-                }
-            })
-        });
-    }
+
 </script>
 
 {% endblock %}

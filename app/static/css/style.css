@@ -168,6 +168,7 @@ a,
       text-align: center;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-column-gap: 4px;
       justify-content: stretch;
   }
 
@@ -177,7 +178,7 @@ a,
 
 
   .class-btn > img {
-      width: inherit;
+      width: 100%;
   }
 
   .swipe-content {
@@ -213,6 +214,8 @@ a,
 
   .form_part-more {
       padding: 0px 16px;
+      position: absolute;
+      top: 131px;
   }
 
   .form_part-looks {
@@ -254,6 +257,23 @@ a,
     margin-left: auto;
     margin-right: auto;
     min-height: 0;
+}
+
+.select-class-actions {
+    height: 80px;
+    padding: 16px 0;
+}
+
+#select-class-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#select-class-btn-text {
+
 }
 
 /*progressbar*/
@@ -307,9 +327,10 @@ a,
   content: none; 
 }
 /*marking active/completed steps green*/
-#progressbar li.active:before {
-  background: green;
-  color: white;
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #27AE60;
+	color: white;
 }
 
 #progressbar li .progress-text {
@@ -342,6 +363,12 @@ a,
 .fixed-width {
     box-sizing: border-box;
     max-width: 800px;
+}
+
+.center-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 1024px) {  
@@ -433,13 +460,13 @@ a,
 
     .class-form-part {
         height: 100%;
-        width: 100%;
+        width: 90%;
     }
 
     .md-form-content {
-        width:100%;
-        margin-left:0;
-        margin-right:0;
+        width:90%;
+        margin-left:5%;
+        margin-right:5%;
     }
 
     #progressbar li {
@@ -459,9 +486,9 @@ a,
 
   @media (max-width: 496px) {
     .class-btn.mdl-button--fab{
-        height: 40px;
-        min-width: 40px;
-        width: 40px;
+        height: auto;
+        min-width: 24px;
+        width: 100%;
     }
 
     .wrap {
@@ -472,4 +499,3 @@ a,
         width: 100%;
     }
   }
-

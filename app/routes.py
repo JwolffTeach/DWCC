@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, BuilderForm, LooksForm
-from app.models import Comment, User, Hero, Hero_Looks, LKUPLooks
+from app.models import Comment, User, Hero, Hero_Looks, LKUPLooks, LKUPRace
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
@@ -69,6 +69,9 @@ def register():
 @login_required
 def builder():
     form = BuilderForm()
+
+    form.herorace.choices = [("", "")] + [(item.id, item.race_name) for item in LKUPRace.query.filter_by(class_name='Bard').all()]
+
     looks_form = LooksForm()
 
     looks_form.eyes.choices = [("", "")] + [(item.id, item.look_details) for item in LKUPLooks.query.filter_by(class_name='Bard', look_type='Eyes').all()]
@@ -119,6 +122,21 @@ def looks(hero_class, look_property):
         lookArray.append(lookObj)
 
     return jsonify({look_property: lookArray})
+
+
+@app.route('/race/<hero_class>')
+def race(hero_class):
+    lkup_race = LKUPRace.query.filter_by(class_name=hero_class).all()
+
+    raceArray = []
+
+    for raceVal in lkup_race:
+        raceObj = {}
+        raceObj['id'] = raceVal.id
+        raceObj['race_name'] = raceVal.race_name
+        raceArray.append(raceObj)
+
+    return jsonify({hero_class: raceArray})
 
 
 @app.route('/slidingforms', methods=['GET', 'POST'])

@@ -72,6 +72,13 @@ class LKUPLooks(db.Model):
     def __repr__(self):
         return '<id {}, class_name {}, look_type {}, look_details {}.>'.format(self.id, self.class_name, self.look_type, self.look_details)
 
+class LKUPRace(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    class_name = db.Column(db.String(100))
+    race_name = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '<id {}. class_name {}, race_name {}.>'.format(self.id, self.class_name, self.race_name)
 
 class LKUPAlignment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
