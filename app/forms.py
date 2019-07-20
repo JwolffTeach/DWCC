@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SelectField, SubmitField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from flask_pagedown.fields import PageDownField
+from wtforms import StringField, PasswordField, BooleanField, SelectField, SubmitField, IntegerField, TextAreaField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Optional
 from app.models import User
 
 
@@ -34,26 +35,34 @@ class BuilderForm(FlaskForm):
     """ hero """
     heroname = StringField('Name', validators=[DataRequired()])
     heroclass = SelectField('Class', choices=[('', ''), ('Bard', 'Bard'), ('Cleric', 'Cleric'), ('Druid', 'Druid'), ('Fighter', 'Fighter'), ('Paladin', 'Paladin'), ('Ranger', 'Ranger'), ('Thief', 'Thief'), ('Wizard', 'Wizard')])
-    herorace = SelectField('Race', choices=[[]])
-    heroalignment = StringField('Alignment', validators=[DataRequired()])
+    herorace = SelectField('Race', coerce=int)
+    heroalignment = SelectField('Alignment', coerce=int)
 
     """ looks """
-    heroeyes = StringField('Eyes', validators=[DataRequired()])
-    herohair = StringField('Hair', validators=[DataRequired()])
-    heroclothing = StringField('Clothing', validators=[DataRequired()])
-    herobody = StringField('Body', validators=[DataRequired()])
-    heroskin = StringField('Skin', validators=[DataRequired()])
-    herosymbol = StringField('Symbol', validators=[DataRequired()])
+    heroeyes = SelectField('eyes', coerce=int, validators=[Optional()])
+    herohair = SelectField('hair', coerce=int, validators=[Optional()])
+    heroclothing = SelectField('clothing', coerce=int, validators=[Optional()])
+    herobody = SelectField('body', coerce=int, validators=[Optional()])
+    heroskin = SelectField('skin', coerce=int, validators=[Optional()])
+    herosymbol = SelectField('symbol', coerce=int, validators=[Optional()])
+
+    """ stats """
+    herostrength = IntegerField('Strength')
+    herodexterity = IntegerField('Dexterity')
+    heroconstitution = IntegerField('Constitution')
+    herointelligence = IntegerField('Intelligence')
+    herowisdom = IntegerField('Wisdom')
+    herocharisma = IntegerField('Charisma')
+
+    """ hp of stats """
+    herohp = IntegerField('HP')
 
     submit = SubmitField('Create Character')
 
 
-class LooksForm(FlaskForm):
-    eyes = SelectField('eyes', choices=[[]])
-    hair = SelectField('hair', choices=[[]])
-    clothing = SelectField('clothing', choices=[[]])
-    body = SelectField('body', choices=[[]])
-    skin = SelectField('skin', choices=[[]])
-    symbol = SelectField('symbol', choices=[[]])
+class BasicMoveForm(FlaskForm):
+    movename = StringField('Move Name', validators=[DataRequired()])
+    movedescription = PageDownField('Move Description', validators=[DataRequired()])
+    movedetails = PageDownField('Move Details', validators=[DataRequired()])
 
-    submit = SubmitField('Add Looks')
+    submit = SubmitField('Add Move')

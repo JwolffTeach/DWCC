@@ -66,6 +66,85 @@
                 </div>
             </li>
         </ul>
+        <div class="preview-data-wrap">
+            <button id="preview-data-button"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                Character Info
+            </button>
+        </div>
+        <div class="preview-data-form" style="display:none">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Property</th>
+                        <th class="mdl-data-table__cell--non-numeric">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Class</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-class" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Race</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-race" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Name</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-name" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Looks</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-looks" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Stats</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-stats" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Modifiers</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-modifiers" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">HP</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-hp" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Alignment</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-alignment" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Gear</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-gear" style="display:none;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Gear</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <span class="preview_data preview-data-bonds" style="display:none;"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <form id="character-builder-form" action="" method="post" novalidate>
             {{ form.hidden_tag() }}
             <div id="form-section-class" class="form_part class-form-part">
@@ -125,11 +204,18 @@
                         class="mdl-card__supporting-text flex--col flex-items--start class-card-text mdl-color--indigo-100">
                         <div class="swipe-content">
                             <div class="class-text info">
-                                <H2 class="mdl-card__title-text">
-                                    Picking a Class
-                                </H2>
-                                <p>
-                                    This is where I would write about picking a class for your character.
+                                <h3 class="creation-title">
+                                    Pick a Class
+                                </h3>
+                                <p class="creation-details">
+                                    Look over the character classes and choose one that interests you. To start with
+                                    everyone chooses a different class; there cannot be two wizards, for example. If two
+                                    people want the same class, talk it over like adults and compromise.
+                                </p>
+                                <p class="creation-details-italic">
+                                    I sit down with Paul and Shannon to play a game run by John. I’ve got some cool
+                                    ideas for a wizard, so I mention that would be my first choice. No one else was
+                                    thinking of playing one, so I take the wizard character sheet.
                                 </p>
                             </div>
                         </div>
@@ -409,14 +495,32 @@
                 </div>
             </div>
             <div id="form-section-race" class="form_part form_part-more fixed-width" style="display:none;">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="display:none;">
                     {{ form.heroclass }}
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.herorace }}
+                <div>
+                    <h3 class="creation-title">
+                        Choose a Race
+                    </h3>
+                    <p class="creation-details">Some classes have race options. Choose one. Your race gives you a
+                        special move.</p>
+                    <p class="creation-details-italic">
+                        I like the idea of being flexible—having more spells available is always good, right? I choose
+                        Human, since it’ll allow me to pick a cleric spell and cast it like it was a wizard one. That’ll
+                        leave Shannon’s cleric free to keep the healing magic flowing.
+                    </p>
+                </div>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ form.herorace(class_="mdl-selectfield__select", value='') }}
+                    {{ form.herorace.label(class_="mdl-selectfield__label") }}
                 </div>
             </div>
             <div id="form-section-name" class="form_part form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Choose a Name
+                </h3>
+                <p class="creation-details">Choose a name for your character. You may also choose from the list below.
+                </p>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     {{ form.heroname(class_="mdl-textfield__input") }}
                     {{ form.heroname.label(class_="mdl-textfield__label") }}
@@ -426,50 +530,312 @@
                 </div>
             </div>
             <div id="form-section-looks" class="form_part form_part-looks fixed-width" style="display:none;">
-                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                    {{ looks_form.eyes(class_="mdl-selectfield__select", value='') }}
-                    {{ looks_form.eyes.label(class_="mdl-selectfield__label") }}
+                <div class="section-details">
+                    <h3 class="creation-title">
+                        Choose Looks
+                    </h3>
+                    <p class="creation-details">
+                        Your look is your physical appearance. Choose one item from each list.
+                    </p>
+                    <p class="creation-details-italic">
+                        Haunted eyes sound good since every wizard has seen some things no mortal was meant to. No good
+                        wizard has time for hair styling so wild hair it is. My robes are strange, and I mention to
+                        everyone
+                        that I think maybe they came from Beyond as part of a summoning ritual. No time to eat with all
+                        that
+                        studying and research: thin body.
+                    </p>
                 </div>
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                    {{ looks_form.hair(class_="mdl-selectfield__select", value='') }}
-                    {{ looks_form.hair.label(class_="mdl-selectfield__label") }}
+                    {{ form.heroeyes(class_="mdl-selectfield__select", value='') }}
+                    {{ form.heroeyes.label(class_="mdl-selectfield__label") }}
                 </div>
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                    {{ looks_form.clothing(class_="mdl-selectfield__select", value='') }}
-                    {{ looks_form.clothing.label(class_="mdl-selectfield__label") }}
+                    {{ form.herohair(class_="mdl-selectfield__select", value='') }}
+                    {{ form.herohair.label(class_="mdl-selectfield__label") }}
                 </div>
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                    {{ looks_form.body(class_="mdl-selectfield__select", value='') }}
-                    {{ looks_form.body.label(class_="mdl-selectfield__label") }}
+                    {{ form.heroclothing(class_="mdl-selectfield__select", value='') }}
+                    {{ form.heroclothing.label(class_="mdl-selectfield__label") }}
                 </div>
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                    {{ looks_form.skin(class_="mdl-selectfield__select", value='') }}
-                    {{ looks_form.skin.label(class_="mdl-selectfield__label") }}
+                    {{ form.herobody(class_="mdl-selectfield__select", value='') }}
+                    {{ form.herobody.label(class_="mdl-selectfield__label") }}
                 </div>
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                    {{ looks_form.symbol(class_="mdl-selectfield__select", value='') }}
-                    {{ looks_form.symbol.label(class_="mdl-selectfield__label") }}
+                    {{ form.heroskin(class_="mdl-selectfield__select", value='') }}
+                    {{ form.heroskin.label(class_="mdl-selectfield__label") }}
+                </div>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ form.herosymbol(class_="mdl-selectfield__select", value='') }}
+                    {{ form.herosymbol.label(class_="mdl-selectfield__label") }}
                 </div>
             </div>
-            <div id="form-section-stats" class="form_part  form_part-morefixed-width" style="display:none;"></div>
-            <div id="form-section-modifiers" class="form_part  form_part-morefixed-width" style="display:none;"></div>
-            <div id="form-section-hp" class="form_part  form_part-morefixed-width" style="display:none;"></div>
-            <div id="form-section-moves" class="form_part  form_part-morefixed-width" style="display:none;"></div>
-            <div id="form-section-alignment" class="form_part  form_part-morefixed-width" style="display:none;">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    {{ form.heroalignment(class_="mdl-textfield__input") }}
-                    {{ form.heroalignment.label(class_="mdl-textfield__label") }}
-                    {% for error in form.heroalignment.errors %}
-                    <span class="mdl-textfield__error">[{{ error }}]</span>
-                    {% endfor %}
+            <div id="form-section-stats" class="form_part form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Choose Stats
+                </h3>
+                <p class="creation-details">
+                    Assign these scores to your stats: 16, 15, 13, 12, 9, 8.
+                </p>
+                <a id="stats-show-more-btn" class="mdl-color-text--white">
+                    More Info
+                </a>
+                <p class="stats-show-more" style="display:none;">
+                    <br>
+                    Start by looking over the basic moves and
+                    the starting moves for your class. Pick out the move that interests you the most: something
+                    you’ll be doing a lot, or something that you excel at. Put a 16 in the stat for that move. Look over
+                    the list again and pick out the next most important move to your character, maybe something that
+                    supports your first choice. Put your 15 in the stat for that move. Repeat this process for your
+                    remaining scores: 13, 12, 9, 8.<br>
+                    <br>
+                    <span class="creation-details-italic">
+                        It looks like I need Intelligence to cast spells, which are my thing, so my 16 goes there. The
+                        defy
+                        danger option for Dexterity looks like something I might be doing to dive out of the way of a
+                        spell,
+                        so that gets my 15. A 13 Wisdom will help me notice important details (and maybe keep my sanity,
+                        based on the defy danger move). Charisma might be useful in dealing with summoned creatures so
+                        I’ll
+                        put my 12 there. Living is always nice, so I put my 9 in Constitution for some extra HP.
+                        Strength
+                        gets the 8.
+                    </span>
+                </p>
+                <p class="creation-details-italic">
+                </p>
+                <div class="stats-manager">
+                    <div class="stat">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.herostrength(class_="mdl-textfield__input") }}
+                            {{ form.herostrength.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herostrength.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.herodexterity(class_="mdl-textfield__input") }}
+                            {{ form.herodexterity.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herodexterity.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.heroconstitution(class_="mdl-textfield__input") }}
+                            {{ form.heroconstitution.label(class_="mdl-textfield__label") }}
+                            {% for error in form.heroconstitution.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="stat">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.herointelligence(class_="mdl-textfield__input") }}
+                            {{ form.herointelligence.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herointelligence.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="stat">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.herowisdom(class_="mdl-textfield__input") }}
+                            {{ form.herowisdom.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herowisdom.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            {{ form.herocharisma(class_="mdl-textfield__input") }}
+                            {{ form.herocharisma.label(class_="mdl-textfield__label") }}
+                            {% for error in form.herocharisma.errors %}
+                            <span class="mdl-textfield__error">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="form-section-gear" class="form_part  form_part-morefixed-width" style="display:none;"></div>
-            <div id="form-section-introduction" class="form_part  form_part-morefixed-width" style="display:none;">
+            <div id="form-section-modifiers" class="form_part  form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Figure Out Modifiers
+                </h3>
+                <a id="modifiers-show-more-btn" class="mdl-color-text--white">
+                    Learn more about Modifiers
+                </a>
+                <br>
+                <p class="modifiers-show-more" style="display:none">
+                    <br>
+                    When you perform a move in Dungeon World, you may be asked to roll in order to see how well you
+                    performed. A move might say something like "roll +DEX" or "roll +CHA". Your modifiers are calculated
+                    based on the stats your character has:
+                </p>
+                <table class="mdl-data-table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric" style="width:33.3%">Stat</th>
+                            <th style="width:33.3%">Score</th>
+                            <th style="width:33.3%">Mod</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">STR</td>
+                            <td id="str-score"></td>
+                            <td id="str-mod" style="font-weight: bold"></td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">DEX</td>
+                            <td id="dex-score"></td>
+                            <td id="dex-mod" style="font-weight: bold"></td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">CON</td>
+                            <td id="con-score"></td>
+                            <td id="con-mod" style="font-weight: bold"></td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">INT</td>
+                            <td id="int-score"></td>
+                            <td id="int-mod" style="font-weight: bold"></td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">WIS</td>
+                            <td id="wis-score"></td>
+                            <td id="wis-mod" style="font-weight: bold"></td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">CHA</td>
+                            <td id="cha-score"></td>
+                            <td id="cha-mod" style="font-weight: bold"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div id="form-section-bonds" class="form_part  form_part-morefixed-width" style="display:none;"></div>
-            <div id="form-section-more" class="form_part  form_part-moreform_part-more fixed-width"
+            <div id="form-section-hp" class="form_part  form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Set Maxiumum HP
+                </h3>
+                <p class="creation-details">
+                    Your maximum HP is equal to your class’s base HP+Constitution score. You start with your maximum HP.
+                </p>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="display:none;">
+                    {{ form.herohp }}
+                </div>
+                <div class="hp-text" style="width:100%">
+                    <h2>
+                        <b>HP: </b><span id="herohp-span"></span>
+                    </h2>
+                </div>
+            </div>
+            <div id="form-section-moves" class="form_part  form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Choose Starting Moves
+                </h3>
+                <p class="creation-details">
+                    The front side of each character sheet lists the starting moves. Some classes, like the fighter,
+                    have choices to make as part of one of their moves. Make these choices now. The wizard will need to
+                    choose spells for their spellbook. Both the cleric and the wizard will need to choose which spells
+                    they have prepared to start with.
+                </p>
+                <p class="creation-details-italic">
+                    A Summoning spell is an easy choice, so I take Contact Spirits. Magic Missile will allow me to deal
+                    more damage than the pitiful d4 for the wizard class, so that’s in too. I choose Alarm for my last
+                    spell, since I can think of some interesting uses for it.
+                </p>
+            </div>
+            <div id="form-section-alignment" class="form_part  form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Choose Alignment
+                </h3>
+                <p class="creation-details">
+                    Your alignment is a few words that describe your character’s moral outlook. Each class may only
+                    start with certain alignments. Choose your alignment—in play, it’ll give your character certain
+                    actions that can earn you additional XP
+                </p>
+                <p class="creation-details-italic">
+                    The Neutral option for wizards says I earn extra XP when I discover a magical mystery. Avon is all
+                    about discovering mystery—I’ll go with Neutral.
+                </p>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    {{ form.heroalignment(class_="mdl-selectfield__select", value='') }}
+                    {{ form.heroalignment.label(class_="mdl-selectfield__label") }}
+                </div>
+            </div>
+            <div id="form-section-gear" class="form_part  form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Choose Gear
+                </h3>
+                <p class="creation-details">
+                    Each class has choices to make for starting gear. Keep your load in mind—it limits how much you can
+                    easily carry. Make sure to total up your armor and note it on your character sheet.
+                </p>
+                <p class="creation-details-italic">
+                    I’m worried about my HP, so I take armor over books. A dagger sounds about right for rituals; I
+                    choose that over a staff. It’s a toss-up between the healing potion and the antitoxin, but healing
+                    wins out. I also end up with some rations.
+                </p>
+            </div>
+            <div id="form-section-introduction" class="form_part  form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Introduce Your Character
+                </h3>
+                <p class="creation-details">
+                    Now that you know who your character is, it’s time to introduce them to everyone else. Wait until
+                    everyone’s finished choosing their name. Then go around the table; when it’s your turn, share your
+                    look, class and anything else pertinent about your character. You can share your alignment now or
+                    keep it a secret if you prefer.<br>
+                    <br>
+                    This is also the time for the GM to ask questions. The GM’s questions should help establish the
+                    relationships between characters (“What do you think about that?”) and draw the group into the
+                    adventure (“Does that mean you’ve met Grundloch before?”). The GM should listen to everything in the
+                    description and ask about anything that stands out. Establish where they’re from, who they are, how
+                    they came together, or anything else that seems relevant or interesting.
+                </p>
+                <p class="creation-details-italic">
+                    “This is Avon, mighty wizard! He’s a human with haunted eyes, wild hair, strange robes, and a thin
+                    body. Like I mentioned before his robes are strange because they’re literally not of this world:
+                    they came to him as part of a summoning ritual.”
+                </p>
+            </div>
+            <div id="form-section-bonds" class="form_part  form_part-more fixed-width" style="display:none;">
+                <h3 class="creation-title">
+                    Choose Bonds
+                </h3>
+                <p class="creation-details">
+                    Once everyone has described their characters you can choose your bonds. You must fill in one bond
+                    but it’s in your best interest to fill in more. For each blank fill in the name of one character.
+                    You can use the same character for more than one statement.<br>
+                    <br>
+                    Take some time to discuss the bonds and let the GM ask questions about them as they come up. You’ll
+                    want to go back and forth and make sure everyone is happy and comfortable with how the bonds have
+                    come out. Leave space to discover what each one might mean in play, too: don’t pre-determine
+                    everything at the start. Once everyone’s filled in their bonds read them out to the group. When a
+                    move has you roll+Bond you’ll count the number of bonds you have with the character in question and
+                    add that to the roll.
+                </p>
+                <p class="creation-details-italic">
+                    With everyone introduced I choose which character to list in each bond, I have Paul’s fighter Gregor
+                    and Shannon’s cleric Brinton to choose from. The bond about prophecy sounds fun, so I choose Gregor
+                    for it and end up with “Gregor will play an important role in the events to come. I have foreseen
+                    it!” It seems like the wizard who contacts Things From Beyond and the cleric might not see eye to
+                    eye, so I add Shannon’s character and get “Brinton is woefully misinformed about the world; I will
+                    teach them all that I can.” I leave my last bond blank; I’ll deal with it later. Once everyone is
+                    done I read my bonds aloud and we all discuss what this means about why we’re together and where
+                    we’re going.
+                </p>
+            </div>
+            <div id="form-section-more" class="form_part form_part-more form-part-create fixed-width"
                 style="display:none;">
+                {{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
             </div>
         </form>
     </div>
@@ -477,530 +843,26 @@
 <footer class="mdl-mini-footer">
     <div style="min-height: 64px" class="form-actions mdl-card__actions mdl-card--border">
         <div style="float:left;">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+            <button
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary builder-form-btn"
                 type="button" id="backbtn">Back</button>
         </div>
         <div style="float:right;">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
+            <button
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary builder-form-btn"
                 type="button" id="nextbtn">Next</button>
         </div>
         <div style="float: right;">
-            {{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
         </div>
     </div>
 </footer>
 {% endblock %}
 
 {% block jquerystuff %}
-<script>
-    $(document).ready(function () {
-
-        var builderform = $(".builder-form");
-        var currentPart = 0;
-        var formParts = $(".form_part").toArray();
-        var next = $("#nextbtn");
-        var nexthidden = false;
-        var back = $("#backbtn");
-        var backhidden = true;
-        var submitbtn = $("#submit");
-        var submitbtnhidden = true;
-        var infobtn = $("#class-info-btn");
-        var bardbtn = $(".bardbtn");
-        var clericbtn = $(".clericbtn");
-        var druidbtn = $(".druidbtn");
-        var fighterbtn = $(".fighterbtn");
-        var paladinbtn = $(".paladinbtn");
-        var rangerbtn = $(".rangerbtn");
-        var thiefbtn = $(".thiefbtn");
-        var wizardbtn = $(".wizardbtn");
-        var bard = $(".bard");
-        var cleric = $(".cleric");
-        var druid = $(".druid");
-        var fighter = $(".fighter");
-        var paladin = $(".paladin");
-        var ranger = $(".ranger");
-        var thief = $(".thief");
-        var wizard = $(".wizard");
-        var info = $(".info");
-        var allclassbuttons = $(".class-btn");
-        var allclasses = $(".class-name");
-        var allclasstext = $(".class-text");
-        var currentclasstext = info;
-        var classformpart = $(".class-form-part");
-        var classcardtext = $(".class-card-text");
-        var selectclassbtn = $("#select-class-btn");
-        var selectclassbtntext = $("#select-class-btn-text");
-        var heroclass = $("#heroclass");
-        var herorace = $("#herorace");
-        var current_fs, next_fs, previous_fs;
-
-        // Hide and adjust height of stuff
-        $(submitbtn).hide();
-        $(back).hide();
-        $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
-
-        next.click(function () {
-            doNext();
-        })
-
-        function doNext() {
-            $(formParts[currentPart]).hide("slide", { direction: "left" }, 400);
-            $(formParts[currentPart + 1]).show("slide", { direction: "right" }, 500);
-            currentPart++;
-            if (currentPart == formParts.length - 1) {
-                // First hide the next button.
-                $(next).hide("slide", { direction: "right" }, 400);
-                nexthidden = true;
-                // Then show the submit button
-                $(submitbtn).delay(600).show("slide", { direction: "right" }, 500);
-                submitbtnhidden = false;
-            }
-            if (backhidden) {
-                $(back).delay(500).show("slide", { direction: "left" }, 500);
-                backhidden = false;
-            }
-
-            //activate next step on progressbar using the index of next_fs
-            $("#progressbar li").eq(currentPart).addClass("active");
-            $("#progressbar li").eq(currentPart - 1).children("div").toggle();
-            $("#progressbar li").eq(currentPart).children("div").toggle();
-
-
-            // Adjust the height of the builder-form when loading a new form.
-            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
-        }
-
-        back.click(function () {
-            doBack();
-        })
-
-        function doBack() {
-            $(formParts[currentPart]).hide("slide", { direction: "right" }, 400);
-            $(formParts[currentPart - 1]).show("slide", { direction: "left" }, 500);
-            currentPart--;
-            if (currentPart == 0) {
-                $(back).hide("slide", { direction: "left" }, 400);
-                backhidden = true;
-            }
-            let delayTimer = 0;
-            if (!submitbtnhidden) {
-                $(submitbtn).hide("slide", { direction: "right" }, 400);
-                delayTimer = 500;
-            }
-            if (nexthidden) {
-                $(next).delay(delayTimer).show("slide", { direction: "right" }, 500);
-                nexthidden = false;
-            }
-
-            //activate next step on progressbar using the index of next_fs
-            $("#progressbar li").eq(currentPart + 1).removeClass("active");
-            $("#progressbar li").eq(currentPart + 1).children("div").toggle();
-            $("#progressbar li").eq(currentPart).children("div").toggle();
-
-            // Adjust the height of the builder-form when loading a new form.
-            $(builderform).animate({ height: $(formParts[currentPart]).css("height") });
-        }
-
-        infobtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = info;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.html("Select Info");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(infobtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        })
-
-        bardbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = bard;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.removeClass().addClass("select-bard");
-            selectclassbtntext.html("Select Bard");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(bardbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-        clericbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = cleric;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.removeClass().addClass("select-cleric");
-            selectclassbtntext.html("Select Cleric");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(clericbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-        druidbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = druid;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.removeClass().addClass("select-druid");
-            selectclassbtntext.html("Select Druid");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(druidbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-        fighterbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = fighter;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.removeClass().addClass("select-fighter");
-            selectclassbtntext.html("Select Fighter");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(fighterbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-        paladinbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = paladin;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.removeClass().addClass("select-paladin");
-            selectclassbtntext.html("Select Paladin");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(paladinbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-        rangerbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = ranger;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.removeClass().addClass("select-ranger");
-            selectclassbtntext.html("Select Ranger");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(rangerbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-        thiefbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = thief;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-            selectclassbtntext.removeClass().addClass("select-thief");
-            selectclassbtntext.html("Select Thief");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(thiefbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-        wizardbtn.click(function () {
-            oldclass = currentclasstext;
-            newclass = wizard;
-            isToRight = newclass.parent().index() > oldclass.parent().index();
-            let slideout;
-            let slidein;
-            if (isToRight) {
-                slideout = "left";
-                slidein = "right";
-            }
-            else {
-                slideout = "right";
-                slidein = "left";
-            }
-
-
-            selectclassbtntext.removeClass().addClass("select-wizard");
-            selectclassbtntext.html("Select Wizard");
-
-            $(allclassbuttons).css({ "opacity": "0.5" });
-            $(wizardbtn).css({ "opacity": "1" });
-            $(currentclasstext).hide("slide", { direction: slideout }, 500);
-            currentclasstext = newclass;
-            $(currentclasstext).show("slide", { direction: slidein }, 500);
-            currentclasstext.scrollTop(0);
-        });
-
-
-        selectclassbtn.click(function () {
-            var selectedClass;
-            var selectedCSSClass;
-            var classList = selectclassbtntext.attr('class').split(/\s+/);
-            $.each(classList, function (index, item) {
-                selectedCSSClass = item;
-            });
-            switch (selectedCSSClass) {
-                case 'select-bard':
-                    heroclass.val("Bard");
-                    classChange("bard");
-                    break;
-                case 'select-cleric':
-                    heroclass.val("Cleric");
-                    classChange("cleric");
-                    break;
-                case 'select-druid':
-                    heroclass.val("Druid");
-                    classChange("druid");
-                    break;
-                case 'select-fighter':
-                    heroclass.val("Fighter");
-                    classChange("fighter");
-                    break;
-                case 'select-paladin':
-                    heroclass.val("Paladin");
-                    classChange("paladin");
-                    break;
-                case 'select-ranger':
-                    heroclass.val("Ranger");
-                    classChange("ranger");
-                    break;
-                case 'select-thief':
-                    heroclass.val("Thief");
-                    classChange("thief");
-                    break;
-                case 'select-wizard':
-                    heroclass.val("Wizard");
-                    classChange("wizard");
-                    break;
-            }
-            doNext();
-
-        });
-
-        $(window).resize(
-            function () {
-                adjustWidth();
-            });
-        let class_select = document.getElementById('heroclass');
-        let race_select = document.getElementById('herorace')
-        let eyes_select = document.getElementById('eyes');
-        let hair_select = document.getElementById('hair');
-        let clothing_select = document.getElementById('clothing');
-        let body_select = document.getElementById('body');
-        let skin_select = document.getElementById('skin');
-        let symbol_select = document.getElementById('symbol');
-        let class_select_btn = document.getElementById('select-class-btn');
-
-        class_select.onchange = function () {
-            class_name = class_select.value;
-            getData(class_name, "race");
-            
-            getData(class_name, "looks", "eyes");
-            getData(class_name, "looks", "hair");
-            getData(class_name, "looks", "clothing");
-            getData(class_name, "looks", "body");
-            getData(class_name, "looks", "skin");
-            getData(class_name, "looks", "symbol");
-        }
-
-        function classChange(class_name) {
-            getData(class_name, "race");
-
-            getData(class_name, "looks", "eyes");
-            getData(class_name, "looks", "hair");
-            getData(class_name, "looks", "clothing");
-            getData(class_name, "looks", "body");
-            getData(class_name, "looks", "skin");
-            getData(class_name, "looks", "symbol");
-        }
-
-        function getData(class_name, LKUP_type, arg = null) {
-            switch (LKUP_type) {
-                case 'looks':
-                    fetch('/looks/' + class_name + '/' + arg).then(function (response) {
-                        response.json().then(function (data) {
-                            let optionHTML = '<option value></option>';
-                            var look_data;
-                            var select_box;
-                            switch (arg) {
-                                case "eyes":
-                                    look_data = data.eyes;
-                                    select_box = eyes_select;
-                                    break;
-                                case "hair":
-                                    look_data = data.hair;
-                                    select_box = hair_select;
-                                    break;
-                                case "clothing":
-                                    look_data = data.clothing;
-                                    select_box = clothing_select;
-                                    break;
-                                case "body":
-                                    look_data = data.body;
-                                    select_box = body_select;
-                                    break;
-                                case "skin":
-                                    look_data = data.skin;
-                                    select_box = skin_select;
-                                    break;
-                                case "symbol":
-                                    look_data = data.symbol;
-                                    select_box = symbol_select;
-                                    break;
-                            }
-                            if (look_data.length > 0) {
-                                for (var description of look_data) {
-                                    optionHTML += '<option value="' + description.id + '">' + description.look_details + '</option>';
-                                }
-                                select_box.innerHTML = optionHTML;
-                                select_box.parentElement.style.display = "inline-block";
-                            }
-                            else {
-                                select_box.innerHTML = optionHTML;
-                                select_box.parentElement.style.display = "none";
-                            }
-                        })
-                    });
-                    break;
-                case 'race':
-                    console.log("Race should change. Class: " + class_name);
-                    fetch('/race/' + class_name).then(function (response) {
-                        response.json().then(function (data) {
-                            let optionHTML = '<option value></option>';
-                            var race_data;
-                            var select_box;
-                            //race_data = data.race_name;
-                            select_box = race_select;
-                            race_data = data.race
-                            for(var i=0; i < race_data.length; i++){
-                                optionHTML += '<option value="' + race_data[i].id  + '">' + race_data[i].race_name + '</option>';
-                            }
-                            select_box.innerHTML = optionHTML;
-                        })
-                    });
-                    break;  
-            }
-
-        }
-
-    });
-
-    function adjustWidth() {
-        var parentwidth = $(".class-card-text").width();
-        $(".swipe-content").width(parentwidth);
-    }
-
-    $(function () {
-        $("#fixer").click(
-            function () {
-                toggleFixed();
-            });
-        $(window).resize(
-            function () {
-                adjustWidth();
-            })
-    });
-</script>
+<script src="{{ url_for('static', filename='scripts/mdl-jquery-modal-dialog.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/builder.js') }}"></script>
 
 <script>
 
 </script>
-
 {% endblock %}

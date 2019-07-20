@@ -12,9 +12,9 @@
 <script src="{{ url_for('static', filename='scripts/jquery-ui-1.12.1/external/jquery/jquery.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/mdl-selectfield.min.js') }}"></script>
-  {% block jquerystuff %}
+{% block jquerystuff %}
 
-  {% endblock %}
+{% endblock %}
 {% endblock %}
 
 {% block styles -%}
@@ -26,42 +26,51 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mdl-selectfield.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='scripts/jquery-ui-1.12.1/jquery-ui.min.css') }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/favicon/apple-touch-icon.png') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon/favicon-16x16.png') }}">
+<link rel="apple-touch-icon" sizes="180x180"
+  href="{{ url_for('static', filename='images/favicon/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32"
+  href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16"
+  href="{{ url_for('static', filename='images/favicon/favicon-16x16.png') }}">
 <link rel="manifest" href="{{ url_for('static', filename='images/favicon/site.webmanifest') }}">
 {% endblock %}
 
 {% block navbar %}
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
   <header class="mdl-layout__header">
-    <div class="header-container">
-      <div class="mdl-layout-icon"></div>
-      <div class="mdl-layout__header-row">
-        <span class="DWCC-title mdl-layout__title">
-          <img class="DWCC-logo-image" src="{{ url_for('static', filename='images/DWCC-logo.png') }}">
-        </span>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation mdl-layout--large-screen-only nav-right">
-          <form>
+    <div class="mdl-layout__header-row">
+      <div class="spacer">
+      </div>
+      <div class="mdl-layout__header-content">
+        <div class="left">
+          <div class="spacer mdl-layout--large-screen-only" style="text-align:left;">
+              <img src="{{ url_for('static', filename='images/dw-logos/use-with-dw-OnDark-web.png') }}">
+          </div>
+        </div>
+        <div class="middle">
+          <!--
+            <h4 class="mdl-layout--large-screen-only">{{title}}</h4>
+            <h6 class="mdl-layout--small-screen-only">{{title}}</h6>
+          -->
+        </div>
+        <div class="right">
+          <form class="mdl-layout--large-screen-only top-buttons">
             {% if current_user.is_anonymous %}
             <button formaction="{{ url_for('logout') }}"
               class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Log In</button>
             <button formaction="{{ url_for('register') }}"
               class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Sign Up</button>
             {% else %}
-            Hi, {{ current_user.username }}
+            <div style="text-align: center; vertical-align: middle">
+              Hi, {{ current_user.username }}
+            </div>
             <button formaction="{{ url_for('logout') }}"
               class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Logout</button>
             {% endif %}
           </form>
-        </nav>
-        <span class="DWCC-mobile-title mdl-layout__title">
-          <img class="DWCC-logo-image" src="{{ url_for('static', filename='images/DWCC-logo.png') }}">
-        </span>
-        <nav class="mdl-navigation mdl-layout--small-screen-only nav-right">
-        </nav>
+        </div>
       </div>
+      <div class="spacer"></div>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -70,8 +79,12 @@
       <a class="mdl-navigation__link" href="{{ url_for('login') }}">Log In / Sign Up</a>
       {% else %}
       <a class="mdl-navigation__link" href="{{ url_for('logout') }}">Logout</a>
+      <a class="mdl-navigation__link" href="{{ url_for('index') }}">Characters</a>
+      <a class="mdl-navigation__link" href="{{ url_for('builder') }}">Character Builder</a>
+      <a class="mdl-navigation__link" href="{{ url_for('movesBasic') }}">Basic Moves</a>
+      <a class="mdl-navigation__link mdl-color-text--white" href="{{ url_for('topsecret') }}">Top Secret</a>
+      <a class="mdl-navigation__link mdl-color-text--white" href="{{ url_for('twentyfourtyeight') }}">Super Top Secret</a>
       {% endif %}
-      <a class="mdl-navigation__link" href="#">Nav link 3</a>
     </nav>
   </div>
   {% endblock %}
@@ -80,10 +93,10 @@
   {% with messages = get_flashed_messages() %}
   {% if messages %}
   {% for message in messages %}
-  <div class="alert alert-info" role="alert">{{ message }}</div>
+  <div class="mdl-layout__content alert alert-info" role="alert">{{ message }}</div>
   {% endfor %}
   {% endif %}
   {% endwith %}
-    {% block app_content %}{% endblock %}
+  {% block app_content %}{% endblock %}
 </div>
 {% endblock %}

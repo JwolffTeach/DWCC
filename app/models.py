@@ -40,6 +40,7 @@ class Hero(db.Model):
     hero_race = db.Column(db.String(4096))
     hero_alignment = db.Column(db.String(4096))
     hero_looks = db.relationship('Hero_Looks', backref='hero', lazy='dynamic')
+    hero_stats = db.relationship('Hero_Stats', backref='hero', lazy='dynamic')
     # Something with hero_looks is causing a problem- not iterable?
 
     def __repr__(self):
@@ -62,6 +63,19 @@ class Hero_Looks(db.Model):
     def __repr__(self):
         return '<id {}, hero_id {}, eyes {}, hair {}, clothing {}, body {}, skin {}, symbol {}.>'.format(self.id, self.hero_id, self.eyes, self.hair, self.clothing, self.body, self.skin, self.symbol)
 
+class Hero_Stats(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    hero_id = db.Column(db.Integer, db.ForeignKey('hero.id'))
+    strength = db.Column(db.Integer)
+    dexterity = db.Column(db.Integer)
+    constitution = db.Column(db.Integer)
+    intelligence = db.Column(db.Integer)
+    wisdom = db.Column(db.Integer)
+    charisma = db.Column(db.Integer)
+    hp = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<id {}, hero_id {}, strength {}, dexterity {}, constitution {}, intelligence {}, wisdom {}, charisma {}.>'.format(self.id, self.hero_id, self.strength, self.dexterity, self.constitution, self.intelligence, self.wisdom, self.charisma)
 
 class LKUPLooks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -86,4 +100,31 @@ class LKUPAlignment(db.Model):
     alignment_name = db.Column(db.String(4096))
     
     def __repr__(self):
-        return '<id {}, class_name {}, alignment_name {}.>'.form(self.id, self.class_name, self.alignment_name)
+        return '<id {}, class_name {}, alignment_name {}.>'.format(self.id, self.class_name, self.alignment_name)
+
+class LKUPHp(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    class_name = db.Column(db.String(4096))
+    base_hp = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<id {}, class_name {}, base_hp {}.>'.format(self.id, self.class_name, self.base_hp)
+
+class BasicMoves(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    move_name = db.Column(db.String(4096))
+    move_description = db.Column(db.String(4096))
+    move_details = db.Column(db.String(4096))
+
+class SpecialMoves(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    move_name = db.Column(db.String(4096))
+    move_description = db.Column(db.String(4096))
+    move_details = db.Column(db.String(4096))
+
+class LKUPRaceMoves(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    class_name = db.Column(db.String(4096))
+    move_name = db.Column(db.String(4096))
+    move_description = db.Column(db.String(4096))
+    move_details = db.Column(db.String(4096))

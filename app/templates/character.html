@@ -1,0 +1,75 @@
+<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-card mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title mdl-card--border">
+        <h1 class="mdl-card__title-text content">
+            {{ hero.hero_name }}
+        </h1>
+    </div>
+    <div class="mdl-card__supporting-text content" style="width: 100%">
+        <table class="mdl-data-table" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric" style="width: 64px;">Property</th>
+                    <th class="mdl-data-table__cell--non-numeric">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Level</td>
+                    <td class="mdl-data-table__cell--non-numeric">1</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Race</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_race }}</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Class</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_class }}</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Alignment</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_alignment }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:left; font-weight:bold">Looks</td>
+                </tr>
+                {% if hero.hero_looks.first().eyes is not none %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Eyes</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_looks.first().eyes }}</td>
+                </tr>
+                {% endif %}
+                {% if hero.hero_looks.first().hair is not none %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Hair</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_looks.first().hair }}</td>
+                </tr>
+                {% endif %}
+                {% if hero.hero_looks.first().clothing is not none %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Clothing</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_looks.first().clothing }}
+                    </td>
+                </tr>
+                {% endif %}
+                {% if hero.hero_looks.first().body is not none %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Body</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_looks.first().body }}</td>
+                </tr>
+                {% endif %}
+                {% if hero.hero_looks.first().skin is not none %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Skin</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_looks.first().skin }}</td>
+                </tr>
+                {% endif %}
+                {% if hero.hero_looks.first().symbol is not none %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Symbol</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ hero.hero_looks.first().symbol }}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

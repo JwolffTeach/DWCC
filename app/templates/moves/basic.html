@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<div class="mdl-layout__content">
+    <h2 class="content-section-title">Basic Moves</h2>
+    <div class="content-section-main">
+        <div class="mdl-grid" style="max-width:960px;">
+            {% for move in moves %}
+            <div class="mdl-cell mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__title mdl-card--border">
+                    <h1 class="mdl-card__title-text content">{{move.move_name | markdown}}</h1>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    {{move.move_description | markdown}}
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <a onclick="detailsToggle(this)">Show Details</a>
+                    <div id="move_{{move.id}}" class="move_details_text" style="display:none">
+                        {{move.move_details | markdown}}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% block jquerystuff %}
+<script>
+    function detailsToggle(togglebtn) {
+        console.log(togglebtn);
+        var x = togglebtn.nextElementSibling;
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            togglebtn.innerHTML = "Hide Details";
+        } else {
+            x.style.display = "none";
+            togglebtn.innerHTML = "Show Details";
+        }//
+    }
+</script>
+{% endblock %}
+
+{% endblock %}

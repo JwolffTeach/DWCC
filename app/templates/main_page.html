@@ -2,61 +2,40 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-<div class="top-content-intro">
-    <h1 class="top-content-intro-title">Dungeon World</h1>
-    <p class="top-content-intro-description">
-        This is a brief description of Dungeon world, ideally this is just one sentence.
-    </p>
-</div>
-<div class="content-section">
-    <h2 class="content-section-title">Characters</h2>
-    <div class="content-section-main">
-        <div class="mdl-grid characters-card-container">
-            {% for hero in heroes %}
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-card mdl-card mdl-shadow--4dp">
-                <div class="mdl-card__title mdl-card--border">
-                    <h1 class="mdl-card__title-text content">
-                    {{ hero.hero_name }}
-                    </h1>
-                </div>
-                <div class="mdl-card__supporting-text content">
-                    <div style="float: left; width: 50%">
-                        LVL<br>
-                        RACE<br>
-                        CLASS<br>
-                        ALIGNMENT<br>
-                        Eyes<br>
-                        Hair<br>
-                        Clothing<br>
-                        Body<br>
-                        Skin Symbol<br>
-                        Symbol
-                    </div>
-                    <div style='float:left; width:30%; margin-left:30px'>
-                        1<br>
-                        {{ hero.hero_race }}<br>
-                        {{ hero.hero_class }}<br>
-                        {{ hero.hero_alignment }}<br>
-                        {% for item in hero_looks %}
-                            {% if item.hero_id == hero.id %}
-                                {{ item.eyes }}<br>
-                                {{ item.hair }}<br>
-                                {{ item.clothing }}<br>
-                                {{ item.body }}<br>
-                                {{ item.skin }}<br>
-                                {{ item.symbol }}<br>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
+
+<div class="mdl-layout__content">
+    <div class="top-content-intro">
+        <h1 class="top-content-intro-title">Dungeon World</h1>
+        <p class="top-content-intro-description">
+            This is a brief description of Dungeon world, ideally this is just one sentence.
+        </p>
+    </div>
+    <div class="content-section">
+        <h2 class="content-section-title">Characters</h2>
+        <div class="content-section-main">
+            <div class="mdl-grid characters-card-container">
+                {% for hero in heroes %}
+                    {% include '_character.html' %}
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <div class="mdl-grid characters-card-container">
-            <div class="flex-container mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--4-col-tablet mdl-card mdl-card mdl-shadow--4dp">
-                <form style="display:contents">
-                    <button formaction="{{ url_for('builder') }}" class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Create a New Character</button>
-                </form>
+            <div class="mdl-grid characters-card-container">
+                <div
+                    class="flex-container mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-card mdl-card mdl-shadow--4dp">
+                    <form style="display:contents">
+                        <button formaction="{{ url_for('builder') }}"
+                            class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Create a New
+                            Character</button>
+                    </form>
+                </div>
+                {% if current_user.username == 'test4' %}
+                <div
+                    class="flex-container mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-card mdl-card mdl-shadow--4dp">
+                    <form style="display:contents">
+                        <button formaction="{{ url_for('addmove') }}"
+                            class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Add Move</button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -67,5 +46,3 @@ Hero Looks:
 
 
 {% endblock %}
-
-

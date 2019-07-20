@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+
+{{ pagedown.include_pagedown() }}
+
+<div class="mdl-layout__content">
+    <h2 class="content-section-title">Add Move</h2>
+    <div class="content-section-main">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                {{ form.movename(class_="mdl-textfield__input") }}
+                {{ form.movename.label(class_="mdl-textfield__label") }}
+                {% for error in form.movename.errors %}
+                <span class="mdl-textfield__error">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield">
+                {{ form.movedescription(class_="mdl-textfield__input", rows=10) }}
+                {{ form.movedescription.label(class_="mdl-textfield__label") }}
+                {% for error in form.movedescription.errors %}
+                <span class="mdl-textfield__error">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield">
+                {{ form.movedetails(class_="mdl-textfield__input", rows=10) }}
+                {{ form.movedetails.label(class_="mdl-textfield__label") }}
+                {% for error in form.movedetails.errors %}
+                <span class="mdl-textfield__error">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <br>
+            {{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

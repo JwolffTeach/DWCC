@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<div>
+{% filter markdown %}
+##{{move.move_name|safe}}
+{{move.move_description|safe}}
+{{move.move_details|safe}}
+{% endfilter %}
+</div>
+
+{% endblock %}
