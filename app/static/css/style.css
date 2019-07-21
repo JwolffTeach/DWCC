@@ -41,27 +41,12 @@ body {
     color: rgb(255, 255, 255);
 }
 
-.content-section {max-width:800px;
-    padding: 0 0;
-    padding-top: 32px;
-    padding-bottom: 50px;
-    width:70%;
+.content-section {
+    max-width:800px;
+    padding: 0 16px;
     max-width:800px;
     margin: auto;
 }
-
-.content-section-title {
-    margin-left: 12px; 
-}
-
-.content-section>.content-section-title,
-.content-section-main {
-    margin-left: 12px;
-}
-
-  .characters-card-container{
-      margin-left: -16px;
-  }
 
 body,
 h1,
@@ -164,8 +149,9 @@ a,
   }
   
   .form-actions {
-      padding-right: 0px;
-      padding-left: 0px;
+      padding: 0;
+      position: absolute;
+      top: 50%;
   }
 
   .class-buttons-flex-container {
@@ -224,9 +210,8 @@ a,
   }
 
   .class-form-part {
-      position: relative;
-      width: 100%; 
-      max-width: 800px;
+    position: absolute;
+    width: 100%;
   }
 
   .class-card-text {
@@ -239,18 +224,22 @@ a,
   .form_part-more {
       padding: 0px 16px;
       padding-bottom: 16px;
+      width: 100%;
+      margin: 0 auto;
       position: absolute;
       top: 163px;
   }
 
+  .form-part-more-subpart {
+      max-width: 800px;
+      margin: 0 auto;
+  }
+
+  .create-char-btn {
+
+  }
+
   .form_part-looks {
-      width: 100%;
-      padding: 0px 16px;
-      position: absolute;
-      top: 131px;
-      display: grid;
-      grid-template-columns: 50% 50%;
-      align-items: center;
       justify-items: center;
   }
 
@@ -264,11 +253,6 @@ a,
 
   .mdl-layout__top-content {
       margin-top: 64px;
-  }
-
-  .mdl-mini-footer {
-      padding: 0;
-      margin-left: 240px;
   }
 
   .md-display-title {
@@ -304,9 +288,18 @@ a,
 }
 
 .builder-form-btn {
-width: 150px;
-height: 50px;
 font-size: 24px;
+height: 100px;
+width: 100px;
+border-radius: 0;
+}
+
+.builder-form-btn-container {
+    opacity: 0.5;
+    top: 0;
+    margin-top: calc(30vh - 100px);
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 
@@ -344,15 +337,14 @@ font-size: 24px;
 
 /*progressbar*/
 #progressbar {
-    padding-top: 8px;
-    padding-bottom: 48px;
-    padding-left:0px;
-    padding-right:0px;
-    margin: 0 auto;
     width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     overflow: visible;
     /*CSS counts the number of steps*/
     counter-reset: step;
+    padding: 0;
+    height: 64px;
 }
 
 #progressbar li {
@@ -412,6 +404,7 @@ font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 8px;
     padding-bottom: 8px;
 }
 
@@ -425,16 +418,15 @@ font-size: 24px;
 
 .md-form-content {
     padding-top:32px;
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15;
-    margin: auto;
+    width: 100%;
 }
 
 .class-info {
     display: flex;
     flex-direction: column;
     overflow: auto;
+    max-width:800px;
+    margin: 0 auto;
 }
 
 .fixed-width {
@@ -446,6 +438,8 @@ font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width:800px;
+    margin: 0 auto;
 }
 
 /* Dialog Box Stuff */
@@ -502,6 +496,21 @@ font-size: 24px;
         font-size: 12px;
         line-height: 16px;
     }
+    .builder-nextback-container {
+        position: relative;
+        top: -200px;
+        width: 100%;
+        max-width: 800px;
+        height: 0;
+        margin: 0 auto;
+    }
+    .builder-form-btn-container {
+        margin-top: 150px;
+    }
+    .builder-form-btn-container > button {
+        width: 56px;
+        height: 56px;
+    }
 }
 
 @media (max-width: 1024px) {  
@@ -513,10 +522,6 @@ font-size: 24px;
       font-size:18px;
       font-family: 'Raleway', sans-serif !important;
     }
-
-    .mdl-mini-footer {
-        margin-left: 0;
-    }
     .top-content-intro>.top-content-intro-title {  
         font-family: aria-text-g2 !important;
         font-size: 48px !important;
@@ -526,9 +531,7 @@ font-size: 24px;
     }
 
     .md-form-content{
-        width:80%;
-        margin-left: 10%;
-        margin-right: 10%;
+        width:100%;
     }
 
     .mdl-layout__header-row {
@@ -554,8 +557,13 @@ font-size: 24px;
 
     .class-form-part {
         position: absolute;
-        margin: auto;
-        width: 80%;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    #progressbar, .class-buttons-grid-container, .select-class-actions {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     #progressbar li {
@@ -597,13 +605,10 @@ font-size: 24px;
 
     .class-form-part {
         height: 100%;
-        width: 90%;
     }
 
     .md-form-content {
-        width:90%;
-        margin-left:5%;
-        margin-right:5%;
+        width:100%;
     }
 
     #progressbar li {

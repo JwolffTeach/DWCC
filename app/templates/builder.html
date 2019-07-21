@@ -2,524 +2,525 @@
 
 {% block app_content %}
 
-<main class="mdl-layout__content mdl-color--indigo-100">
-    <div class="md-form-content fixed-width">
-        <ul id="progressbar">
-            <li class="active">
-                <div class="progress-text" style="display:block">
-                    Choose a Class
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose a Race
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose a Name
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose a Look
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose Stats
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Figure out Modifiers
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Set Maximum HP
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose Starting Moves
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose an Alignment
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose your Gear
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Introduce your Character
-                </div>
-            </li>
-            <li>
-                <div class="progress-text">
-                    Choose Bonds
-                </div>
-            </li>
-        </ul>
-        <div class="preview-data-wrap">
-            <button id="preview-data-button"
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                Character Info
-            </button>
-        </div>
-        <div class="preview-data-form" style="display:none">
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">Property</th>
-                        <th class="mdl-data-table__cell--non-numeric">Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Class</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-class" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Race</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-race" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Name</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-name" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Looks</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-looks" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Stats</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-stats" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Modifiers</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-modifiers" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">HP</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-hp" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Alignment</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-alignment" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Gear</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-gear" style="display:none;"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Gear</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <span class="preview_data preview-data-bonds" style="display:none;"></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="md-form-content">
+    <ul id="progressbar">
+        <li class="active">
+            <div class="progress-text" style="display:block">
+                Choose a Class
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose a Race
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose a Name
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose a Look
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose Stats
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Figure out Modifiers
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Set Maximum HP
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose Starting Moves
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose an Alignment
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose your Gear
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Introduce your Character
+            </div>
+        </li>
+        <li>
+            <div class="progress-text">
+                Choose Bonds
+            </div>
+        </li>
+    </ul>
+    <div class="preview-data-wrap">
+        <button id="preview-data-button"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Character Info
+        </button>
+    </div>
+    <div class="preview-data-form" style="display:none">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Property</th>
+                    <th class="mdl-data-table__cell--non-numeric">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Class</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-class" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Race</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-race" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Name</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-name" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Looks</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-looks" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Stats</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-stats" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Modifiers</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-modifiers" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">HP</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-hp" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Alignment</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-alignment" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Gear</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-gear" style="display:none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Gear</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <span class="preview_data preview-data-bonds" style="display:none;"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <form id="character-builder-form" action="" method="post" novalidate>
-            {{ form.hidden_tag() }}
-            <div id="form-section-class" class="form_part class-form-part">
-                <div class="class-info">
-                    <div class="mdl-card__supporting-text mdl-color--indigo-100 class-buttons-grid-container mdl-color-text--white"
-                        style="width: auto; text-align: center; padding-bottom: 16px;">
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn bardbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn clericbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn druidbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn fighterbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn paladinbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn rangerbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn thiefbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn wizardbtn">
-                            <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn bardbtn">
-                            Bard
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn clericbtn">
-                            Cleric
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn druidbtn">
-                            Druid
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn fighterbtn">
-                            Fighter
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn paladinbtn">
-                            Paladin
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn rangerbtn">
-                            Ranger
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn thiefbtn">
-                            Thief
-                        </div>
-                        <div class="mdl-button mdl-js-button class-btn bottom-btn wizardbtn">
-                            Wizard
+    <form id="character-builder-form" action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div id="form-section-class" class="form_part class-form-part">
+            <div class="class-info">
+                <div class="mdl-card__supporting-text mdl-color--indigo-100 class-buttons-grid-container mdl-color-text--white"
+                    style="width: auto; text-align: center; padding-bottom: 16px;">
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn bardbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn clericbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn druidbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn fighterbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn paladinbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn rangerbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn thiefbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect class-btn wizardbtn">
+                        <img src="{{ url_for('static', filename='images/cleric_icon-48px.png') }}">
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn bardbtn">
+                        Bard
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn clericbtn">
+                        Cleric
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn druidbtn">
+                        Druid
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn fighterbtn">
+                        Fighter
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn paladinbtn">
+                        Paladin
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn rangerbtn">
+                        Ranger
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn thiefbtn">
+                        Thief
+                    </div>
+                    <div class="mdl-button mdl-js-button class-btn bottom-btn wizardbtn">
+                        Wizard
+                    </div>
+                </div>
+                <div
+                    class="mdl-card__supporting-text flex--col flex-items--start class-card-text mdl-color--indigo-100">
+                    <div class="swipe-content">
+                        <div class="class-text info">
+                            <h3 class="creation-title">
+                                Pick a Class
+                            </h3>
+                            <p class="creation-details">
+                                Look over the character classes and choose one that interests you. To start with
+                                everyone chooses a different class; there cannot be two wizards, for example. If two
+                                people want the same class, talk it over like adults and compromise.
+                            </p>
+                            <p class="creation-details-italic">
+                                I sit down with Paul and Shannon to play a game run by John. I’ve got some cool
+                                ideas for a wizard, so I mention that would be my first choice. No one else was
+                                thinking of playing one, so I take the wizard character sheet.
+                            </p>
                         </div>
                     </div>
-                    <div
-                        class="mdl-card__supporting-text flex--col flex-items--start class-card-text mdl-color--indigo-100">
-                        <div class="swipe-content">
-                            <div class="class-text info">
-                                <h3 class="creation-title">
-                                    Pick a Class
-                                </h3>
-                                <p class="creation-details">
-                                    Look over the character classes and choose one that interests you. To start with
-                                    everyone chooses a different class; there cannot be two wizards, for example. If two
-                                    people want the same class, talk it over like adults and compromise.
-                                </p>
-                                <p class="creation-details-italic">
-                                    I sit down with Paul and Shannon to play a game run by John. I’ve got some cool
-                                    ideas for a wizard, so I mention that would be my first choice. No one else was
-                                    thinking of playing one, so I take the wizard character sheet.
-                                </p>
-                            </div>
+                    <div class="swipe-content">
+                        <div id="class-bard" class="class-text bard" style="display: none">
+                            <h2 id="bard-title" class="mdl-card__title-text">
+                                The Bard
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/bard.png') }}">
+                            <p>
+                                The poems say an adventurer’s life is all open roads and the glory of coin
+                                and
+                                combat. The tales told in every farmhand-filled inn have to have some ring
+                                of
+                                truth to them, don’t they? The songs to inspire peasantry and royals
+                                alike—to
+                                soothe the savage beast or drive men to a frenzy—have to come from
+                                somewhere.
+                            </p>
+                            <p>
+                                Enter the bard. You, with your smooth tongue and quick wit. You
+                                teller-of-tales
+                                and singer-of-songs. It takes a mere minstrel to retell a thing but a true
+                                bard
+                                to live it. Strap on your boots, noble orator. Sharpen that hidden dagger
+                                and
+                                take up the call. Someone’s got to be there, fighting shoulder-to-shoulder
+                                with
+                                the goons and the thugs and the soon-to-be-heroes. Who better than you to
+                                write
+                                the tale of your own heroism?
+                            </p>
+                            <p>
+                                Nobody. Get going.
+                            </p>
                         </div>
-                        <div class="swipe-content">
-                            <div id="class-bard" class="class-text bard" style="display: none">
-                                <h2 id="bard-title" class="mdl-card__title-text">
-                                    The Bard
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/bard.png') }}">
-                                <p>
-                                    The poems say an adventurer’s life is all open roads and the glory of coin
-                                    and
-                                    combat. The tales told in every farmhand-filled inn have to have some ring
-                                    of
-                                    truth to them, don’t they? The songs to inspire peasantry and royals
-                                    alike—to
-                                    soothe the savage beast or drive men to a frenzy—have to come from
-                                    somewhere.
-                                </p>
-                                <p>
-                                    Enter the bard. You, with your smooth tongue and quick wit. You
-                                    teller-of-tales
-                                    and singer-of-songs. It takes a mere minstrel to retell a thing but a true
-                                    bard
-                                    to live it. Strap on your boots, noble orator. Sharpen that hidden dagger
-                                    and
-                                    take up the call. Someone’s got to be there, fighting shoulder-to-shoulder
-                                    with
-                                    the goons and the thugs and the soon-to-be-heroes. Who better than you to
-                                    write
-                                    the tale of your own heroism?
-                                </p>
-                                <p>
-                                    Nobody. Get going.
-                                </p>
-                            </div>
 
-                        </div>
-                        <div class="swipe-content">
-                            <div class="class-text cleric" style="display: none">
-                                <h2 class="mdl-card__title-text">
-                                    The Cleric
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/cleric.png') }}">
-                                <p>
-                                    The lands of Dungeon World are a gods-forsaken mess. They’re lousy with the
-                                    walking dead, beasts of all sorts, and the vast unnatural spaces between
-                                    safe
-                                    and temple-blessed civilizations. It is a godless world out there. That’s
-                                    why it
-                                    needs you.
-                                </p>
-                                <p>
-                                    Bringing the glory of your god to the heathens isn’t just in your
-                                    nature—it’s
-                                    your calling. It falls to you to proselytize with sword and mace and spell.
-                                    To
-                                    cleave deep into the witless heart of the wilds and plant the seed of
-                                    divinity
-                                    there. Some say that it is best to keep god close to your heart. You know
-                                    that’s
-                                    rubbish. God lives at the edge of a blade.
-                                </p>
-                                <p>
-                                    Show the world who is lord.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swipe-content">
-                            <div class="class-text druid" style="display: none">
-                                <h2 class="mdl-card__title-text">
-                                    The Druid
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/druid.png') }}">
-                                <p>
-                                    Cast your eyes around the fire. What has brought you to these people,
-                                    stinking
-                                    of the dust and sweat of the city? Perhaps it is a kindness—do you protect
-                                    them
-                                    as the mother bear watches over her cubs? Are they your pack, now? Strange
-                                    brothers and sisters you have. Whatever your inspiration, they would
-                                    certainly
-                                    fail without your sharp senses and sharper claws.
-                                </p>
-                                <p>
-                                    You are of the sacred spaces; you are born of soil and wear the marks of her
-                                    spirits on your skin. You may have had a life before, maybe you were a city
-                                    dweller like them, but not now. You’ve given up that static shape. Listen to
-                                    your allies pray to their carved stone gods and polish their silver shells.
-                                    They
-                                    speak of the glory they’ll find back in that festering town you left behind.
-                                </p>
-                                <p>
-                                    Their gods are children, their steel is false protection. You walk the old
-                                    ways,
-                                    you wear the pelts of the earth itself. You’ll take your share of the
-                                    treasure,
-                                    but will you ever walk as one of them? Only time will tell.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swipe-content">
-                            <div class="class-text fighter" style="display: none">
-                                <h2 class="mdl-card__title-text">
-                                    The Fighter
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/fighter.png') }}">
-                                <p>
-                                    It’s a thankless job—living day to day by your armor and the skill of your
-                                    arm.
-                                    To dive heedlessly into danger. They won’t be playing golden horns for the
-                                    time
-                                    you took that knife to the ribs for them in the bar in Bucksberg. No flock
-                                    of
-                                    angels to sing of the time you dragged them, still screaming, from the edge
-                                    of
-                                    the Pits of Madness, no.
-                                </p>
-                                <p>
-                                    Forget them.
-                                </p>
-                                <p>
-                                    You do this for the guts and the glory. The scream of battle and the hot,
-                                    hot
-                                    blood of it. You are a beast of iron. Your friends may carry blades of
-                                    forged
-                                    steel but, fighter, you are steel. While your traveling companions might
-                                    moan
-                                    about their wounds over a campfire in the wilderness, you bear your scars
-                                    with
-                                    pride.
-                                </p>
-                                <p>
-                                    You are the wall—let every danger smash itself to nothing on you. In the
-                                    end,
-                                    you’ll be the last one standing.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swipe-content">
-                            <div class="class-text paladin" style="display: none">
-                                <h2 class="mdl-card__title-text">
-                                    The Paladin
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/paladin.jpg') }}">
-                                <p>
-                                    Hell awaits. An eternity of torment in fire or ice or whatever best suits
-                                    the
-                                    sins of the damned throngs of Dungeon World. All that stands between the
-                                    pits of
-                                    that grim torture and salvation is you. Holy man, armored war machine,
-                                    templar
-                                    of the Good and the Light, right? The cleric may say his prayers at night to
-                                    the
-                                    gods, dwelling in their heavens. The fighter may wield his sharp sword in
-                                    the
-                                    name of “good” but you know. Only you.
-                                </p>
-                                <p>
-                                    Eyes, hands, and sweet killing blow of the gods, you are. Yours is the gift
-                                    of
-                                    righteousness and virtue. Of justice. Vision, too. A purity of intent that
-                                    your
-                                    companions do not have.
-                                </p>
-                                <p>
-                                    So guide these fools, paladin. Take up your holy cause and bring salvation
-                                    to
-                                    the wastrel world.
-                                </p>
-                                <p>
-                                    Vae victis, right?
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swipe-content">
-                            <div class="class-text ranger" style="display: none">
-                                <h2 class="mdl-card__title-text">
-                                    The Ranger
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/ranger.jpg') }}">
-                                <p>
-                                    These city-born folk you travel with. Have they heard the call of the wolf?
-                                    Felt
-                                    the winds howl in the bleak deserts of the East? Have they hunted their prey
-                                    with the bow and the knife like you? Hell no. That’s why they need you.
-                                </p>
-                                <p>
-                                    Guide. Hunter. Creature of the wilds. You are these things and more. Your
-                                    time
-                                    in the wilderness may have been solitary until now, but the call of some
-                                    greater
-                                    thing—call it fate if you like—has cast your lot with these folk. Brave,
-                                    they
-                                    may be. Powerful and strong, too. You know the secrets of the spaces
-                                    between,
-                                    though.
-                                </p>
-                                <p>
-                                    Without you, they’d be lost. Blaze a trail through the blood and dark,
-                                    strider.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swipe-content">
-                            <div class="class-text thief" style="display: none">
-                                <h2 class="mdl-card__title-text">
-                                    The Thief
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/thief.png') }}">
-                                <p>
-                                    You’ve heard them, sitting around the campfire. Bragging about this battle
-                                    or
-                                    that. About how their gods are smiling on your merry band. You count your
-                                    coins
-                                    and smile to yourself—this is the thrill above all. You alone know the
-                                    secret of
-                                    Dungeon World—filthy filthy lucre.
-                                </p>
-                                <p>
-                                    Sure, they give you lip for all the times you’ve snuck off alone but without
-                                    you, who among them wouldn’t have been dissected by a flying guillotine or
-                                    poisoned straight to death by some ancient needle trap? So, let them
-                                    complain.
-                                    When you’re done with all this delving you’ll toast their hero’s graves.
-                                </p>
-                                <p>
-                                    From your castle. Full of gold. You rogue.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swipe-content">
-                            <div class="class-text wizard" style="display: none">
-                                <h2 class="mdl-card__title-text">
-                                    The Wizard
-                                </h2>
-                                <img src="{{ url_for('static', filename='images/wizard.jpg') }}">
-                                <p>
-                                    Dungeon World has rules. Not the laws of men or the rule of some petty
-                                    tyrant.
-                                    Bigger, better rules. You drop something—it falls. You can’t make something
-                                    out
-                                    of nothing. The dead stay dead, right?
-                                </p>
-                                <p>
-                                    Oh, the things we tell ourselves to feel better about the long, dark nights.
-                                </p>
-                                <p>
-                                    You’ve spent so very long poring over those tomes of yours. The experiments
-                                    that
-                                    nearly drove you mad and all the botched summonings that endangered your
-                                    very
-                                    soul. For what? For power. What else is there? Not just the power of King or
-                                    Country but the power to boil a man’s blood in his veins. To call on the
-                                    thunder
-                                    of the sky and the churn of the roiling earth. To shrug off the rules the
-                                    world
-                                    holds so dear.
-                                </p>
-                                <p>
-                                    Let them cast their sidelong glances. Let them call you “warlock” or
-                                    “diabolist.” Who among them can hurl fireballs from their eyes?
-                                </p>
-                                <p>
-                                    Yeah. We didn’t think so
-                                </p>
-                            </div>
+                    </div>
+                    <div class="swipe-content">
+                        <div class="class-text cleric" style="display: none">
+                            <h2 class="mdl-card__title-text">
+                                The Cleric
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/cleric.png') }}">
+                            <p>
+                                The lands of Dungeon World are a gods-forsaken mess. They’re lousy with the
+                                walking dead, beasts of all sorts, and the vast unnatural spaces between
+                                safe
+                                and temple-blessed civilizations. It is a godless world out there. That’s
+                                why it
+                                needs you.
+                            </p>
+                            <p>
+                                Bringing the glory of your god to the heathens isn’t just in your
+                                nature—it’s
+                                your calling. It falls to you to proselytize with sword and mace and spell.
+                                To
+                                cleave deep into the witless heart of the wilds and plant the seed of
+                                divinity
+                                there. Some say that it is best to keep god close to your heart. You know
+                                that’s
+                                rubbish. God lives at the edge of a blade.
+                            </p>
+                            <p>
+                                Show the world who is lord.
+                            </p>
                         </div>
                     </div>
-
+                    <div class="swipe-content">
+                        <div class="class-text druid" style="display: none">
+                            <h2 class="mdl-card__title-text">
+                                The Druid
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/druid.png') }}">
+                            <p>
+                                Cast your eyes around the fire. What has brought you to these people,
+                                stinking
+                                of the dust and sweat of the city? Perhaps it is a kindness—do you protect
+                                them
+                                as the mother bear watches over her cubs? Are they your pack, now? Strange
+                                brothers and sisters you have. Whatever your inspiration, they would
+                                certainly
+                                fail without your sharp senses and sharper claws.
+                            </p>
+                            <p>
+                                You are of the sacred spaces; you are born of soil and wear the marks of her
+                                spirits on your skin. You may have had a life before, maybe you were a city
+                                dweller like them, but not now. You’ve given up that static shape. Listen to
+                                your allies pray to their carved stone gods and polish their silver shells.
+                                They
+                                speak of the glory they’ll find back in that festering town you left behind.
+                            </p>
+                            <p>
+                                Their gods are children, their steel is false protection. You walk the old
+                                ways,
+                                you wear the pelts of the earth itself. You’ll take your share of the
+                                treasure,
+                                but will you ever walk as one of them? Only time will tell.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swipe-content">
+                        <div class="class-text fighter" style="display: none">
+                            <h2 class="mdl-card__title-text">
+                                The Fighter
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/fighter.png') }}">
+                            <p>
+                                It’s a thankless job—living day to day by your armor and the skill of your
+                                arm.
+                                To dive heedlessly into danger. They won’t be playing golden horns for the
+                                time
+                                you took that knife to the ribs for them in the bar in Bucksberg. No flock
+                                of
+                                angels to sing of the time you dragged them, still screaming, from the edge
+                                of
+                                the Pits of Madness, no.
+                            </p>
+                            <p>
+                                Forget them.
+                            </p>
+                            <p>
+                                You do this for the guts and the glory. The scream of battle and the hot,
+                                hot
+                                blood of it. You are a beast of iron. Your friends may carry blades of
+                                forged
+                                steel but, fighter, you are steel. While your traveling companions might
+                                moan
+                                about their wounds over a campfire in the wilderness, you bear your scars
+                                with
+                                pride.
+                            </p>
+                            <p>
+                                You are the wall—let every danger smash itself to nothing on you. In the
+                                end,
+                                you’ll be the last one standing.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swipe-content">
+                        <div class="class-text paladin" style="display: none">
+                            <h2 class="mdl-card__title-text">
+                                The Paladin
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/paladin.jpg') }}">
+                            <p>
+                                Hell awaits. An eternity of torment in fire or ice or whatever best suits
+                                the
+                                sins of the damned throngs of Dungeon World. All that stands between the
+                                pits of
+                                that grim torture and salvation is you. Holy man, armored war machine,
+                                templar
+                                of the Good and the Light, right? The cleric may say his prayers at night to
+                                the
+                                gods, dwelling in their heavens. The fighter may wield his sharp sword in
+                                the
+                                name of “good” but you know. Only you.
+                            </p>
+                            <p>
+                                Eyes, hands, and sweet killing blow of the gods, you are. Yours is the gift
+                                of
+                                righteousness and virtue. Of justice. Vision, too. A purity of intent that
+                                your
+                                companions do not have.
+                            </p>
+                            <p>
+                                So guide these fools, paladin. Take up your holy cause and bring salvation
+                                to
+                                the wastrel world.
+                            </p>
+                            <p>
+                                Vae victis, right?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swipe-content">
+                        <div class="class-text ranger" style="display: none">
+                            <h2 class="mdl-card__title-text">
+                                The Ranger
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/ranger.jpg') }}">
+                            <p>
+                                These city-born folk you travel with. Have they heard the call of the wolf?
+                                Felt
+                                the winds howl in the bleak deserts of the East? Have they hunted their prey
+                                with the bow and the knife like you? Hell no. That’s why they need you.
+                            </p>
+                            <p>
+                                Guide. Hunter. Creature of the wilds. You are these things and more. Your
+                                time
+                                in the wilderness may have been solitary until now, but the call of some
+                                greater
+                                thing—call it fate if you like—has cast your lot with these folk. Brave,
+                                they
+                                may be. Powerful and strong, too. You know the secrets of the spaces
+                                between,
+                                though.
+                            </p>
+                            <p>
+                                Without you, they’d be lost. Blaze a trail through the blood and dark,
+                                strider.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swipe-content">
+                        <div class="class-text thief" style="display: none">
+                            <h2 class="mdl-card__title-text">
+                                The Thief
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/thief.png') }}">
+                            <p>
+                                You’ve heard them, sitting around the campfire. Bragging about this battle
+                                or
+                                that. About how their gods are smiling on your merry band. You count your
+                                coins
+                                and smile to yourself—this is the thrill above all. You alone know the
+                                secret of
+                                Dungeon World—filthy filthy lucre.
+                            </p>
+                            <p>
+                                Sure, they give you lip for all the times you’ve snuck off alone but without
+                                you, who among them wouldn’t have been dissected by a flying guillotine or
+                                poisoned straight to death by some ancient needle trap? So, let them
+                                complain.
+                                When you’re done with all this delving you’ll toast their hero’s graves.
+                            </p>
+                            <p>
+                                From your castle. Full of gold. You rogue.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swipe-content">
+                        <div class="class-text wizard" style="display: none">
+                            <h2 class="mdl-card__title-text">
+                                The Wizard
+                            </h2>
+                            <img src="{{ url_for('static', filename='images/wizard.jpg') }}">
+                            <p>
+                                Dungeon World has rules. Not the laws of men or the rule of some petty
+                                tyrant.
+                                Bigger, better rules. You drop something—it falls. You can’t make something
+                                out
+                                of nothing. The dead stay dead, right?
+                            </p>
+                            <p>
+                                Oh, the things we tell ourselves to feel better about the long, dark nights.
+                            </p>
+                            <p>
+                                You’ve spent so very long poring over those tomes of yours. The experiments
+                                that
+                                nearly drove you mad and all the botched summonings that endangered your
+                                very
+                                soul. For what? For power. What else is there? Not just the power of King or
+                                Country but the power to boil a man’s blood in his veins. To call on the
+                                thunder
+                                of the sky and the churn of the roiling earth. To shrug off the rules the
+                                world
+                                holds so dear.
+                            </p>
+                            <p>
+                                Let them cast their sidelong glances. Let them call you “warlock” or
+                                “diabolist.” Who among them can hurl fireballs from their eyes?
+                            </p>
+                            <p>
+                                Yeah. We didn’t think so
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mdl-card__actions mdl-card--border center-child select-class-actions">
-                    <div id="select-class-btn"
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
-                        <h4 id="select-class-btn-text">Select Class</h4>
-                    </div>
+
+            </div>
+            <div class="mdl-card__actions mdl-card--border center-child select-class-actions">
+                <div id="select-class-btn"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                    <h4 id="select-class-btn-text">Select Class</h4>
                 </div>
             </div>
-            <div id="form-section-race" class="form_part form_part-more fixed-width" style="display:none;">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="display:none;">
-                    {{ form.heroclass }}
-                </div>
-                <div>
-                    <h3 class="creation-title">
-                        Choose a Race
-                    </h3>
-                    <p class="creation-details">Some classes have race options. Choose one. Your race gives you a
-                        special move.</p>
-                    <p class="creation-details-italic">
-                        I like the idea of being flexible—having more spells available is always good, right? I choose
-                        Human, since it’ll allow me to pick a cleric spell and cast it like it was a wizard one. That’ll
-                        leave Shannon’s cleric free to keep the healing magic flowing.
-                    </p>
-                </div>
+        </div>
+        <div id="form-section-race" class="form_part form_part-more" style="display:none;">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="display:none;">
+                {{ form.heroclass }}
+            </div>
+            <div class="form-part-more-subpart">
+                <h3 class="creation-title">
+                    Choose a Race
+                </h3>
+                <p class="creation-details">Some classes have race options. Choose one. Your race gives you a
+                    special move.</p>
+                <p class="creation-details-italic">
+                    I like the idea of being flexible—having more spells available is always good, right? I choose
+                    Human, since it’ll allow me to pick a cleric spell and cast it like it was a wizard one. That’ll
+                    leave Shannon’s cleric free to keep the healing magic flowing.
+                </p>
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
                     {{ form.herorace(class_="mdl-selectfield__select", value='') }}
                     {{ form.herorace.label(class_="mdl-selectfield__label") }}
                 </div>
             </div>
-            <div id="form-section-name" class="form_part form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-name" class="form_part form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Choose a Name
                 </h3>
-                <p class="creation-details">Choose a name for your character. You may also choose from the list below.
+                <p class="creation-details">Choose a name for your character. You may also choose from the list
+                    below.
                 </p>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     {{ form.heroname(class_="mdl-textfield__input") }}
@@ -529,7 +530,9 @@
                     {% endfor %}
                 </div>
             </div>
-            <div id="form-section-looks" class="form_part form_part-looks fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-looks" class="form_part form_part-more form-part-looks" style="display:none;">
+            <div class="form-part-more-subpart">
                 <div class="section-details">
                     <h3 class="creation-title">
                         Choose Looks
@@ -538,10 +541,12 @@
                         Your look is your physical appearance. Choose one item from each list.
                     </p>
                     <p class="creation-details-italic">
-                        Haunted eyes sound good since every wizard has seen some things no mortal was meant to. No good
+                        Haunted eyes sound good since every wizard has seen some things no mortal was meant to. No
+                        good
                         wizard has time for hair styling so wild hair it is. My robes are strange, and I mention to
                         everyone
-                        that I think maybe they came from Beyond as part of a summoning ritual. No time to eat with all
+                        that I think maybe they came from Beyond as part of a summoning ritual. No time to eat with
+                        all
                         that
                         studying and research: thin body.
                     </p>
@@ -571,7 +576,9 @@
                     {{ form.herosymbol.label(class_="mdl-selectfield__label") }}
                 </div>
             </div>
-            <div id="form-section-stats" class="form_part form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-stats" class="form_part form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Choose Stats
                 </h3>
@@ -585,18 +592,23 @@
                     <br>
                     Start by looking over the basic moves and
                     the starting moves for your class. Pick out the move that interests you the most: something
-                    you’ll be doing a lot, or something that you excel at. Put a 16 in the stat for that move. Look over
+                    you’ll be doing a lot, or something that you excel at. Put a 16 in the stat for that move. Look
+                    over
                     the list again and pick out the next most important move to your character, maybe something that
                     supports your first choice. Put your 15 in the stat for that move. Repeat this process for your
                     remaining scores: 13, 12, 9, 8.<br>
                     <br>
                     <span class="creation-details-italic">
-                        It looks like I need Intelligence to cast spells, which are my thing, so my 16 goes there. The
+                        It looks like I need Intelligence to cast spells, which are my thing, so my 16 goes there.
+                        The
                         defy
-                        danger option for Dexterity looks like something I might be doing to dive out of the way of a
+                        danger option for Dexterity looks like something I might be doing to dive out of the way of
+                        a
                         spell,
-                        so that gets my 15. A 13 Wisdom will help me notice important details (and maybe keep my sanity,
-                        based on the defy danger move). Charisma might be useful in dealing with summoned creatures so
+                        so that gets my 15. A 13 Wisdom will help me notice important details (and maybe keep my
+                        sanity,
+                        based on the defy danger move). Charisma might be useful in dealing with summoned creatures
+                        so
                         I’ll
                         put my 12 there. Living is always nice, so I put my 9 in Constitution for some extra HP.
                         Strength
@@ -664,7 +676,9 @@
                     </div>
                 </div>
             </div>
-            <div id="form-section-modifiers" class="form_part  form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-modifiers" class="form_part  form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Figure Out Modifiers
                 </h3>
@@ -675,7 +689,8 @@
                 <p class="modifiers-show-more" style="display:none">
                     <br>
                     When you perform a move in Dungeon World, you may be asked to roll in order to see how well you
-                    performed. A move might say something like "roll +DEX" or "roll +CHA". Your modifiers are calculated
+                    performed. A move might say something like "roll +DEX" or "roll +CHA". Your modifiers are
+                    calculated
                     based on the stats your character has:
                 </p>
                 <table class="mdl-data-table" style="width:100%">
@@ -720,12 +735,15 @@
                     </tbody>
                 </table>
             </div>
-            <div id="form-section-hp" class="form_part  form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-hp" class="form_part  form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Set Maxiumum HP
                 </h3>
                 <p class="creation-details">
-                    Your maximum HP is equal to your class’s base HP+Constitution score. You start with your maximum HP.
+                    Your maximum HP is equal to your class’s base HP+Constitution score. You start with your maximum
+                    HP.
                 </p>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="display:none;">
                     {{ form.herohp }}
@@ -736,23 +754,31 @@
                     </h2>
                 </div>
             </div>
-            <div id="form-section-moves" class="form_part  form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-moves" class="form_part  form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Choose Starting Moves
                 </h3>
                 <p class="creation-details">
                     The front side of each character sheet lists the starting moves. Some classes, like the fighter,
-                    have choices to make as part of one of their moves. Make these choices now. The wizard will need to
-                    choose spells for their spellbook. Both the cleric and the wizard will need to choose which spells
+                    have choices to make as part of one of their moves. Make these choices now. The wizard will need
+                    to
+                    choose spells for their spellbook. Both the cleric and the wizard will need to choose which
+                    spells
                     they have prepared to start with.
                 </p>
                 <p class="creation-details-italic">
-                    A Summoning spell is an easy choice, so I take Contact Spirits. Magic Missile will allow me to deal
-                    more damage than the pitiful d4 for the wizard class, so that’s in too. I choose Alarm for my last
+                    A Summoning spell is an easy choice, so I take Contact Spirits. Magic Missile will allow me to
+                    deal
+                    more damage than the pitiful d4 for the wizard class, so that’s in too. I choose Alarm for my
+                    last
                     spell, since I can think of some interesting uses for it.
                 </p>
             </div>
-            <div id="form-section-alignment" class="form_part  form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-alignment" class="form_part  form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Choose Alignment
                 </h3>
@@ -762,7 +788,8 @@
                     actions that can earn you additional XP
                 </p>
                 <p class="creation-details-italic">
-                    The Neutral option for wizards says I earn extra XP when I discover a magical mystery. Avon is all
+                    The Neutral option for wizards says I earn extra XP when I discover a magical mystery. Avon is
+                    all
                     about discovering mystery—I’ll go with Neutral.
                 </p>
                 <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
@@ -770,92 +797,120 @@
                     {{ form.heroalignment.label(class_="mdl-selectfield__label") }}
                 </div>
             </div>
-            <div id="form-section-gear" class="form_part  form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-gear" class="form_part  form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Choose Gear
                 </h3>
                 <p class="creation-details">
-                    Each class has choices to make for starting gear. Keep your load in mind—it limits how much you can
+                    Each class has choices to make for starting gear. Keep your load in mind—it limits how much you
+                    can
                     easily carry. Make sure to total up your armor and note it on your character sheet.
                 </p>
                 <p class="creation-details-italic">
                     I’m worried about my HP, so I take armor over books. A dagger sounds about right for rituals; I
-                    choose that over a staff. It’s a toss-up between the healing potion and the antitoxin, but healing
+                    choose that over a staff. It’s a toss-up between the healing potion and the antitoxin, but
+                    healing
                     wins out. I also end up with some rations.
                 </p>
             </div>
-            <div id="form-section-introduction" class="form_part  form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-introduction" class="form_part  form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Introduce Your Character
                 </h3>
                 <p class="creation-details">
-                    Now that you know who your character is, it’s time to introduce them to everyone else. Wait until
-                    everyone’s finished choosing their name. Then go around the table; when it’s your turn, share your
-                    look, class and anything else pertinent about your character. You can share your alignment now or
+                    Now that you know who your character is, it’s time to introduce them to everyone else. Wait
+                    until
+                    everyone’s finished choosing their name. Then go around the table; when it’s your turn, share
+                    your
+                    look, class and anything else pertinent about your character. You can share your alignment now
+                    or
                     keep it a secret if you prefer.<br>
                     <br>
                     This is also the time for the GM to ask questions. The GM’s questions should help establish the
                     relationships between characters (“What do you think about that?”) and draw the group into the
-                    adventure (“Does that mean you’ve met Grundloch before?”). The GM should listen to everything in the
-                    description and ask about anything that stands out. Establish where they’re from, who they are, how
+                    adventure (“Does that mean you’ve met Grundloch before?”). The GM should listen to everything in
+                    the
+                    description and ask about anything that stands out. Establish where they’re from, who they are,
+                    how
                     they came together, or anything else that seems relevant or interesting.
                 </p>
                 <p class="creation-details-italic">
-                    “This is Avon, mighty wizard! He’s a human with haunted eyes, wild hair, strange robes, and a thin
+                    “This is Avon, mighty wizard! He’s a human with haunted eyes, wild hair, strange robes, and a
+                    thin
                     body. Like I mentioned before his robes are strange because they’re literally not of this world:
                     they came to him as part of a summoning ritual.”
                 </p>
             </div>
-            <div id="form-section-bonds" class="form_part  form_part-more fixed-width" style="display:none;">
+        </div>
+        <div id="form-section-bonds" class="form_part  form_part-more" style="display:none;">
+            <div class="form-part-more-subpart">
                 <h3 class="creation-title">
                     Choose Bonds
                 </h3>
                 <p class="creation-details">
-                    Once everyone has described their characters you can choose your bonds. You must fill in one bond
-                    but it’s in your best interest to fill in more. For each blank fill in the name of one character.
+                    Once everyone has described their characters you can choose your bonds. You must fill in one
+                    bond
+                    but it’s in your best interest to fill in more. For each blank fill in the name of one
+                    character.
                     You can use the same character for more than one statement.<br>
                     <br>
-                    Take some time to discuss the bonds and let the GM ask questions about them as they come up. You’ll
-                    want to go back and forth and make sure everyone is happy and comfortable with how the bonds have
+                    Take some time to discuss the bonds and let the GM ask questions about them as they come up.
+                    You’ll
+                    want to go back and forth and make sure everyone is happy and comfortable with how the bonds
+                    have
                     come out. Leave space to discover what each one might mean in play, too: don’t pre-determine
-                    everything at the start. Once everyone’s filled in their bonds read them out to the group. When a
-                    move has you roll+Bond you’ll count the number of bonds you have with the character in question and
+                    everything at the start. Once everyone’s filled in their bonds read them out to the group. When
+                    a
+                    move has you roll+Bond you’ll count the number of bonds you have with the character in question
+                    and
                     add that to the roll.
                 </p>
                 <p class="creation-details-italic">
-                    With everyone introduced I choose which character to list in each bond, I have Paul’s fighter Gregor
-                    and Shannon’s cleric Brinton to choose from. The bond about prophecy sounds fun, so I choose Gregor
-                    for it and end up with “Gregor will play an important role in the events to come. I have foreseen
-                    it!” It seems like the wizard who contacts Things From Beyond and the cleric might not see eye to
-                    eye, so I add Shannon’s character and get “Brinton is woefully misinformed about the world; I will
-                    teach them all that I can.” I leave my last bond blank; I’ll deal with it later. Once everyone is
+                    With everyone introduced I choose which character to list in each bond, I have Paul’s fighter
+                    Gregor
+                    and Shannon’s cleric Brinton to choose from. The bond about prophecy sounds fun, so I choose
+                    Gregor
+                    for it and end up with “Gregor will play an important role in the events to come. I have
+                    foreseen
+                    it!” It seems like the wizard who contacts Things From Beyond and the cleric might not see eye
+                    to
+                    eye, so I add Shannon’s character and get “Brinton is woefully misinformed about the world; I
+                    will
+                    teach them all that I can.” I leave my last bond blank; I’ll deal with it later. Once everyone
+                    is
                     done I read my bonds aloud and we all discuss what this means about why we’re together and where
                     we’re going.
                 </p>
             </div>
-            <div id="form-section-more" class="form_part form_part-more form-part-create fixed-width"
-                style="display:none;">
+        </div>
+        <div id="form-section-more" class="form_part form_part-more form-part-create" style="display:none;">
+            <div class="form-part-more-subpart create-char-btn">
                 {{ form.submit(class_="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary") }}
             </div>
-        </form>
+        </div>
+    </form>
+</div>
+<div class="builder-nextback-container">
+    <div class="builder-form-btn-container" style="float: left;">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--white builder-form-btn" type="button"
+            id="backbtn">
+            <i class="material-icons">arrow_back_ios</i>
+        </button>
     </div>
-</main>
-<footer class="mdl-mini-footer">
-    <div style="min-height: 64px" class="form-actions mdl-card__actions mdl-card--border">
-        <div style="float:left;">
-            <button
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary builder-form-btn"
-                type="button" id="backbtn">Back</button>
-        </div>
-        <div style="float:right;">
-            <button
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary builder-form-btn"
-                type="button" id="nextbtn">Next</button>
-        </div>
-        <div style="float: right;">
-        </div>
+    <div class="builder-form-btn-container" style="float: right;">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--white builder-form-btn" type="button"
+            id="nextbtn">
+            <i class="material-icons">arrow_forward_ios</i>
+        </button>
     </div>
-</footer>
+</div>
+{% endblock %}
+
+{% block app_footer %}
 {% endblock %}
 
 {% block jquerystuff %}

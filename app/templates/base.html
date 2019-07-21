@@ -44,7 +44,7 @@
       <div class="mdl-layout__header-content">
         <div class="left">
           <div class="spacer mdl-layout--large-screen-only" style="text-align:left;">
-              <img src="{{ url_for('static', filename='images/dw-logos/use-with-dw-OnDark-web.png') }}">
+            <img src="{{ url_for('static', filename='images/DWCC-logo.png') }}">
           </div>
         </div>
         <div class="middle">
@@ -83,7 +83,8 @@
       <a class="mdl-navigation__link" href="{{ url_for('builder') }}">Character Builder</a>
       <a class="mdl-navigation__link" href="{{ url_for('movesBasic') }}">Basic Moves</a>
       <a class="mdl-navigation__link mdl-color-text--white" href="{{ url_for('topsecret') }}">Top Secret</a>
-      <a class="mdl-navigation__link mdl-color-text--white" href="{{ url_for('twentyfourtyeight') }}">Super Top Secret</a>
+      <a class="mdl-navigation__link mdl-color-text--white" href="{{ url_for('twentyfourtyeight') }}">Super Top
+        Secret</a>
       {% endif %}
     </nav>
   </div>
@@ -97,6 +98,19 @@
   {% endfor %}
   {% endif %}
   {% endwith %}
-  {% block app_content %}{% endblock %}
+  <main class="mdl-layout__content mdl-color--indigo-100">
+    {% block app_content %}{% endblock %}
+    {% block app_footer %}
+    <footer class="mdl-mini-footer">
+      <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo">Title</div>
+        <ul class="mdl-mini-footer__link-list">
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Privacy & Terms</a></li>
+        </ul>
+      </div>
+    </footer>
+    {% endblock %}
+  </main>
 </div>
 {% endblock %}

@@ -3,46 +3,40 @@
 
 {% block app_content %}
 
-<div class="mdl-layout__content">
-    <div class="top-content-intro">
-        <h1 class="top-content-intro-title">Dungeon World</h1>
-        <p class="top-content-intro-description">
-            This is a brief description of Dungeon world, ideally this is just one sentence.
-        </p>
-    </div>
-    <div class="content-section">
-        <h2 class="content-section-title">Characters</h2>
-        <div class="content-section-main">
-            <div class="mdl-grid characters-card-container">
-                {% for hero in heroes %}
-                    {% include '_character.html' %}
-                {% endfor %}
+<div class="top-content-intro">
+    <h1 class="top-content-intro-title">Dungeon World</h1>
+    <p class="top-content-intro-description">
+        This is a brief description of Dungeon world, ideally this is just one sentence.
+    </p>
+</div>
+<div class="content-section">
+    <h2 class="content-section-title">Characters</h2>
+    <div class="content-section-main">
+        <div class="mdl-grid characters-card-container">
+            {% for hero in heroes %}
+            {% include '_character.html' %}
+            {% endfor %}
+        </div>
+        <div class="mdl-grid characters-card-container">
+            <div
+                class="flex-container mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-card mdl-card mdl-shadow--4dp">
+                <form style="display:contents">
+                    <button formaction="{{ url_for('builder') }}"
+                        class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Create a New
+                        Character</button>
+                </form>
             </div>
-            <div class="mdl-grid characters-card-container">
-                <div
-                    class="flex-container mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-card mdl-card mdl-shadow--4dp">
-                    <form style="display:contents">
-                        <button formaction="{{ url_for('builder') }}"
-                            class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Create a New
-                            Character</button>
-                    </form>
-                </div>
-                {% if current_user.username == 'test4' %}
-                <div
-                    class="flex-container mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-card mdl-card mdl-shadow--4dp">
-                    <form style="display:contents">
-                        <button formaction="{{ url_for('addmove') }}"
-                            class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Add Move</button>
-                    </form>
-                </div>
-                {% endif %}
+            {% if current_user.username == 'test4' %}
+            <div
+                class="flex-container mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-card mdl-card mdl-shadow--4dp">
+                <form style="display:contents">
+                    <button formaction="{{ url_for('addmove') }}"
+                        class="newcharacter-button mdl-button mdl-js-button mdl-typography--text-uppercase">Add
+                        Move</button>
+                </form>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
-
-Hero Looks:
-
-
-
 {% endblock %}
